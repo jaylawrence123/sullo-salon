@@ -1436,7 +1436,7 @@
       position: relative;
       overflow: hidden;
       background-color: var(--ink);
-      /* TODO: Replace placeholder with real aspirational photo on mobile */
+      aspect-ratio: 1 / 1;
     }
 
     .final-cta-img {
@@ -1446,7 +1446,7 @@
       height: 100%;
       object-fit: cover;
       object-position: center;
-      opacity: 0.45; /* dark ink overlay effect without a pseudo-element */
+      opacity: 0.45;
     }
 
     .final-cta-inner {
@@ -1457,8 +1457,13 @@
       align-items: flex-start;
       padding: var(--xxl) var(--sm);
       gap: var(--md);
-      min-height: 380px;
-      justify-content: center;
+      height: 100%;
+      justify-content: flex-end;
+    }
+
+    @media (min-width: 768px) {
+      .final-cta { aspect-ratio: 16 / 7; }
+      .final-cta-inner { padding: var(--xxl) var(--lg); }
     }
 
     .final-cta-eyebrow {
@@ -2608,11 +2613,6 @@
     </h2>
 
     <p class="final-cta-reason">The colorists your friends keep getting asked about.</p>
-
-    <div class="final-cta-actions">
-      <a href="#" class="btn-cta-pink" data-booking>Book appointment</a>
-      <a href="tel:+19545639217" class="final-cta-call">or call (954) 563-9217</a>
-    </div>
 
   </div>
 
