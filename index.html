@@ -24,8 +24,8 @@
       --bone-warm: #EAE1D0;
       --snow:      #FDFCFA;
       --paper:     #FAF7F0;
-      --pink:      #EB82A0;
-      --pink-soft: #E8A9BD;
+      --pink:      #EF87AA;
+      --pink-soft: #F2A4BD;
       --pink-text: #A33B59;
       --pink-deep: #5A2235;
       --line:      #D8D0C0;
@@ -104,7 +104,7 @@
       align-items: center;
       gap: 6px;
       background-color: var(--pink-soft);
-      color: var(--pink-deep);
+      color: var(--ink);
       font-family: 'Hanken Grotesk', system-ui, sans-serif;
       font-size: 0.75rem;
       font-weight: 700;
@@ -113,6 +113,33 @@
       padding: 6px 14px;
       border-radius: 999px;
       white-space: nowrap;
+    }
+
+    /* ============================================================
+       ANNOUNCEMENT BAR
+    ============================================================ */
+    .announce-bar {
+      background-color: var(--pink-soft);
+      text-align: center;
+      padding: 10px var(--sm);
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .announce-text {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    .announce-link {
+      color: var(--ink);
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
 
     /* ============================================================
@@ -243,7 +270,7 @@
 
     .hero-headline {
       font-family: 'Hanken Grotesk', system-ui, sans-serif;
-      font-size: clamp(1.75rem, 6vw, 3rem);
+      font-size: clamp(2.1rem, 6vw, 3rem);
       font-weight: 700;
       line-height: 1.08;
       letter-spacing: -0.02em;
@@ -262,8 +289,8 @@
     .btn-call-photo {
       display: inline-block;
       background: transparent;
-      border: 1.5px solid var(--pink);
-      color: var(--pink);
+      border: 1.5px solid var(--pink-soft);
+      color: var(--pink-soft);
       font-family: 'Hanken Grotesk', system-ui, sans-serif;
       font-size: 0.6875rem;
       font-weight: 700;
@@ -278,8 +305,8 @@
       transition: background-color 0.15s ease-out, color 0.15s ease-out;
     }
     .btn-call-photo:hover {
-      background-color: var(--pink);
-      color: var(--snow);
+      background-color: var(--pink-soft);
+      color: var(--ink);
     }
 
     /* --- 1c. SULLO wordmark band (below photo, overlaps its bottom edge) --- */
@@ -842,7 +869,683 @@
 
     @media (min-width: 768px) {
       .work-header { padding: var(--xxl) var(--lg) var(--xl); }
-      .work-grid   { column-gap: var(--sm); padding: var(--lg); }
+      .work-grid   { column-count: 3; column-gap: var(--sm); padding: var(--lg); }
+    }
+
+    /* ============================================================
+       SECTION 6 — REVIEWS
+    ============================================================ */
+    .reviews {
+      background-color: var(--ink);
+    }
+
+    /* Aggregate lead */
+    .reviews-agg {
+      padding: var(--xl) var(--sm) var(--lg);
+      border-bottom: 1px solid rgba(216, 208, 192, 0.15);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sm);
+    }
+
+    .reviews-agg-stars {
+      color: var(--pink-soft);
+      font-size: 1rem;
+      letter-spacing: 3px;
+      line-height: 1;
+    }
+
+    .reviews-agg-rating {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: clamp(3rem, 12vw, 5rem);
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      color: var(--bone);
+    }
+
+    .reviews-agg-meta {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .reviews-agg-link {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--bone);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      align-self: flex-start;
+      transition: color 0.15s ease-out;
+    }
+    .reviews-agg-link:hover { color: var(--muted); }
+
+    /* Review pair: photo + quote stacked on mobile */
+    .review-pair {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid rgba(216, 208, 192, 0.15);
+    }
+
+    .review-photo {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background-color: var(--ink-soft);
+      flex-shrink: 0;
+    }
+
+    .review-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .review-quote {
+      padding: var(--lg) var(--sm);
+      display: flex;
+      flex-direction: column;
+      gap: var(--md);
+      justify-content: center;
+    }
+
+    .review-stars {
+      color: var(--pink-soft);
+      font-size: 0.875rem;
+      letter-spacing: 3px;
+      line-height: 1;
+    }
+
+    .review-text {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: clamp(1.1rem, 3.5vw, 1.375rem);
+      font-weight: 600;
+      line-height: 1.45;
+      letter-spacing: -0.01em;
+      color: var(--bone);
+    }
+
+    .review-byline {
+      display: flex;
+      align-items: center;
+      gap: var(--sm);
+    }
+
+    .review-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(244, 240, 233, 0.1);
+      border: 1px solid rgba(216, 208, 192, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--bone);
+      flex-shrink: 0;
+    }
+
+    .review-name {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    @media (min-width: 768px) {
+      .reviews-agg { padding: var(--xxl) var(--lg) var(--xl); }
+
+      /* Side-by-side: photo 45%, quote 55% */
+      .review-pair         { flex-direction: row; min-height: 500px; }
+      .review-pair--flip   { flex-direction: row-reverse; }
+      .review-photo        { flex: 0 0 45%; aspect-ratio: unset; }
+      .review-quote        { flex: 1; padding: var(--xxl) var(--lg); }
+      .review-text         { font-size: 1.375rem; }
+    }
+
+    /* ============================================================
+       SECTION 7 — TEAM
+    ============================================================ */
+    .team { background-color: var(--snow); }
+
+    .team-header {
+      padding: var(--xl) var(--sm) var(--lg);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .team-eyebrow {
+      display: block;
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: var(--md);
+    }
+
+    .team-headline {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: clamp(1.4rem, 4.5vw, 2.25rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      max-width: 28ch;
+      margin-bottom: var(--sm);
+    }
+
+    .team-sub {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 1.0625rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    /* Lead cards: Heather + Matteo */
+    .team-leads {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1px;
+      background-color: var(--line);
+    }
+
+    .team-card {
+      background-color: var(--snow);
+    }
+
+    .team-card-photo {
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background-color: var(--bone-warm);
+    }
+
+    .team-card-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .team-card-body {
+      padding: var(--md) var(--sm);
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      border-top: 1px solid var(--line);
+    }
+
+    .team-card-name {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--ink);
+    }
+
+    .team-card-title {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .team-card-bio {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 1.0625rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--ink);
+      margin-top: var(--xs);
+    }
+
+    /* Supporting cards: 2-up on mobile, 4-up on desktop */
+    .team-supporting {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background-color: var(--line);
+      border-top: 1px solid var(--line);
+    }
+
+    .team-card--sm .team-card-photo { aspect-ratio: 1 / 1; }
+    .team-card--sm .team-card-name  { font-size: 1rem; }
+    .team-card--sm .team-card-body  { padding: var(--sm); }
+
+    /* Footer link */
+    .team-footer {
+      padding: var(--lg) var(--sm);
+      border-top: 1px solid var(--line);
+    }
+
+    .team-link {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.15s ease-out;
+    }
+    .team-link:hover { color: var(--muted); }
+
+    @media (min-width: 768px) {
+      .team-header   { padding: var(--xxl) var(--lg) var(--xl); }
+      .team-leads    { grid-template-columns: 1fr 1fr; }
+      .team-card--sm .team-card-photo { aspect-ratio: 1 / 1; }
+      .team-card-body { padding: var(--md) var(--lg); }
+      .team-card--sm .team-card-body { padding: var(--md); }
+      .team-supporting { grid-template-columns: 1fr 1fr 1fr 1fr; }
+      .team-footer   { padding: var(--lg); }
+    }
+
+    /* ============================================================
+       SECTION 9 — FINAL CTA
+    ============================================================ */
+    .final-cta {
+      position: relative;
+      overflow: hidden;
+      background-color: var(--ink);
+      /* TODO: Replace placeholder with real aspirational photo on mobile */
+    }
+
+    .final-cta-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.45; /* dark ink overlay effect without a pseudo-element */
+    }
+
+    .final-cta-inner {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: var(--xxl) var(--sm);
+      gap: var(--md);
+      min-height: 380px;
+      justify-content: center;
+    }
+
+    .final-cta-eyebrow {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--pink-soft);
+    }
+
+    .final-cta-headline {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: clamp(1.75rem, 6vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--bone);
+      max-width: 20ch;
+    }
+
+    .final-cta-reason {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 1.0625rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: rgba(244, 240, 233, 0.7);
+    }
+
+    .final-cta-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--sm);
+      flex-wrap: wrap;
+      margin-top: var(--xs);
+    }
+
+    /* SULLO wordmark ghosted — bookend at the bottom */
+    .final-cta-wordmark {
+      display: block;
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: clamp(4.5rem, 26vw, 9rem);
+      font-weight: 900;
+      line-height: 0.8;
+      letter-spacing: -0.055em;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(244, 240, 233, 0.15);
+      pointer-events: none;
+      margin-top: var(--lg);
+    }
+
+    @media (min-width: 768px) {
+      .final-cta-inner  { padding: var(--xxl) var(--lg); min-height: 480px; }
+      .final-cta-headline { font-size: clamp(2.5rem, 5vw, 4rem); }
+    }
+
+    /* ============================================================
+       SECTION 10 — FOOTER
+    ============================================================ */
+
+    /* Pink book nudge */
+    .footer-nudge {
+      background-color: var(--pink-soft);
+      padding: var(--xxl) var(--sm);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: var(--md);
+    }
+
+    .footer-nudge-text {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: clamp(1.75rem, 5vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--ink);
+    }
+
+    /* Main footer body */
+    .footer-body {
+      background-color: var(--ink);
+      padding: var(--xl) var(--sm) var(--lg);
+      text-align: center;
+    }
+
+    /* Wordmark + tagline */
+    .footer-brand {
+      margin-bottom: var(--xl);
+      padding-bottom: var(--lg);
+      border-bottom: 1px solid rgba(216, 208, 192, 0.15);
+    }
+
+    .footer-wordmark {
+      display: block;
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      color: var(--bone);
+      margin-bottom: 8px;
+    }
+
+    .footer-tagline {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* Nav grid: 2×2 on mobile, 4-col on desktop */
+    .footer-nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--lg) var(--md);
+      margin-bottom: var(--xl);
+      padding-bottom: var(--xl);
+      border-bottom: 1px solid rgba(216, 208, 192, 0.15);
+    }
+
+    .footer-nav-col-label {
+      display: block;
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: var(--sm);
+    }
+
+    .footer-nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .footer-nav-list a {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.9375rem;
+      font-weight: 400;
+      color: var(--bone);
+      text-decoration: none;
+      line-height: 1.4;
+      transition: color 0.15s ease-out;
+    }
+    .footer-nav-list a:hover { color: var(--pink-soft); }
+
+    /* Socials */
+    .footer-socials {
+      display: flex;
+      gap: var(--md);
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: var(--xl);
+      padding-bottom: var(--lg);
+      border-bottom: 1px solid rgba(216, 208, 192, 0.15);
+    }
+
+    .footer-social-link {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s ease-out;
+    }
+    .footer-social-link:hover { color: var(--bone); }
+
+    /* Legal */
+    .footer-legal {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .footer-legal a {
+      color: var(--muted);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .footer-legal a:hover { color: var(--bone); }
+
+    @media (min-width: 768px) {
+      .footer-nudge      { flex-direction: row; align-items: center; justify-content: space-between; padding: var(--lg); }
+      .footer-nudge-text { font-size: 1.125rem; }
+      .footer-body       { padding: var(--xxl) var(--lg) var(--xl); }
+      .footer-nav        { grid-template-columns: 1fr 1fr 1fr 1fr; }
+      .footer-legal      { flex-direction: row; gap: var(--md); }
+    }
+
+    /* ============================================================
+       SECTION 8 — VISIT
+    ============================================================ */
+    .visit { background-color: var(--paper); }
+
+    .visit-header {
+      padding: var(--xl) var(--sm) var(--lg);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .visit-eyebrow {
+      display: block;
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: var(--md);
+    }
+
+    .visit-headline {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: clamp(1.4rem, 4.5vw, 2.25rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+    }
+
+    /* Ensure full-width on mobile */
+    .visit-body  { width: 100%; }
+    .visit-left,
+    .visit-right { width: 100%; }
+
+    /* Storefront / interior photo */
+    .visit-photo {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background-color: var(--bone-warm);
+      position: relative;
+    }
+
+    .visit-photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Map iframe wrapper */
+    .visit-map {
+      width: 100%;
+      height: 320px;
+      overflow: hidden;
+      border-top: 1px solid var(--line);
+    }
+
+    .visit-map iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* Directions: 3 equal cells */
+    .visit-directions {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1px;
+      background-color: var(--line);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .visit-dir-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--md) var(--xs);
+      background-color: var(--paper);
+      text-decoration: none;
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink);
+      transition: background-color 0.15s ease-out;
+      text-align: center;
+    }
+    .visit-dir-btn:hover { background-color: var(--bone-warm); }
+
+    /* NAP + hours */
+    .visit-nap {
+      padding: var(--lg) var(--sm);
+      display: flex;
+      flex-direction: column;
+      gap: var(--md);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .visit-nap-block { display: flex; flex-direction: column; gap: 4px; }
+
+    .visit-nap-label {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .visit-nap-value {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 1.0625rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    a.visit-nap-value:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    .visit-hours {
+      display: grid;
+      grid-template-columns: 3rem 1fr;
+      gap: 2px 12px;
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 1.0625rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--ink);
+    }
+    .visit-hours dt { color: var(--muted); font-weight: 700; }
+    .visit-hours dd { margin: 0; }
+
+    @media (min-width: 768px) {
+      .visit-header { padding: var(--xxl) var(--lg) var(--xl); }
+
+      /* 2-col: left = photo + NAP, right = map + directions */
+      .visit-body {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border-top: 1px solid var(--line);
+      }
+
+      .visit-left { border-right: 1px solid var(--line); }
+
+      .visit-photo { aspect-ratio: unset; height: 420px; }
+      .visit-map   { height: 420px; border-top: none; }
+      .visit-nap   { padding: var(--lg); border-bottom: none; }
     }
   </style>
 </head>
@@ -851,6 +1554,11 @@
 <!-- ============================================================
      SECTION 1 — HERO
 ============================================================ -->
+
+<!-- ANNOUNCEMENT BAR — remove if not using -->
+<div class="announce-bar">
+  <p class="announce-text">Now booking for summer &mdash; <a href="#" class="announce-link" data-booking>Book now</a></p>
+</div>
 
 <!-- 1a. NAV -->
 <header class="site-nav" role="banner">
@@ -916,7 +1624,7 @@
     </span>
 
     <h1 class="hero-headline" id="hero-headline">
-      Fort Lauderdale&#8217;s salon &amp; day spa since 1986.
+      Fort Lauderdale&#8217;s salon &amp; day spa<br>since 1986.
     </h1>
 
     <div class="hero-ctas">
@@ -1002,7 +1710,7 @@
       <!-- IMG SPEC: Dramatic balayage or color result. Warm candlelit tones,
            woman's hair as hero. Rich saturation. Square crop. -->
       <img
-        src="https://placehold.co/600x600/EAE1D0/8A8270?text=Balayage+result%0Awarm+candlelit+tones%0Asquare+crop"
+        src="https://i.ibb.co/8n9msvqH/sullo-service-color-balayage.png"
         alt="Hand-painted balayage color result at Sullo Salon, Fort Lauderdale"
         loading="lazy" width="600" height="600"
       >
@@ -1019,7 +1727,7 @@
       <!-- IMG SPEC: Great Lengths extension result. Visible length and volume,
            warm blonde or brunette. Editorial-lit. Square crop. -->
       <img
-        src="https://placehold.co/600x600/EAE1D0/8A8270?text=Extensions+result%0Alength+%26+volume%0Asquare+crop"
+        src="https://i.ibb.co/0RNWP9b8/sullo-service-extensions.png"
         alt="Great Lengths hair extensions result at Sullo Salon, Fort Lauderdale"
         loading="lazy" width="600" height="600"
       >
@@ -1036,7 +1744,7 @@
       <!-- IMG SPEC: Precision cut or blowout. Movement in the hair,
            warm editorial light. Square crop. -->
       <img
-        src="https://placehold.co/600x600/EAE1D0/8A8270?text=Precision+cut+or+blowout%0Amovement+in+the+hair%0Asquare+crop"
+        src="https://i.ibb.co/kgLvnL8h/sullo-service-hair.png"
         alt="Haircut and styling at Sullo Salon, Fort Lauderdale"
         loading="lazy" width="600" height="600"
       >
@@ -1051,7 +1759,7 @@
       <!-- IMG SPEC: Serene facial treatment or glowing skin close-up.
            Spa atmosphere, warm light. Square crop. -->
       <img
-        src="https://placehold.co/600x600/EAE1D0/8A8270?text=Facial+treatment%0Aglowing+skin+close-up%0Asquare+crop"
+        src="https://i.ibb.co/ccHtTrt1/sullo-service-facials.png"
         alt="Facial and skin care at Sullo Salon and Day Spa, Fort Lauderdale"
         loading="lazy" width="600" height="600"
       >
@@ -1066,7 +1774,7 @@
       <!-- IMG SPEC: Polished makeup result, natural-to-glam range,
            close portrait. Warm tones. Square crop. -->
       <img
-        src="https://placehold.co/600x600/EAE1D0/8A8270?text=Makeup+result%0Anatural+to+glam%0Asquare+crop"
+        src="https://i.ibb.co/FTbpZSk/sullo-service-makeup.png"
         alt="Professional makeup artistry at Sullo Salon, Fort Lauderdale"
         loading="lazy" width="600" height="600"
       >
@@ -1081,7 +1789,7 @@
       <!-- IMG SPEC: Clean nail result, close detail shot.
            Neutral or warm tones. Square crop. -->
       <img
-        src="https://placehold.co/600x600/EAE1D0/8A8270?text=Nail+detail+shot%0Aneutral+warm+tones%0Asquare+crop"
+        src="https://i.ibb.co/xKtbcV1p/sullo-service-nails.png"
         alt="Nail services at Sullo Salon and Day Spa, Fort Lauderdale"
         loading="lazy" width="600" height="600"
       >
@@ -1096,7 +1804,7 @@
       <!-- IMG SPEC: Warm salon interior or spa atmosphere shot, wide crop.
            Shows the space, inviting. Horizontal/panoramic. -->
       <img
-        src="https://placehold.co/1200x400/EAE1D0/8A8270?text=Salon+interior+or+spa+atmosphere%0Awarm%2C+wide+panoramic+crop"
+        src="https://i.ibb.co/hRKhSCS2/sullo-service-spa-atmosphere.png"
         alt="Waxing and spa services at Sullo Salon and Day Spa, Fort Lauderdale"
         loading="lazy" width="1200" height="400"
       >
@@ -1205,6 +1913,9 @@
     <a href="/gallery" class="work-gallery-link">See the full gallery &rarr;</a>
   </div>
 
+  <!-- TODO: Gap bottom-left on desktop (3-col CSS columns uneven distribution
+       with 8 images). Fix options: add a 9th image, reorder image heights so
+       columns balance, or switch to JS masonry once real photos arrive. -->
   <div class="work-grid" role="list">
 
     <figure class="work-figure" role="listitem">
@@ -1258,6 +1969,399 @@
   </div>
 
 </section>
+
+<!-- ============================================================
+     SECTION 6 — REVIEWS
+     PLACEHOLDER: Replace review text with real verbatim Google reviews
+     before launch (legal + schema requirement).
+============================================================ -->
+<section class="reviews" id="reviews" aria-labelledby="reviews-heading">
+
+  <!-- Aggregate lead -->
+  <div class="reviews-agg">
+    <span class="reviews-agg-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+    <span class="reviews-agg-rating" id="reviews-heading">4.5</span>
+    <span class="reviews-agg-meta">
+      93 reviews on Google<br>
+      Most from clients of ten years or more
+    </span>
+    <a href="https://g.co/kgs/sullosalonspa" class="reviews-agg-link" target="_blank" rel="noopener">
+      Read all 93 reviews &rarr;
+    </a>
+  </div>
+
+  <!-- Review 1 — PLACEHOLDER -->
+  <div class="review-pair">
+    <!-- IMG SPEC: Blonde result — bright, warm, editorial. Client-supplied. -->
+    <div class="review-photo">
+      <img
+        src="https://placehold.co/800x600/2B251C/8A8270?text=Blonde+result%0Aclient+photo"
+        alt="Blonde hair color result at Sullo Salon, Fort Lauderdale"
+        loading="lazy" width="800" height="600"
+      >
+    </div>
+    <div class="review-quote">
+      <span class="review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      <blockquote class="review-text">
+        &#8220;I&#8217;ve followed my colorist here for twelve years. Nobody in South Florida touches what they do with blonde.&#8221;
+      </blockquote>
+      <div class="review-byline">
+        <div class="review-avatar" aria-hidden="true">S.M.</div>
+        <span class="review-name">Google Review &mdash; Placeholder</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Review 2 — PLACEHOLDER, flipped on desktop -->
+  <div class="review-pair review-pair--flip">
+    <!-- IMG SPEC: Extensions result — length + volume, natural look. Client-supplied. -->
+    <div class="review-photo">
+      <img
+        src="https://placehold.co/800x600/2B251C/8A8270?text=Extensions+result%0Aclient+photo"
+        alt="Hair extensions result at Sullo Salon, Fort Lauderdale"
+        loading="lazy" width="800" height="600"
+      >
+    </div>
+    <div class="review-quote">
+      <span class="review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      <blockquote class="review-text">
+        &#8220;First time getting extensions and I was nervous. They walked me through everything. It looks completely natural.&#8221;
+      </blockquote>
+      <div class="review-byline">
+        <div class="review-avatar" aria-hidden="true">A.R.</div>
+        <span class="review-name">Google Review &mdash; Placeholder</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============================================================
+     SECTION 7 — TEAM
+     CLIENT-VERIFY: current roster before publish
+============================================================ -->
+<section class="team" id="team" aria-labelledby="team-heading">
+
+  <div class="team-header">
+    <span class="team-eyebrow">The people</span>
+    <h2 class="team-headline" id="team-heading">The same hands behind the chair for decades.</h2>
+    <p class="team-sub">Master colorists and stylists, not a rotating roster.</p>
+  </div>
+
+  <!-- Lead cards: owners -->
+  <div class="team-leads">
+
+    <article class="team-card">
+      <!-- IMG SPEC: Heather Marino — warm-lit portrait at the chair, editorial, confident -->
+      <div class="team-card-photo">
+        <img
+          src="https://placehold.co/600x800/EAE1D0/8A8270?text=Heather+Marino%0Awarm+portrait%0Aat+the+chair"
+          alt="Heather Marino, owner and master stylist at Sullo Salon, Fort Lauderdale"
+          loading="lazy" width="600" height="800"
+        >
+      </div>
+      <div class="team-card-body">
+        <h3 class="team-card-name">Heather Marino</h3>
+        <span class="team-card-title">Owner &middot; Master Stylist &middot; Goldwell Master Colorist</span>
+        <p class="team-card-bio">25+ years. Great Lengths extension expert, blonding and platinum specialist.</p>
+      </div>
+    </article>
+
+    <article class="team-card">
+      <!-- IMG SPEC: Matteo Spatafora — warm-lit portrait at the chair, editorial, confident -->
+      <div class="team-card-photo">
+        <img
+          src="https://placehold.co/600x800/EAE1D0/8A8270?text=Matteo+Spatafora%0Awarm+portrait%0Aat+the+chair"
+          alt="Matteo Spatafora, owner and master stylist at Sullo Salon, Fort Lauderdale"
+          loading="lazy" width="600" height="800"
+        >
+      </div>
+      <div class="team-card-body">
+        <h3 class="team-card-name">Matteo Spatafora</h3>
+        <span class="team-card-title">Owner &middot; Master Stylist &middot; Goldwell Master Colorist</span>
+        <p class="team-card-bio">40+ years, trained in Italy and New York. Elegant cuts, refined color.</p>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- Supporting cards -->
+  <div class="team-supporting">
+
+    <article class="team-card team-card--sm">
+      <!-- IMG SPEC: Taiilor McGee — square crop, warm editorial -->
+      <div class="team-card-photo">
+        <img
+          src="https://placehold.co/400x400/EAE1D0/8A8270?text=Taiilor+McGee%0Asquare+crop"
+          alt="Taiilor McGee, senior stylist at Sullo Salon, Fort Lauderdale"
+          loading="lazy" width="400" height="400"
+        >
+      </div>
+      <div class="team-card-body">
+        <h3 class="team-card-name">Taiilor McGee</h3>
+        <span class="team-card-title">Senior Stylist &middot; Goldwell Master Colorist</span>
+      </div>
+    </article>
+
+    <article class="team-card team-card--sm">
+      <!-- IMG SPEC: Kristen Black — square crop, warm editorial -->
+      <div class="team-card-photo">
+        <img
+          src="https://placehold.co/400x400/EAE1D0/8A8270?text=Kristen+Black%0Asquare+crop"
+          alt="Kristen Black, master stylist at Sullo Salon, Fort Lauderdale"
+          loading="lazy" width="400" height="400"
+        >
+      </div>
+      <div class="team-card-body">
+        <h3 class="team-card-name">Kristen Black</h3>
+        <span class="team-card-title">Master Stylist &middot; Vidal Sassoon Trained</span>
+      </div>
+    </article>
+
+    <article class="team-card team-card--sm">
+      <!-- IMG SPEC: Pam Scardina — square crop, warm editorial -->
+      <div class="team-card-photo">
+        <img
+          src="https://placehold.co/400x400/EAE1D0/8A8270?text=Pam+Scardina%0Asquare+crop"
+          alt="Pam Scardina, senior stylist at Sullo Salon, Fort Lauderdale"
+          loading="lazy" width="400" height="400"
+        >
+      </div>
+      <div class="team-card-body">
+        <h3 class="team-card-name">Pam Scardina</h3>
+        <span class="team-card-title">Senior Stylist &middot; Colorist</span>
+      </div>
+    </article>
+
+    <article class="team-card team-card--sm">
+      <!-- IMG SPEC: Carolyn Parillo — square crop, warm editorial -->
+      <div class="team-card-photo">
+        <img
+          src="https://placehold.co/400x400/EAE1D0/8A8270?text=Carolyn+Parillo%0Asquare+crop"
+          alt="Carolyn Parillo, esthetician at Sullo Salon and Day Spa, Fort Lauderdale"
+          loading="lazy" width="400" height="400"
+        >
+      </div>
+      <div class="team-card-body">
+        <h3 class="team-card-name">Carolyn Parillo</h3>
+        <span class="team-card-title">Esthetician &middot; 40 Years</span>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="team-footer">
+    <a href="/team" class="team-link">Meet the entire team &rarr;</a>
+  </div>
+
+</section>
+
+<!-- ============================================================
+     SECTION 8 — VISIT
+============================================================ -->
+<section class="visit" id="visit" aria-labelledby="visit-heading">
+
+  <div class="visit-header">
+    <span class="visit-eyebrow">Visit us</span>
+    <h2 class="visit-headline" id="visit-heading">On North Federal, since 1986.</h2>
+  </div>
+
+  <div class="visit-body">
+
+    <!-- Left: photo + NAP -->
+    <div class="visit-left">
+      <!-- IMG SPEC: Real storefront exterior or warm salon interior wide shot -->
+      <!-- TODO: White gap still showing on left/right edges of storefront photo on mobile.
+           Investigate once real photo is supplied — may be an ibb.co image dimension issue. -->
+      <div class="visit-photo">
+        <img
+          src="https://i.ibb.co/356wvD6R/sullo-store.jpg"
+          alt="Sullo Salon and Day Spa on North Federal Highway, Fort Lauderdale"
+          loading="lazy" width="800" height="450"
+        >
+      </div>
+
+      <div class="visit-nap">
+        <div class="visit-nap-block">
+          <span class="visit-nap-label">Address</span>
+          <a
+            class="visit-nap-value"
+            href="https://www.google.com/maps/dir/?api=1&destination=Sullo+Salon+%26+Day+Spa,+3045+N+Federal+Hwy,+Fort+Lauderdale,+FL+33306"
+            target="_blank" rel="noopener"
+          >3045 N Federal Hwy<br>Fort Lauderdale, FL 33306</a>
+        </div>
+        <div class="visit-nap-block">
+          <span class="visit-nap-label">Phone</span>
+          <a class="visit-nap-value" href="tel:+19545639217">(954) 563-9217</a>
+        </div>
+        <div class="visit-nap-block">
+          <span class="visit-nap-label">Hours</span>
+          <dl class="visit-hours">
+            <dt>Mon</dt><dd>10 AM – 6 PM</dd>
+            <dt>Tue</dt><dd>10 AM – 6 PM</dd>
+            <dt>Wed</dt><dd>10 AM – 7 PM</dd>
+            <dt>Thu</dt><dd>11 AM – 9 PM</dd>
+            <dt>Fri</dt><dd>10 AM – 7 PM</dd>
+            <dt>Sat</dt><dd>10 AM – 6 PM</dd>
+            <dt>Sun</dt><dd>Closed</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: map + directions -->
+    <div class="visit-right">
+      <div class="visit-map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3580.939385362053!2d-80.11993552458607!3d26.166103477100027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d901f385f0ccf9%3A0xdbafa945a3258f41!2sSullo%20Salon%20%26%20Day%20Spa!5e0!3m2!1sen!2sus!4v1780467774740!5m2!1sen!2sus"
+          title="Sullo Salon &amp; Day Spa on Google Maps"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+
+      <div class="visit-directions" role="list" aria-label="Get directions">
+        <a
+          class="visit-dir-btn"
+          href="https://www.google.com/maps/dir/?api=1&destination=Sullo+Salon+%26+Day+Spa,+3045+N+Federal+Hwy,+Fort+Lauderdale,+FL+33306"
+          target="_blank" rel="noopener" role="listitem"
+        >Google Maps</a>
+        <a
+          class="visit-dir-btn"
+          href="https://waze.com/ul?q=Sullo+Salon+%26+Day+Spa+Fort+Lauderdale&navigate=yes"
+          target="_blank" rel="noopener" role="listitem"
+        >Waze</a>
+        <a
+          class="visit-dir-btn"
+          href="https://maps.apple.com/?daddr=3045+N+Federal+Hwy,+Fort+Lauderdale,+FL+33306"
+          target="_blank" rel="noopener" role="listitem"
+        >Apple Maps</a>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ============================================================
+     SECTION 9 — FINAL CTA
+============================================================ -->
+<section class="final-cta" id="book" aria-labelledby="final-cta-heading">
+
+  <!--
+    IMG SPEC: Warm aspirational result or atmosphere shot — a client leaving the
+    chair looking great, or a close editorial hair detail. Full-bleed. Vertical crop.
+    TODO: Real photo pending from client. Placeholder showing on mobile.
+  -->
+  <img
+    class="final-cta-img"
+    src="https://i.ibb.co/h5SyLHL/hair-salon-fort-lauderdale.jpg"
+    alt="Hair color result at Sullo Salon and Day Spa, Fort Lauderdale"
+    loading="lazy" width="800" height="1000"
+  >
+
+  <div class="final-cta-inner">
+    <span class="final-cta-eyebrow">Your chair is waiting</span>
+
+    <h2 class="final-cta-headline" id="final-cta-heading">
+      Four decades of South Florida&#8217;s best work. Now yours.
+    </h2>
+
+    <p class="final-cta-reason">The colorists your friends keep getting asked about.</p>
+
+    <div class="final-cta-actions">
+      <a href="#" class="btn-primary" data-booking>Book appointment</a>
+      <a href="tel:+19545639217" class="btn-call-photo">Call</a>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ============================================================
+     SECTION 10 — FOOTER
+============================================================ -->
+<footer role="contentinfo">
+
+  <!-- Pink book nudge -->
+  <div class="footer-nudge">
+    <p class="footer-nudge-text">Ready when you are.</p>
+    <a href="#" class="btn-primary" data-booking>Book your appointment</a>
+  </div>
+
+  <!-- Main footer body -->
+  <div class="footer-body">
+
+    <!-- Wordmark + tagline -->
+    <div class="footer-brand">
+      <span class="footer-wordmark">sullo</span>
+      <span class="footer-tagline">Salon &middot; Day Spa &middot; Est. 1986</span>
+    </div>
+
+    <!-- Nav columns -->
+    <nav class="footer-nav" aria-label="Footer navigation">
+
+      <div>
+        <span class="footer-nav-col-label">Explore</span>
+        <ul class="footer-nav-list">
+          <li><a href="/gallery">Our work</a></li>
+          <li><a href="/team">The team</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <span class="footer-nav-col-label">Services</span>
+        <ul class="footer-nav-list">
+          <li><a href="/color">Color &amp; Balayage</a></li>
+          <li><a href="/extensions">Extensions</a></li>
+          <li><a href="/hair">Hair</a></li>
+          <li><a href="/facials">Facials &amp; more</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <span class="footer-nav-col-label">Visit</span>
+        <ul class="footer-nav-list">
+          <li>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Sullo+Salon+%26+Day+Spa,+3045+N+Federal+Hwy,+Fort+Lauderdale,+FL+33306" target="_blank" rel="noopener">
+              3045 N Federal Hwy<br>Fort Lauderdale, FL 33306
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <span class="footer-nav-col-label">Contact</span>
+        <ul class="footer-nav-list">
+          <li><a href="tel:+19545639217">(954) 563-9217</a></li>
+          <li><a href="#visit">Hours</a></li>
+          <li><a href="#" data-booking>Book now</a></li>
+        </ul>
+      </div>
+
+    </nav>
+
+    <!-- Socials -->
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/sullosalonspa" class="footer-social-link" target="_blank" rel="noopener" aria-label="Sullo Salon on Instagram">Instagram</a>
+      <a href="https://www.facebook.com/sullosalonspa" class="footer-social-link" target="_blank" rel="noopener" aria-label="Sullo Salon on Facebook">Facebook</a>
+      <a href="https://www.pinterest.com/sullosalonspa" class="footer-social-link" target="_blank" rel="noopener" aria-label="Sullo Salon on Pinterest">Pinterest</a>
+      <a href="https://www.yelp.com/biz/sullo-salon-and-day-spa-fort-lauderdale" class="footer-social-link" target="_blank" rel="noopener" aria-label="Sullo Salon on Yelp">Yelp</a>
+    </div>
+
+    <!-- Legal -->
+    <div class="footer-legal">
+      <span>&copy; 2026 Sullo Salon &amp; Day Spa</span>
+      <a href="/privacy">Privacy</a>
+      <a href="https://designmynt.com">Site by designmynt</a>
+    </div>
+
+  </div>
+
+</footer>
 
 <script>
   /* ============================================================
