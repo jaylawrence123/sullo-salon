@@ -21,14 +21,13 @@ Static HTML/CSS/JS homepage. Deploy to Netlify or Cloudflare Pages.
 
 | # | Section | Status |
 |---|---------|--------|
-| 1 | Hero (announce bar + nav + video + wordmark + trust ribbon + sticky bar) | ✅ Done |
+| 1 | Hero (announce bar + nav + video + wordmark + pink pill rating + sticky bar) | ✅ Done |
 | 2 | Services (6 square tiles + 1 full-width — all real photos) | ✅ Done |
 | 3 | Marquee (ink strip, auto-scroll) | ✅ Done |
-| 4 | Proof line (Glamour lead + 2×2 / 4-col stat grid) | ✅ Done |
+| 4 | Why Sullo (Glamour headline + ★4.5 / #1 Sun-Sentinel / CBS stats + About CTA) | ✅ Done |
 | 5 | The Work (masonry gallery — all 8 real photos) | ✅ Done |
 | 6 | Reviews (ink section — 2 real Google reviews + photos) | ✅ Done |
 | 7 | Team (Heather + Matteo lead cards, 4 supporting) | ✅ Done |
-| — | About (origin story + 4-stat grid) | ✅ Done |
 | 8 | Visit (storefront photo + map embed + directions + NAP + hours) | ✅ Done |
 | 9 | Final CTA (full-bleed photo + copy + Book CTA) | ✅ Done |
 | 10 | Footer (pink nudge + centered nav grid + socials + legal) | ✅ Done |
@@ -42,9 +41,8 @@ Static HTML/CSS/JS homepage. Deploy to Netlify or Cloudflare Pages.
 - **Booking URL:** Set `BOOKING_URL` in `<script>` block at bottom of `index.html`. Currently `'#'`.
 - **Reviews:** 2 real Google reviews live (Skyla Petrillo, Stephanie Vogelgesang Felton). Add more as needed.
 - **Team portraits:** 6 placeholder images (Heather, Matteo, Taiilor, Kristen, Pam, Carolyn) — shot specs in HTML comments.
-- **Award wording:** CLIENT-VERIFY all Glamour/Sun-Sentinel/Gold Coast/CBS claims.
+- **Award wording:** CLIENT-VERIFY all award claims (Sun-Sentinel, Gold Coast, CBS, Glamour) before publish.
 - **Logo:** CSS typographic wordmark in place (su/ll/o size treatment). Real vector pending — needs clean transparent PNG or SVG from client.
-- **Chatbot:** Mount point built (`#chatbot-launcher`, hidden). Wire when platform chosen.
 - **Social URLs:** Confirm real handles for Facebook, Pinterest, Yelp.
 - **Visit photo gap:** White gap on mobile storefront photo — flagged in HTML, revisit with real photo.
 - **Work gallery desktop gap:** Bottom-left gap in 3-col masonry — flagged in HTML.
@@ -54,10 +52,10 @@ Static HTML/CSS/JS homepage. Deploy to Netlify or Cloudflare Pages.
 ## Pre-Launch Checklist
 
 - [ ] Swap `BOOKING_URL` variable (one line in `<script>`)
-- [ ] Verify award wording with client
+- [ ] Verify award wording with client (Sun-Sentinel, Gold Coast, CBS, Glamour)
 - [ ] Confirm social media handles/URLs
 - [ ] Add JSON-LD schema (LocalBusiness + AggregateRating + Service)
-- [ ] Create `_redirects` file (see BUILD-BRIEF.md for full map)
+- [ ] Create `_redirects` file (see redirect map below)
 - [ ] Submit `/color` to Google Search Console (net-new page)
 - [ ] Wire chatbot when platform is chosen
 - [ ] Swap team portrait placeholders with real photos
@@ -86,12 +84,22 @@ Wordmark: `su` at `clamp(4.5rem, 25vw, 9rem)`, `ll` at `clamp(5.5rem, 30vw, 10re
 
 ---
 
+## Redirect Map (Netlify `_redirects`)
+
+```
+/about-us/        /about     301
+/our-team/        /team      301
+/contact-us/      /contact   301
+/hair-extensions/ /extensions 301
+/work-with-us/    /careers   301
+```
+
+Pages to keep as-is: `/gallery/`, `/hair/`, `/facials/`, `/makeup/`, `/nails/`, `/waxing/`
+Net-new page to submit to Search Console after launch: `/color`
+
+---
+
 ## SEO / AEO (post-build)
 
 - Schema: LocalBusiness + AggregateRating + Service — add before launch
-- Run claude-seo audit
 - Submit `/color` (net-new) to Google Search Console after launch
-
-## Redirects (preserve domain authority)
-
-Add `_redirects` file for Netlify before launch. See `BUILD-BRIEF.md` for full map.

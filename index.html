@@ -109,11 +109,83 @@
       font-family: 'Satoshi', system-ui, sans-serif;
       font-size: 0.75rem;
       font-weight: 700;
-      letter-spacing: 0.02em;   /* tight — no uppercase explosion */
+      letter-spacing: 0.02em;
       line-height: 1.2;
       padding: 6px 14px;
       border-radius: 999px;
       white-space: nowrap;
+    }
+
+    /* --- Hero Trust Strip --- */
+    .hero-trust-strip {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      background: var(--pink-soft);
+      border-radius: 999px;
+      padding: 3px 12px 3px 3px;
+    }
+    .hero-trust-avatars {
+      display: flex;
+      align-items: center;
+    }
+    .hero-trust-avatar {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid rgba(244, 240, 233, 0.9);
+      overflow: hidden;
+      margin-left: -10px;
+      flex-shrink: 0;
+    }
+    .hero-trust-avatar:first-child { margin-left: 0; }
+    .hero-trust-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-trust-info {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero-trust-stars {
+      color: var(--ink);
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      line-height: 1;
+    }
+    .hero-trust-meta {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.5625rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .hero-trust-g-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #fff;
+      flex-shrink: 0;
+    }
+    .hero-trust-g {
+      font-size: 0.75rem;
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(160deg, #EA4335 0%, #FBBC04 35%, #34A853 65%, #4285F4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     /* ============================================================
@@ -168,10 +240,31 @@
       line-height: 1;
       color: var(--ink);
       display: flex;
-      align-items: baseline;
+      align-items: center;
+      gap: 10px;
     }
+    /* Letters group stays baseline-aligned */
+    .wm-letters { display: inline-flex; align-items: baseline; }
     .wm-sm { font-size: 1.1rem; }
     .wm-lg { font-size: 1.75rem; }
+
+    .nav-wordmark-divider {
+      width: 1px;
+      height: 20px;
+      background-color: var(--line);
+      flex-shrink: 0;
+    }
+
+    .nav-wordmark-sub {
+      font-family: 'Satoshi', system-ui, sans-serif;
+      font-size: 0.5625rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink);
+      line-height: 1.4;
+      white-space: nowrap;
+    }
 
     .nav-right {
       display: flex;
@@ -367,27 +460,47 @@
       flex-wrap: wrap;
     }
 
-    /* Call button on photo: outline in pink */
-    .btn-call-photo {
-      display: inline-block;
-      background: transparent;
-      border: 1.5px solid var(--pink-soft);
-      color: var(--pink-soft);
+    /* Hero CTAs — shared base */
+    .btn-call-photo,
+    .hero-ctas .btn-primary {
       font-family: 'Satoshi', system-ui, sans-serif;
       font-size: 0.6875rem;
       font-weight: 700;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       line-height: 1.2;
-      padding: 14.5px 28px;
+      padding: 20px 32px;
       border-radius: 2px;
       cursor: pointer;
       text-decoration: none;
       white-space: nowrap;
-      transition: background-color 0.15s ease-out, color 0.15s ease-out;
+      transition: background-color 0.2s ease-out, border-color 0.2s ease-out, color 0.2s ease-out;
+      display: inline-block;
+    }
+
+    /* Book — glassmorphism */
+    .hero-ctas .btn-primary {
+      background: rgba(244, 240, 233, 0.12);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1.5px solid rgba(244, 240, 233, 0.5);
+      color: var(--bone);
+    }
+    .hero-ctas .btn-primary:hover {
+      background: rgba(244, 240, 233, 0.25);
+      border-color: rgba(244, 240, 233, 0.8);
+      color: var(--bone);
+    }
+
+    /* Call — bone ghost outline */
+    .btn-call-photo {
+      background: transparent;
+      border: 1.5px solid rgba(244, 240, 233, 0.75);
+      color: var(--bone);
     }
     .btn-call-photo:hover {
-      background-color: var(--pink-soft);
+      background-color: var(--bone);
+      border-color: var(--bone);
       color: var(--ink);
     }
 
@@ -796,16 +909,16 @@
     }
 
     /* ============================================================
-       SECTION 4 — PROOF LINE
+       SECTION 4 — WHY SULLO
     ============================================================ */
-    .proof { background-color: var(--snow); }
+    .why-sullo { background-color: var(--snow); }
 
-    .proof-lead {
+    .why-sullo-lead {
       padding: var(--xl) var(--sm) var(--lg);
       border-bottom: 1px solid var(--line);
     }
 
-    .proof-eyebrow {
+    .why-sullo-eyebrow {
       display: block;
       font-family: 'Satoshi', system-ui, sans-serif;
       font-size: 0.6875rem;
@@ -816,7 +929,7 @@
       margin-bottom: var(--md);
     }
 
-    .proof-headline {
+    .why-sullo-headline {
       font-family: 'Satoshi', system-ui, sans-serif;
       font-size: clamp(1.75rem, 6vw, 3rem);
       font-weight: 700;
@@ -827,7 +940,7 @@
       margin-bottom: var(--sm);
     }
 
-    .proof-sub {
+    .why-sullo-sub {
       font-family: 'Satoshi', system-ui, sans-serif;
       font-size: 1.0625rem;
       font-weight: 600;
@@ -835,26 +948,22 @@
       color: var(--muted);
     }
 
-    /* Stat grid: 2×2 on mobile, 4-col strip on desktop */
-    .proof-stats {
+    /* Stat grid: 3-col always */
+    .why-sullo-stats {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
     }
 
-    .proof-stat-cell {
+    .why-sullo-stat {
       padding: var(--md) var(--sm);
       border-right: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
     }
-    /* No right border on even cells (right column) */
-    .proof-stat-cell:nth-child(even)       { border-right: none; }
-    /* No bottom border on last two cells (bottom row on mobile) */
-    .proof-stat-cell:nth-last-child(-n+2)  { border-bottom: none; }
+    .why-sullo-stat:last-child { border-right: none; }
 
-    .proof-stat-value {
+    .why-sullo-stat-value {
       display: block;
       font-family: 'Satoshi', system-ui, sans-serif;
-      font-size: 2rem;
+      font-size: clamp(1.5rem, 5vw, 2.75rem);
       font-weight: 900;
       letter-spacing: -0.04em;
       line-height: 1;
@@ -862,7 +971,7 @@
       margin-bottom: 6px;
     }
 
-    .proof-stat-label {
+    .why-sullo-stat-label {
       display: block;
       font-family: 'Satoshi', system-ui, sans-serif;
       font-size: 0.6875rem;
@@ -873,20 +982,31 @@
       line-height: 1.3;
     }
 
-    @media (min-width: 768px) {
-      .proof-lead { padding: var(--xxl) var(--lg) var(--xl); }
+    .why-sullo-footer {
+      padding: var(--lg) var(--sm);
+      border-top: 1px solid var(--line);
+    }
 
-      /* 4-col horizontal strip */
-      .proof-stats { grid-template-columns: 1fr 1fr 1fr 1fr; }
-      .proof-stat-cell {
-        padding: var(--lg);
-        border-right: 1px solid var(--line);
-        border-bottom: none;
-      }
-      .proof-stat-cell:nth-child(even)      { border-right: 1px solid var(--line); }
-      .proof-stat-cell:nth-last-child(-n+2) { border-bottom: none; }
-      .proof-stat-cell:last-child           { border-right: none; }
-      .proof-stat-value { font-size: 2.75rem; }
+    .why-sullo-link {
+      font-family: 'Satoshi', system-ui, sans-serif;
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 1px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .why-sullo-link:hover {
+      color: var(--muted);
+      border-color: var(--muted);
+    }
+
+    @media (min-width: 768px) {
+      .why-sullo-lead { padding: var(--xxl) var(--lg) var(--xl); }
+      .why-sullo-stat { padding: var(--lg); }
+      .why-sullo-footer { padding: var(--lg); }
     }
 
     /* ============================================================
@@ -1267,97 +1387,6 @@
       border-top: 1px solid var(--line);
     }
 
-    .about-inner {
-      padding: var(--xl) var(--sm);
-    }
-
-    .about-eyebrow {
-      display: block;
-      font-family: 'Satoshi', system-ui, sans-serif;
-      font-size: 0.6875rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: var(--md);
-    }
-
-    .about-headline {
-      font-family: 'Satoshi', system-ui, sans-serif;
-      font-size: clamp(1.4rem, 4.5vw, 2.25rem);
-      font-weight: 700;
-      line-height: 1.15;
-      letter-spacing: -0.015em;
-      color: var(--ink);
-      max-width: 26ch;
-      margin-bottom: var(--lg);
-    }
-
-    .about-body {
-      display: flex;
-      flex-direction: column;
-      gap: var(--xl);
-    }
-
-    .about-story {
-      display: flex;
-      flex-direction: column;
-      gap: var(--md);
-    }
-
-    .about-p {
-      font-family: 'Satoshi', system-ui, sans-serif;
-      font-size: 1.0625rem;
-      font-weight: 400;
-      line-height: 1.7;
-      color: var(--ink);
-      max-width: 62ch;
-    }
-
-    .about-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background-color: var(--line);
-      border: 1px solid var(--line);
-      align-self: flex-start;
-      width: 100%;
-    }
-
-    .about-stat {
-      background-color: var(--paper);
-      padding: var(--md) var(--sm);
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .about-stat-value {
-      font-family: 'Satoshi', system-ui, sans-serif;
-      font-size: 2rem;
-      font-weight: 900;
-      letter-spacing: -0.04em;
-      line-height: 1;
-      color: var(--ink);
-    }
-
-    .about-stat-label {
-      font-family: 'Satoshi', system-ui, sans-serif;
-      font-size: 0.6875rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--muted);
-      line-height: 1.3;
-    }
-
-    @media (min-width: 768px) {
-      .about-inner  { padding: var(--xxl) var(--lg); }
-      .about-body   { flex-direction: row; align-items: flex-start; gap: var(--xxl); }
-      .about-story  { flex: 1; }
-      .about-stats  { flex: 0 0 280px; grid-template-columns: 1fr 1fr; }
-      .about-stat-value { font-size: 2.5rem; }
-    }
 
     @media (min-width: 768px) {
       .team-header   { padding: var(--xxl) var(--lg) var(--xl); }
@@ -1774,7 +1803,9 @@
 <!-- 1a. NAV -->
 <header class="site-nav" role="banner">
   <a href="/" class="nav-wordmark" aria-label="Sullo Salon &amp; Day Spa — home">
-    <span class="wm-sm">su</span><span class="wm-lg">ll</span><span class="wm-sm">o</span>
+    <span class="wm-letters"><span class="wm-sm">su</span><span class="wm-lg">ll</span><span class="wm-sm">o</span></span>
+    <span class="nav-wordmark-divider" aria-hidden="true"></span>
+    <span class="nav-wordmark-sub">Salon<br>Day Spa</span>
   </a>
 
   <nav class="nav-right" aria-label="Site navigation">
@@ -2100,39 +2131,37 @@
      SECTION 4 — PROOF LINE
      CLIENT-VERIFY: all award wording before publish
 ============================================================ -->
-<section class="proof" id="proof" aria-labelledby="proof-heading">
+<section class="why-sullo" id="why-sullo" aria-labelledby="why-sullo-heading">
 
-  <div class="proof-lead">
-    <span class="proof-eyebrow">Why Sullo</span>
-    <h2 class="proof-headline" id="proof-heading">
+  <div class="why-sullo-lead">
+    <span class="why-sullo-eyebrow" id="why-sullo-heading">Why Sullo</span>
+    <h2 class="why-sullo-headline">
       Named by Glamour one of the ten best salons in the country.
     </h2>
-    <p class="proof-sub">Not just Fort Lauderdale. The country.</p>
+    <p class="why-sullo-sub">Not just Fort Lauderdale. The country.</p>
   </div>
 
-  <!-- 2×2 on mobile → 4-col strip on desktop -->
-  <div class="proof-stats">
+  <div class="why-sullo-stats">
 
-    <div class="proof-stat-cell">
-      <span class="proof-stat-value">39</span>
-      <span class="proof-stat-label">Years in Fort Lauderdale</span>
+    <div class="why-sullo-stat">
+      <span class="why-sullo-stat-value">&#9733; 4.5</span>
+      <span class="why-sullo-stat-label">93 Google reviews</span>
     </div>
 
-    <div class="proof-stat-cell">
-      <span class="proof-stat-value">&#9733; 4.5</span>
-      <span class="proof-stat-label">93 Google reviews</span>
+    <div class="why-sullo-stat">
+      <span class="why-sullo-stat-value">#1</span>
+      <span class="why-sullo-stat-label">Sun-Sentinel Best Salon</span>
     </div>
 
-    <div class="proof-stat-cell">
-      <span class="proof-stat-value">#1</span>
-      <span class="proof-stat-label">Sun-Sentinel Best Salon</span>
+    <div class="why-sullo-stat">
+      <span class="why-sullo-stat-value">CBS</span>
+      <span class="why-sullo-stat-label">Featured on Morning Show</span>
     </div>
 
-    <div class="proof-stat-cell">
-      <span class="proof-stat-value">Platinum</span>
-      <span class="proof-stat-label">Goldwell Certified</span>
-    </div>
+  </div>
 
+  <div class="why-sullo-footer">
+    <a href="/about" class="why-sullo-link">About the salon &rarr;</a>
   </div>
 
 </section>
@@ -2398,45 +2427,6 @@
 <!-- ============================================================
      ABOUT
 ============================================================ -->
-<section class="about" id="about" aria-labelledby="about-heading">
-  <div class="about-inner">
-
-    <span class="about-eyebrow">About Sullo</span>
-    <h2 class="about-headline" id="about-heading">39 years on North Federal. One standard: exceptional.</h2>
-
-    <div class="about-body">
-
-      <div class="about-story">
-        <p class="about-p">Sullo Salon &amp; Day Spa was founded by Phyllis Sullo on North Federal Highway in Fort Lauderdale in 1986. What started as one woman&rsquo;s commitment to doing great work has grown into a 39-year institution &mdash; one that Glamour named among the ten best salons in the country.</p>
-        <p class="about-p">Today the salon is carried on by master stylists Heather Marino and Matteo Spatafora, both with over 40 years behind the chair. Their approach hasn&rsquo;t changed: the same clients, the same hands, the same standard. Fort Lauderdale&rsquo;s most trusted salon isn&rsquo;t a franchise or a rotating roster. It&rsquo;s a place where your colorist knows your hair better than you do.</p>
-        <p class="about-p">Sullo is a Goldwell Platinum color salon, Great Lengths and Olaplex certified, and home to some of the most experienced master colorists in South Florida. 4.5 stars across 93 Google reviews &mdash; most from clients who have been coming for a decade or more.</p>
-      </div>
-
-      <div class="about-stats">
-        <div class="about-stat">
-          <span class="about-stat-value">1986</span>
-          <span class="about-stat-label">Founded</span>
-        </div>
-        <div class="about-stat">
-          <span class="about-stat-value">39</span>
-          <span class="about-stat-label">Years in business</span>
-        </div>
-        <div class="about-stat">
-          <span class="about-stat-value">40+</span>
-          <span class="about-stat-label">Yrs per master stylist</span>
-        </div>
-        <div class="about-stat">
-          <span class="about-stat-value">4.5&#9733;</span>
-          <span class="about-stat-label">93 Google reviews</span>
-        </div>
-      </div>
-
-    </div>
-
-    <a href="/about" class="team-link" style="display:inline-block;margin-top:var(--lg);">Read our full story &rarr;</a>
-
-  </div>
-</section>
 
 <!-- ============================================================
      SECTION 8 — VISIT
