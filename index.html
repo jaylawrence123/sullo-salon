@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sullo Salon &amp; Day Spa | Hair &amp; Color in Fort Lauderdale, FL</title>
+  <meta name="description" content="Fort Lauderdale's master colorists since 1986. Balayage, extensions, and color correction at a Goldwell Platinum salon. Rated 4.5&#x2605; across 93 reviews. Book your appointment.">
+
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Hanken Grotesk: load 400 + 700 + 900 only -->
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       DESIGN TOKENS — source of truth (DESIGN.md)
+    ============================================================ */
+    :root {
+      /* Colors */
+      --ink:       #16140F;
+      --ink-soft:  #2B251C;
+      --bone:      #F4F0E9;
+      --bone-warm: #EAE1D0;
+      --snow:      #FDFCFA;
+      --paper:     #FAF7F0;
+      --pink:      #EB82A0;
+      --pink-soft: #E8A9BD;
+      --pink-text: #A33B59;
+      --pink-deep: #5A2235;
+      --line:      #D8D0C0;
+      --muted:     #8A8270;
+
+      /* Spacing */
+      --xs:  8px;
+      --sm:  16px;
+      --md:  24px;
+      --lg:  40px;
+      --xl:  64px;
+      --xxl: 96px;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 16px; -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 1.0625rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--ink);
+      background-color: var(--snow);
+      /* Reserve space for sticky booking bar */
+      padding-bottom: 80px;
+    }
+
+    img { display: block; max-width: 100%; height: auto; }
+    a   { color: inherit; text-decoration: none; }
+
+    /* ============================================================
+       SHARED TYPE UTILITIES
+    ============================================================ */
+    .label {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.6875rem;   /* 11px */
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    /* ============================================================
+       SHARED COMPONENTS
+    ============================================================ */
+
+    /* --- Button: Primary (ink/bone, the booking handoff CTA) --- */
+    .btn-primary {
+      display: inline-block;
+      background-color: var(--ink);
+      color: var(--bone);
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      line-height: 1.2;
+      padding: 16px 32px;
+      border-radius: 2px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background-color 0.15s ease-out;
+    }
+    .btn-primary:hover { background-color: var(--ink-soft); }
+
+    /* --- Pill Accent (rating, small credentials) --- */
+    .pill-accent {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: var(--pink-soft);
+      color: var(--pink-deep);
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;   /* tight — no uppercase explosion */
+      line-height: 1.2;
+      padding: 6px 14px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    /* ============================================================
+       SECTION 1 — HERO
+    ============================================================ */
+
+    /* --- 1a. Sticky top nav --- */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--snow);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--sm);
+      height: 56px;
+    }
+
+    .nav-wordmark {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 1.375rem;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      color: var(--ink);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: var(--md);
+    }
+
+    .nav-phone {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .nav-burger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      min-width: 44px;
+      min-height: 44px;
+      padding: 8px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .nav-burger span {
+      display: block;
+      width: 20px;
+      height: 1.5px;
+      background-color: var(--ink);
+      transition: opacity 0.15s ease;
+    }
+
+    /* --- 1b. Hero photo with overlay --- */
+    .hero {
+      position: relative;
+      width: 100%;
+      /* Vertical crop: 4:5 on mobile */
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background-color: var(--bone-warm); /* fallback while image loads */
+    }
+
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    /* Video: same position as img, hidden by default */
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: none;
+    }
+
+    /* Show video and hide still image only when motion is OK */
+    @media (prefers-reduced-motion: no-preference) {
+      .hero-video { display: block; }
+      .hero-img   { display: none; }
+    }
+
+    /* Gradient scrim: dark bottom for copy legibility */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(22, 20, 15, 0.05) 0%,
+        rgba(22, 20, 15, 0)    35%,
+        rgba(22, 20, 15, 0.55) 72%,
+        rgba(22, 20, 15, 0.82) 100%
+      );
+      pointer-events: none;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;              /* prevent children from stretching full-width */
+      padding: var(--sm) var(--sm) calc(2.5rem + var(--md)); /* bottom clears wordmark overlap */
+      gap: var(--sm);
+    }
+
+    .hero-headline {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: clamp(1.75rem, 6vw, 3rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--bone);
+      max-width: 18ch;
+    }
+
+    .hero-ctas {
+      display: flex;
+      align-items: center;
+      gap: var(--xs);
+      flex-wrap: wrap;
+    }
+
+    /* Call button on photo: outline in pink */
+    .btn-call-photo {
+      display: inline-block;
+      background: transparent;
+      border: 1.5px solid var(--pink);
+      color: var(--pink);
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      line-height: 1.2;
+      padding: 14.5px 28px;
+      border-radius: 2px;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background-color 0.15s ease-out, color 0.15s ease-out;
+    }
+    .btn-call-photo:hover {
+      background-color: var(--pink);
+      color: var(--snow);
+    }
+
+    /* --- 1c. SULLO wordmark band (below photo, overlaps its bottom edge) --- */
+    .wordmark-band {
+      position: relative;
+      z-index: 3;
+      /* Pull up to overlap the hero's bottom edge */
+      margin-top: -2.5rem;
+      background-color: var(--snow);
+      padding: var(--md) var(--sm) var(--sm);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-display {
+      display: block;
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: clamp(4.5rem, 26vw, 9rem);
+      font-weight: 900;
+      line-height: 0.8;
+      letter-spacing: -0.055em;
+      color: var(--ink);
+    }
+
+    .wordmark-sub {
+      display: block;
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: var(--sm);
+    }
+
+    /* --- 1d. Trust ribbon (3 cells) --- */
+    .trust-ribbon {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      background-color: var(--paper);
+    }
+
+    .trust-cell {
+      padding: var(--md) var(--sm);
+      border-right: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .trust-cell:last-child { border-right: none; }
+
+    /* Numeric anchor (e.g. "39") */
+    .trust-anchor-num {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 1.75rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: var(--ink);
+    }
+
+    /* Brand-name anchor (e.g. "Glamour", "Goldwell") */
+    .trust-anchor-brand {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 1.25rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: var(--ink);
+    }
+
+    .trust-detail {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.3;
+    }
+
+    /* ============================================================
+       STICKY MOBILE BOOKING BAR
+       Pinned to bottom; chatbot launcher positioned above it.
+    ============================================================ */
+    .sticky-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      display: flex;
+      background-color: var(--snow);
+      border-top: 1px solid var(--line);
+      padding: var(--xs) var(--sm);
+      padding-bottom: max(var(--xs), env(safe-area-inset-bottom));
+      gap: 0;
+    }
+
+    .sticky-bar .btn-primary {
+      flex: 1;
+      text-align: center;
+      border-radius: 2px 0 0 2px;
+    }
+
+    .sticky-call {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: 1px solid var(--ink);
+      border-left: none;
+      color: var(--ink);
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 16px 22px;
+      border-radius: 0 2px 2px 0;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background-color 0.15s ease-out;
+    }
+    .sticky-call:hover { background-color: var(--bone-warm); }
+
+    /* ============================================================
+       CHATBOT MOUNT POINT
+       Positioned above sticky bar, bottom-right.
+       Hidden until bot is integrated — does not collide with bar.
+    ============================================================ */
+    #chatbot-launcher {
+      position: fixed;
+      bottom: 88px; /* above sticky-bar */
+      right: var(--sm);
+      z-index: 201;
+      width: 52px;
+      height: 52px;
+      background-color: var(--ink);
+      border-radius: 50%;
+      display: none; /* shown when chatbot is ready */
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    /* ============================================================
+       REDUCED MOTION
+    ============================================================ */
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+    }
+
+    /* ============================================================
+       DESKTOP (≥768px)
+       Sections 2–10 will add their own responsive overrides here.
+    ============================================================ */
+    @media (min-width: 768px) {
+
+      /* No sticky bar padding needed */
+      body { padding-bottom: 0; }
+
+      /* Nav */
+      .site-nav { padding: 0 var(--lg); height: 64px; }
+
+      /* Hero: controlled height — 16/9 at 1440px = 810px, way too tall */
+      .hero {
+        aspect-ratio: unset;
+        height: 68vh;
+        max-height: 680px;
+      }
+
+      /* Hero content: bottom-left, generous breathing room */
+      .hero-overlay {
+        justify-content: flex-end;
+        padding: var(--xl) var(--xl) calc(4rem + var(--lg)); /* bottom clears -4rem wordmark overlap + 40px air */
+      }
+
+      /* Headline: bigger on desktop */
+      .hero-headline { font-size: clamp(2.5rem, 4vw, 4rem); max-width: 22ch; }
+
+      /* Wordmark band: deeper overlap + breathing room */
+      .wordmark-band {
+        margin-top: -4rem;
+        padding: var(--lg) var(--lg) var(--md);
+      }
+
+      /* Trust ribbon: oversized type fills the cell — editorial language */
+      .trust-cell         { padding: var(--lg); }
+      .trust-anchor-num   { font-size: 5.5rem; letter-spacing: -0.05em; }
+      .trust-anchor-brand { font-size: 3rem;   letter-spacing: -0.04em; }
+      .trust-detail       { font-size: 0.75rem; letter-spacing: 0.13em; margin-top: 4px; }
+
+      /* Hide sticky bar */
+      .sticky-bar { display: none; }
+    }
+
+    /* ============================================================
+       SECTION 2 — SERVICES
+    ============================================================ */
+    .services {
+      background-color: var(--snow);
+    }
+
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: var(--lg) var(--sm) var(--md);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .services-header-label {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .services-menu-link {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s ease-out;
+    }
+    .services-menu-link:hover { color: var(--ink); }
+
+    /* Grid: line color shows through 1px gap = hairline between tiles */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background-color: var(--line);
+    }
+
+    .service-tile {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background-color: var(--bone-warm);
+      display: block;
+      text-decoration: none;
+    }
+
+    /* Waxing & more spans all columns */
+    .service-tile--wide {
+      grid-column: 1 / -1;
+      aspect-ratio: 3 / 1;
+    }
+
+    .service-tile img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease-out;
+    }
+    @media (hover: hover) {
+      .service-tile:hover img { transform: scale(1.04); }
+    }
+
+    /* Scrim */
+    .service-tile::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(
+        to bottom,
+        rgba(22, 20, 15, 0)    35%,
+        rgba(22, 20, 15, 0.78) 100%
+      );
+      pointer-events: none;
+    }
+
+    .service-tile-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: var(--sm);
+    }
+
+    .service-tile-top { min-height: 24px; }
+
+    .service-name {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--bone);
+      line-height: 1.3;
+    }
+
+    .service-flag {
+      display: inline-flex;
+      align-items: center;
+      background-color: var(--pink-soft);
+      color: var(--pink-deep);
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.5625rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      line-height: 1.2;
+      padding: 4px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    @media (min-width: 768px) {
+      .services-header   { padding: var(--lg) var(--lg) var(--md); }
+      .services-grid     { grid-template-columns: 1fr 1fr 1fr; }
+      .service-tile--wide { aspect-ratio: 16 / 5; }
+      .service-tile-overlay { padding: var(--md); }
+      .service-name      { font-size: 0.8125rem; }
+      .service-flag      { font-size: 0.6rem; }
+    }
+
+    /* ============================================================
+       SECTION 3 — MARQUEE
+    ============================================================ */
+    .marquee-strip {
+      background-color: var(--ink);
+      overflow: hidden;
+      padding: 18px 0;
+      display: flex;
+    }
+
+    /* Two identical copies side-by-side; animate first copy left by 100%
+       so the second copy fills in — seamless infinite loop */
+    .marquee-inner {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      white-space: nowrap;
+      flex-shrink: 0;
+      animation: marquee-scroll 32s linear infinite;
+    }
+
+    @keyframes marquee-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-100%); }
+    }
+
+    .marquee-term {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--bone);
+      padding: 0 36px;
+    }
+
+    .marquee-sep {
+      color: var(--pink);
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-inner { animation: none; }
+    }
+
+    /* ============================================================
+       SECTION 4 — PROOF LINE
+    ============================================================ */
+    .proof { background-color: var(--snow); }
+
+    .proof-lead {
+      padding: var(--xl) var(--sm) var(--lg);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .proof-eyebrow {
+      display: block;
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: var(--md);
+    }
+
+    .proof-headline {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: clamp(1.75rem, 6vw, 3rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      max-width: 22ch;
+      margin-bottom: var(--sm);
+    }
+
+    .proof-sub {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 1.0625rem;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--muted);
+    }
+
+    /* Stat grid: 2×2 on mobile, 4-col strip on desktop */
+    .proof-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .proof-stat-cell {
+      padding: var(--md) var(--sm);
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    /* No right border on even cells (right column) */
+    .proof-stat-cell:nth-child(even)       { border-right: none; }
+    /* No bottom border on last two cells (bottom row on mobile) */
+    .proof-stat-cell:nth-last-child(-n+2)  { border-bottom: none; }
+
+    .proof-stat-value {
+      display: block;
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .proof-stat-label {
+      display: block;
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.3;
+    }
+
+    @media (min-width: 768px) {
+      .proof-lead { padding: var(--xxl) var(--lg) var(--xl); }
+
+      /* 4-col horizontal strip */
+      .proof-stats { grid-template-columns: 1fr 1fr 1fr 1fr; }
+      .proof-stat-cell {
+        padding: var(--lg);
+        border-right: 1px solid var(--line);
+        border-bottom: none;
+      }
+      .proof-stat-cell:nth-child(even)      { border-right: 1px solid var(--line); }
+      .proof-stat-cell:nth-last-child(-n+2) { border-bottom: none; }
+      .proof-stat-cell:last-child           { border-right: none; }
+      .proof-stat-value { font-size: 2.75rem; }
+    }
+
+    /* ============================================================
+       SECTION 5 — THE WORK
+    ============================================================ */
+    .work {
+      background-color: var(--paper);
+    }
+
+    .work-header {
+      padding: var(--xl) var(--sm) var(--lg);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .work-eyebrow {
+      display: block;
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: var(--md);
+    }
+
+    .work-headline {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: clamp(1.4rem, 4.5vw, 2.25rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      max-width: 28ch;
+      margin-bottom: var(--sm);
+    }
+
+    .work-sub {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 1.0625rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--muted);
+      margin-bottom: var(--md);
+    }
+
+    .work-gallery-link {
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 2px;
+      transition: color 0.15s ease-out, border-color 0.15s ease-out;
+    }
+    .work-gallery-link:hover {
+      color: var(--muted);
+      border-color: var(--muted);
+    }
+
+    /* Masonry: CSS columns, 2 cols, mixed image heights create stagger */
+    .work-grid {
+      column-count: 2;
+      column-gap: var(--xs);
+      padding: var(--sm) var(--xs);
+    }
+
+    .work-figure {
+      break-inside: avoid;
+      margin-bottom: var(--xs);
+    }
+
+    .work-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .work-caption {
+      display: block;
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+      font-size: 0.625rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 6px 2px 0;
+    }
+
+    @media (min-width: 768px) {
+      .work-header { padding: var(--xxl) var(--lg) var(--xl); }
+      .work-grid   { column-gap: var(--sm); padding: var(--lg); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     SECTION 1 — HERO
+============================================================ -->
+
+<!-- 1a. NAV -->
+<header class="site-nav" role="banner">
+  <a href="/" class="nav-wordmark" aria-label="Sullo Salon &amp; Day Spa — home">sullo</a>
+
+  <nav class="nav-right" aria-label="Site navigation">
+    <a href="tel:+19545639217" class="nav-phone" aria-label="Call Sullo Salon at (954) 563-9217">
+      (954) 563-9217
+    </a>
+    <button
+      class="nav-burger"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+</header>
+
+<!-- 1b. HERO PHOTO -->
+<section class="hero" aria-labelledby="hero-headline">
+  <!--
+    IMG SPEC: Master colorist mid-work with a client.
+    Warm window light. Shot slightly wide, editorial not posed. Vertical crop.
+    Placeholder below — replace src + srcset with real client photo when supplied.
+
+    TODO — VIDEO BACKGROUND: Client to supply a looping salon atmosphere video.
+    When ready: add a <video autoplay muted loop playsinline> element here,
+    position it identically to .hero-img (absolute inset-0, object-fit cover),
+    keep the <img> as the poster/fallback for prefers-reduced-motion + no-autoplay,
+    and gate the video element behind a (prefers-reduced-motion: no-preference) media query.
+  -->
+  <!--
+    Fallback image shown when video can't play (reduced-motion, no autoplay, etc.)
+    Replace src with real photo when client supplies it.
+  -->
+  <img
+    class="hero-img"
+    src="https://placehold.co/800x1000/EAE1D0/8A8270?text=Master+colorist+mid-work%0Awarm+window+light%0Aeditorial+vertical+crop"
+    alt="Master colorist mid-work with a client at Sullo Salon, Fort Lauderdale"
+    fetchpriority="high"
+    loading="eager"
+    width="800"
+    height="1000"
+  >
+  <!-- Hero video — hidden for prefers-reduced-motion users; img fallback shows instead -->
+  <video
+    class="hero-video"
+    src="sullo-salon-hero-video.mp4"
+    autoplay
+    muted
+    loop
+    playsinline
+    aria-hidden="true"
+  ></video>
+
+  <div class="hero-overlay">
+    <span class="pill-accent" role="img" aria-label="4.5 stars, 93 Google reviews">
+      &#9733;&#9733;&#9733;&#9733;&#9733;&nbsp; 4.5 &middot; 93 Google reviews
+    </span>
+
+    <h1 class="hero-headline" id="hero-headline">
+      Fort Lauderdale&#8217;s salon &amp; day spa since 1986.
+    </h1>
+
+    <div class="hero-ctas">
+      <a href="#" class="btn-primary" data-booking aria-label="Book an appointment at Sullo Salon">
+        Book appointment
+      </a>
+      <a href="tel:+19545639217" class="btn-call-photo" aria-label="Call Sullo Salon">
+        Call
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 1c. SULLO WORDMARK BAND -->
+<div class="wordmark-band" aria-hidden="true">
+  <span class="hero-display">SULLO</span>
+  <span class="wordmark-sub">Hair &middot; Color &middot; Extensions &middot; Spa &middot; Est. 1986</span>
+</div>
+
+<!-- 1d. TRUST RIBBON -->
+<div class="trust-ribbon" role="list" aria-label="Key credentials">
+
+  <div class="trust-cell" role="listitem">
+    <span class="trust-anchor-num">39</span>
+    <span class="trust-detail">Years</span>
+  </div>
+
+  <div class="trust-cell" role="listitem">
+    <span class="trust-anchor-brand">Glamour</span>
+    <span class="trust-detail">Top 10 in the U.S.</span>
+  </div>
+
+  <div class="trust-cell" role="listitem">
+    <span class="trust-anchor-brand">Goldwell</span>
+    <span class="trust-detail">Platinum</span>
+  </div>
+
+</div>
+
+<!-- ============================================================
+     STICKY MOBILE BOOKING BAR
+     Book and Call pinned to thumb zone; stays above chatbot launcher.
+============================================================ -->
+<div class="sticky-bar" role="complementary" aria-label="Book or call">
+  <a href="#" class="btn-primary" data-booking aria-label="Book an appointment">
+    Book appointment
+  </a>
+  <a href="tel:+19545639217" class="sticky-call" aria-label="Call (954) 563-9217">
+    Call
+  </a>
+</div>
+
+<!-- ============================================================
+     CHATBOT MOUNT POINT
+     Hidden until chatbot integration is complete.
+     Positioned above sticky bar so they don't collide.
+     The bot will use BOOKING_URL for in-chat booking actions.
+============================================================ -->
+<div
+  id="chatbot-launcher"
+  role="button"
+  tabindex="-1"
+  aria-label="Chat with us"
+  aria-hidden="true"
+>
+  <!-- Chatbot launcher icon injected here by chatbot script -->
+</div>
+
+<!-- ============================================================
+     SECTION 2 — SERVICES
+============================================================ -->
+<section class="services" id="services" aria-labelledby="services-heading">
+
+  <div class="services-header">
+    <span class="services-header-label" id="services-heading">What we do</span>
+    <a href="/services" class="services-menu-link">Full menu &rarr;</a>
+  </div>
+
+  <div class="services-grid">
+
+    <!-- Tile 1: Color & Balayage -->
+    <a href="/color" class="service-tile" aria-label="Color and Balayage — most booked">
+      <!-- IMG SPEC: Dramatic balayage or color result. Warm candlelit tones,
+           woman's hair as hero. Rich saturation. Square crop. -->
+      <img
+        src="https://placehold.co/600x600/EAE1D0/8A8270?text=Balayage+result%0Awarm+candlelit+tones%0Asquare+crop"
+        alt="Hand-painted balayage color result at Sullo Salon, Fort Lauderdale"
+        loading="lazy" width="600" height="600"
+      >
+      <div class="service-tile-overlay">
+        <div class="service-tile-top">
+          <span class="service-flag">Most booked</span>
+        </div>
+        <span class="service-name">Color &amp; Balayage</span>
+      </div>
+    </a>
+
+    <!-- Tile 2: Extensions -->
+    <a href="/extensions" class="service-tile" aria-label="Extensions — #1 in Fort Lauderdale">
+      <!-- IMG SPEC: Great Lengths extension result. Visible length and volume,
+           warm blonde or brunette. Editorial-lit. Square crop. -->
+      <img
+        src="https://placehold.co/600x600/EAE1D0/8A8270?text=Extensions+result%0Alength+%26+volume%0Asquare+crop"
+        alt="Great Lengths hair extensions result at Sullo Salon, Fort Lauderdale"
+        loading="lazy" width="600" height="600"
+      >
+      <div class="service-tile-overlay">
+        <div class="service-tile-top">
+          <span class="service-flag">#1 in Fort Lauderdale</span>
+        </div>
+        <span class="service-name">Extensions</span>
+      </div>
+    </a>
+
+    <!-- Tile 3: Hair -->
+    <a href="/hair" class="service-tile" aria-label="Hair cuts and styling">
+      <!-- IMG SPEC: Precision cut or blowout. Movement in the hair,
+           warm editorial light. Square crop. -->
+      <img
+        src="https://placehold.co/600x600/EAE1D0/8A8270?text=Precision+cut+or+blowout%0Amovement+in+the+hair%0Asquare+crop"
+        alt="Haircut and styling at Sullo Salon, Fort Lauderdale"
+        loading="lazy" width="600" height="600"
+      >
+      <div class="service-tile-overlay">
+        <div class="service-tile-top"></div>
+        <span class="service-name">Hair</span>
+      </div>
+    </a>
+
+    <!-- Tile 4: Facials -->
+    <a href="/facials" class="service-tile" aria-label="Facials and skin care">
+      <!-- IMG SPEC: Serene facial treatment or glowing skin close-up.
+           Spa atmosphere, warm light. Square crop. -->
+      <img
+        src="https://placehold.co/600x600/EAE1D0/8A8270?text=Facial+treatment%0Aglowing+skin+close-up%0Asquare+crop"
+        alt="Facial and skin care at Sullo Salon and Day Spa, Fort Lauderdale"
+        loading="lazy" width="600" height="600"
+      >
+      <div class="service-tile-overlay">
+        <div class="service-tile-top"></div>
+        <span class="service-name">Facials</span>
+      </div>
+    </a>
+
+    <!-- Tile 5: Makeup -->
+    <a href="/makeup" class="service-tile" aria-label="Makeup artistry">
+      <!-- IMG SPEC: Polished makeup result, natural-to-glam range,
+           close portrait. Warm tones. Square crop. -->
+      <img
+        src="https://placehold.co/600x600/EAE1D0/8A8270?text=Makeup+result%0Anatural+to+glam%0Asquare+crop"
+        alt="Professional makeup artistry at Sullo Salon, Fort Lauderdale"
+        loading="lazy" width="600" height="600"
+      >
+      <div class="service-tile-overlay">
+        <div class="service-tile-top"></div>
+        <span class="service-name">Makeup</span>
+      </div>
+    </a>
+
+    <!-- Tile 6: Nails -->
+    <a href="/nails" class="service-tile" aria-label="Nail services">
+      <!-- IMG SPEC: Clean nail result, close detail shot.
+           Neutral or warm tones. Square crop. -->
+      <img
+        src="https://placehold.co/600x600/EAE1D0/8A8270?text=Nail+detail+shot%0Aneutral+warm+tones%0Asquare+crop"
+        alt="Nail services at Sullo Salon and Day Spa, Fort Lauderdale"
+        loading="lazy" width="600" height="600"
+      >
+      <div class="service-tile-overlay">
+        <div class="service-tile-top"></div>
+        <span class="service-name">Nails</span>
+      </div>
+    </a>
+
+    <!-- Tile 7: Waxing & more — full width -->
+    <a href="/waxing" class="service-tile service-tile--wide" aria-label="Waxing and more — see full menu">
+      <!-- IMG SPEC: Warm salon interior or spa atmosphere shot, wide crop.
+           Shows the space, inviting. Horizontal/panoramic. -->
+      <img
+        src="https://placehold.co/1200x400/EAE1D0/8A8270?text=Salon+interior+or+spa+atmosphere%0Awarm%2C+wide+panoramic+crop"
+        alt="Waxing and spa services at Sullo Salon and Day Spa, Fort Lauderdale"
+        loading="lazy" width="1200" height="400"
+      >
+      <div class="service-tile-overlay">
+        <div class="service-tile-top"></div>
+        <span class="service-name">Waxing &amp; more &mdash; see full menu</span>
+      </div>
+    </a>
+
+  </div>
+
+</section>
+
+<!-- ============================================================
+     SECTION 3 — MARQUEE
+============================================================ -->
+<section class="marquee-strip" aria-label="Services and credentials">
+  <!-- First copy -->
+  <div class="marquee-inner">
+    <span class="marquee-term">Balayage</span>
+    <span class="marquee-sep">✦</span>
+    <span class="marquee-term">Goldwell Platinum</span>
+    <span class="marquee-sep">✦</span>
+    <span class="marquee-term">Great Lengths</span>
+    <span class="marquee-sep">✦</span>
+    <span class="marquee-term">Olaplex</span>
+    <span class="marquee-sep">✦</span>
+    <span class="marquee-term">Keratin</span>
+    <span class="marquee-sep">✦</span>
+    <span class="marquee-term">Color Correction</span>
+    <span class="marquee-sep">✦</span>
+    <span class="marquee-term">Bridal</span>
+    <span class="marquee-sep">✦</span>
+  </div>
+  <!-- Duplicate for seamless loop -->
+  <div class="marquee-inner" aria-hidden="true">
+    <span class="marquee-term">Balayage</span>
+    <span class="marquee-sep">✦</span>
+    <span class="marquee-term">Goldwell Platinum</span>
+    <span class="marquee-sep">✦</span>
+    <span class="marquee-term">Great Lengths</span>
+    <span class="marquee-sep">✦</span>
+    <span class="marquee-term">Olaplex</span>
+    <span class="marquee-sep">✦</span>
+    <span class="marquee-term">Keratin</span>
+    <span class="marquee-sep">✦</span>
+    <span class="marquee-term">Color Correction</span>
+    <span class="marquee-sep">✦</span>
+    <span class="marquee-term">Bridal</span>
+    <span class="marquee-sep">✦</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 4 — PROOF LINE
+     CLIENT-VERIFY: all award wording before publish
+============================================================ -->
+<section class="proof" id="proof" aria-labelledby="proof-heading">
+
+  <div class="proof-lead">
+    <span class="proof-eyebrow">Why Sullo</span>
+    <h2 class="proof-headline" id="proof-heading">
+      Named by Glamour one of the ten best salons in the country.
+    </h2>
+    <p class="proof-sub">Not just Fort Lauderdale. The country.</p>
+  </div>
+
+  <!-- 2×2 on mobile → 4-col strip on desktop -->
+  <div class="proof-stats">
+
+    <div class="proof-stat-cell">
+      <span class="proof-stat-value">39</span>
+      <span class="proof-stat-label">Years in Fort Lauderdale</span>
+    </div>
+
+    <div class="proof-stat-cell">
+      <span class="proof-stat-value">&#9733; 4.5</span>
+      <span class="proof-stat-label">93 Google reviews</span>
+    </div>
+
+    <div class="proof-stat-cell">
+      <span class="proof-stat-value">#1</span>
+      <span class="proof-stat-label">Sun-Sentinel Best Salon</span>
+    </div>
+
+    <div class="proof-stat-cell">
+      <span class="proof-stat-value">Platinum</span>
+      <span class="proof-stat-label">Goldwell Certified</span>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ============================================================
+     SECTION 5 — THE WORK
+============================================================ -->
+<section class="work" id="work" aria-labelledby="work-heading">
+
+  <div class="work-header">
+    <span class="work-eyebrow">The work</span>
+    <h2 class="work-headline" id="work-heading">
+      Four decades of before-and-afters walking around South Florida.
+    </h2>
+    <p class="work-sub">A fraction of what leaves our chairs every week.</p>
+    <a href="/gallery" class="work-gallery-link">See the full gallery &rarr;</a>
+  </div>
+
+  <div class="work-grid" role="list">
+
+    <figure class="work-figure" role="listitem">
+      <!-- IMG SPEC: Balayage result — warm blonde, hand-painted, portrait crop -->
+      <img src="https://placehold.co/600x800/EAE1D0/8A8270?text=Balayage%0Awarm+blonde%0Aportrait" alt="Balayage hair color result at Sullo Salon, Fort Lauderdale" loading="lazy" width="600" height="800">
+      <figcaption class="work-caption">Balayage</figcaption>
+    </figure>
+
+    <figure class="work-figure" role="listitem">
+      <!-- IMG SPEC: Great Lengths extensions — dramatic length + volume, portrait -->
+      <img src="https://placehold.co/600x900/EAE1D0/8A8270?text=Great+Lengths%0Aextensions%0Alonger+portrait" alt="Great Lengths hair extensions result at Sullo Salon, Fort Lauderdale" loading="lazy" width="600" height="900">
+      <figcaption class="work-caption">Great Lengths extensions</figcaption>
+    </figure>
+
+    <figure class="work-figure" role="listitem">
+      <!-- IMG SPEC: Blonde — bright platinum or golden blonde, square crop -->
+      <img src="https://placehold.co/600x600/EAE1D0/8A8270?text=Blonde%0Asquare+crop" alt="Blonde hair color result at Sullo Salon, Fort Lauderdale" loading="lazy" width="600" height="600">
+      <figcaption class="work-caption">Blonde</figcaption>
+    </figure>
+
+    <figure class="work-figure" role="listitem">
+      <!-- IMG SPEC: Cut & style — clean precision cut with movement, portrait -->
+      <img src="https://placehold.co/600x750/EAE1D0/8A8270?text=Cut+%26+style%0Aportrait" alt="Haircut and style at Sullo Salon, Fort Lauderdale" loading="lazy" width="600" height="750">
+      <figcaption class="work-caption">Cut &amp; style</figcaption>
+    </figure>
+
+    <figure class="work-figure" role="listitem">
+      <!-- IMG SPEC: Color melt — seamless root-to-tip gradient, portrait -->
+      <img src="https://placehold.co/600x800/EAE1D0/8A8270?text=Color+melt%0Aportrait" alt="Color melt hair technique at Sullo Salon, Fort Lauderdale" loading="lazy" width="600" height="800">
+      <figcaption class="work-caption">Color melt</figcaption>
+    </figure>
+
+    <figure class="work-figure" role="listitem">
+      <!-- IMG SPEC: Updo — elegant bridal or formal updo, square crop -->
+      <img src="https://placehold.co/600x600/EAE1D0/8A8270?text=Updo%0Asquare+crop" alt="Elegant updo hairstyle at Sullo Salon, Fort Lauderdale" loading="lazy" width="600" height="600">
+      <figcaption class="work-caption">Updo</figcaption>
+    </figure>
+
+    <figure class="work-figure" role="listitem">
+      <!-- IMG SPEC: Bridal — full bridal look, hair + makeup, warm editorial light -->
+      <img src="https://placehold.co/600x800/EAE1D0/8A8270?text=Bridal%0Aeditorial+portrait" alt="Bridal hair and makeup at Sullo Salon, Fort Lauderdale" loading="lazy" width="600" height="800">
+      <figcaption class="work-caption">Bridal</figcaption>
+    </figure>
+
+    <figure class="work-figure" role="listitem">
+      <!-- IMG SPEC: Color correction — dramatic transformation result, portrait -->
+      <img src="https://placehold.co/600x750/EAE1D0/8A8270?text=Color+correction%0Atransformation" alt="Color correction result at Sullo Salon, Fort Lauderdale" loading="lazy" width="600" height="750">
+      <figcaption class="work-caption">Color correction</figcaption>
+    </figure>
+
+  </div>
+
+</section>
+
+<script>
+  /* ============================================================
+     BOOKING URL — one variable, one swap when platform is live.
+     Every [data-booking] element on the page reads this.
+  ============================================================ */
+  const BOOKING_URL = '#'; /* TODO: replace with real booking platform URL */
+
+  document.querySelectorAll('[data-booking]').forEach(el => {
+    if (BOOKING_URL !== '#') {
+      el.href = BOOKING_URL;
+    }
+    el.addEventListener('click', e => {
+      if (BOOKING_URL === '#') {
+        e.preventDefault(); /* no-op until URL is set */
+      }
+    });
+  });
+
+  /* ============================================================
+     NAV BURGER — placeholder toggle (mobile menu built in later section)
+  ============================================================ */
+  const burger = document.querySelector('.nav-burger');
+  if (burger) {
+    burger.addEventListener('click', () => {
+      const expanded = burger.getAttribute('aria-expanded') === 'true';
+      burger.setAttribute('aria-expanded', String(!expanded));
+    });
+  }
+</script>
+
+</body>
+</html>
