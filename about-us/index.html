@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us | Sullo Salon &amp; Day Spa — Fort Lauderdale, FL</title>
-  <meta name="description" content="39 years in Fort Lauderdale. Named by Glamour one of the ten best salons in the country. Meet Heather Marino and Matteo Spatafora at Sullo Salon &amp; Day Spa.">
+  <meta name="description" content="39 years in Fort Lauderdale. Named by Glamour one of the ten best salons in the country. Color, balayage, extensions, and full-service spa on North Federal Highway.">
 
   <style>
     @font-face { font-family:'Satoshi'; src:url('../fonts/satoshi-400.woff2') format('woff2'); font-weight:400; font-display:swap; }
@@ -39,45 +39,39 @@
     img { display: block; max-width: 100%; height: auto; }
     a   { color: inherit; text-decoration: none; }
 
-    /* ============================================================ SHARED */
+    /* ===== SHARED ===== */
     .btn-primary {
       display: inline-block;
-      background-color: var(--ink);
-      color: var(--bone);
+      background-color: var(--ink); color: var(--bone);
       font-family: 'Satoshi', system-ui, sans-serif;
       font-size: 0.6875rem; font-weight: 700;
       letter-spacing: 0.16em; text-transform: uppercase;
       line-height: 1.2; padding: 16px 32px;
       border-radius: 2px; border: none; cursor: pointer;
-      text-decoration: none; white-space: nowrap;
       transition: background-color 0.15s ease-out;
     }
     .btn-primary:hover { background-color: var(--ink-soft); }
 
-    /* ============================================================ ANNOUNCE BAR */
-    .announce-bar { background-color: var(--pink); text-align: center; padding: 10px var(--sm); white-space: nowrap; overflow: hidden; }
+    /* ===== ANNOUNCE BAR ===== */
+    .announce-bar { background-color: var(--pink); text-align: center; padding: 10px var(--sm); }
     .announce-text { font-family:'Satoshi',system-ui,sans-serif; font-size:0.6875rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--ink); line-height:1.2; }
     .announce-link { color:var(--ink); text-decoration:underline; text-underline-offset:3px; }
 
-    /* ============================================================ NAV */
+    /* ===== NAV ===== */
     .site-nav {
       position: sticky; top: 0; z-index: 100;
       background-color: var(--snow); border-bottom: 1px solid var(--line);
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 var(--sm); height: 56px;
     }
-    .nav-wordmark {
-      font-family:'Satoshi',system-ui,sans-serif; font-weight:900;
-      letter-spacing:-0.05em; line-height:1; color:var(--ink);
-      display:flex; align-items:center; gap:10px;
-    }
+    .nav-wordmark { font-family:'Satoshi',system-ui,sans-serif; font-weight:900; letter-spacing:-0.05em; line-height:1; color:var(--ink); display:flex; align-items:center; gap:10px; }
     .wm-letters { display:inline-flex; align-items:baseline; }
     .wm-sm { font-size:1.1rem; } .wm-lg { font-size:1.75rem; }
     .nav-wordmark-divider { width:1px; height:20px; background-color:var(--line); flex-shrink:0; }
     .nav-wordmark-sub { font-family:'Satoshi',system-ui,sans-serif; font-size:0.5625rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink); line-height:1.4; white-space:nowrap; }
     .nav-right { display:flex; align-items:center; gap:var(--md); }
     .nav-burger { display:flex; flex-direction:column; justify-content:center; align-items:center; gap:5px; min-width:44px; min-height:44px; padding:8px; background:none; border:none; cursor:pointer; }
-    .nav-burger span { display:block; width:20px; height:1.5px; background-color:var(--ink); transition:opacity 0.15s; }
+    .nav-burger span { display:block; width:20px; height:1.5px; background-color:var(--ink); }
     .nav-links { display:none; } .nav-book { display:none; }
     @media (min-width:768px) {
       .site-nav { padding:0 var(--lg); height:64px; }
@@ -99,16 +93,13 @@
     .mobile-menu-link { font-family:'Satoshi',system-ui,sans-serif; font-size:clamp(1.75rem,8vw,2.5rem); font-weight:700; letter-spacing:-0.02em; line-height:1.1; color:var(--ink); border-bottom:1px solid var(--line); padding-bottom:var(--md); display:block; transition:color 0.15s; }
     .mobile-menu-link:last-child { border-bottom:none; }
     .mobile-menu-cta { margin-top:var(--lg); }
-    @media (min-width:768px) { .mobile-menu { display:none; } }
 
-    /* ============================================================ THEME TOGGLE */
+    /* ===== THEME TOGGLE ===== */
     .theme-toggle { display:inline-flex; align-items:center; gap:6px; font-family:'Satoshi',system-ui,sans-serif; font-size:0.5625rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink); background:transparent; border:1.5px solid rgba(22,20,15,0.3); border-radius:999px; padding:5px 12px; cursor:pointer; white-space:nowrap; transition:border-color 0.15s; }
     .theme-toggle:hover { border-color:var(--ink); }
     .theme-toggle-dot { width:7px; height:7px; border-radius:50%; background-color:var(--pink); flex-shrink:0; transition:background-color 0.2s; }
-    .theme-toggle--nav { display:inline-flex; }
-    .theme-toggle--menu { display:none; }
 
-    /* ============================================================ STICKY BAR */
+    /* ===== STICKY BAR ===== */
     .sticky-bar { position:fixed; bottom:0; left:0; right:0; z-index:200; display:flex; background-color:var(--snow); border-top:1px solid var(--line); padding:var(--xs) var(--sm); padding-bottom:max(var(--xs),env(safe-area-inset-bottom)); opacity:0; pointer-events:none; transform:translateY(4px); transition:opacity 0.2s ease-out,transform 0.2s ease-out; }
     .sticky-bar.is-visible { opacity:1; pointer-events:auto; transform:translateY(0); }
     .sticky-bar .btn-primary { flex:1; text-align:center; border-radius:2px 0 0 2px; }
@@ -116,7 +107,7 @@
     .sticky-call:hover { background-color:var(--bone-warm); }
     @media (min-width:768px) { body { padding-bottom:0; } .sticky-bar { display:none; } }
 
-    /* ============================================================ FOOTER */
+    /* ===== FOOTER ===== */
     .footer-nudge { background-color:var(--pink); padding:var(--xxl) var(--sm); display:flex; flex-direction:column; align-items:center; text-align:center; gap:var(--md); }
     .footer-nudge-text { font-family:'Satoshi',system-ui,sans-serif; font-size:clamp(1.75rem,5vw,2.5rem); font-weight:700; letter-spacing:-0.02em; line-height:1.1; color:var(--ink); }
     .footer-body { background-color:var(--ink); padding:var(--xl) var(--sm) var(--lg); text-align:center; }
@@ -145,11 +136,10 @@
     @media (prefers-reduced-motion: reduce) { * { transition:none !important; animation:none !important; } }
 
     /* ============================================================
-       A1 — BUILDING HERO
+       A1 — HERO
     ============================================================ */
     .about-hero {
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
       background-color: var(--ink);
       aspect-ratio: 4 / 3;
     }
@@ -159,15 +149,13 @@
       object-fit: cover; object-position: center;
     }
     .about-hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(to bottom, rgba(22,20,15,0.05) 0%, rgba(22,20,15,0) 25%, rgba(22,20,15,0.72) 72%, rgba(22,20,15,0.92) 100%);
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(22,20,15,0.05) 0%, rgba(22,20,15,0) 25%, rgba(22,20,15,0.72) 70%, rgba(22,20,15,0.92) 100%);
       z-index: 1; pointer-events: none;
     }
     .about-hero-inner {
       position: absolute; inset: 0; z-index: 2;
-      display: flex; flex-direction: column;
-      justify-content: flex-end;
+      display: flex; flex-direction: column; justify-content: flex-end;
       padding: var(--sm) var(--sm) var(--lg);
     }
     .about-hero-eyebrow {
@@ -188,41 +176,31 @@
     }
 
     /* ============================================================
-       A2 — THREE NUMBERS
-       Editorial stat grid — no copy, just numbers
+       A2 — STAT GRID
     ============================================================ */
     .about-stats {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       background-color: var(--ink);
       gap: 1px;
-      background-color: var(--ink);
     }
     .about-stat {
       background-color: var(--snow);
       padding: var(--lg) var(--sm);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 8px;
+      display: flex; flex-direction: column;
+      align-items: center; text-align: center; gap: 8px;
     }
     .about-stat-num {
       font-family: 'Satoshi', system-ui, sans-serif;
       font-size: clamp(2.5rem, 10vw, 6rem);
-      font-weight: 900;
-      letter-spacing: -0.04em;
-      line-height: 1;
+      font-weight: 900; letter-spacing: -0.04em; line-height: 1;
       color: var(--ink);
     }
     .about-stat-label {
       font-family: 'Satoshi', system-ui, sans-serif;
-      font-size: 0.5rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      line-height: 1.4;
+      font-size: 0.5rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--muted); line-height: 1.4;
     }
     @media (min-width: 768px) {
       .about-stat { padding: var(--xxl) var(--lg); }
@@ -231,126 +209,143 @@
     }
 
     /* ============================================================
-       A3 — THE FOUNDERS
-       Photo-dominant, one line each
+       A3 — STORY
+       SEO copy left, interior image right (desktop 2-col)
     ============================================================ */
-    .about-founders { background-color: var(--ink); }
-    .about-founders-header {
+    .about-story {
+      background-color: var(--snow);
+      border-top: 1px solid var(--line);
+    }
+    .about-story-inner {
       display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      padding: var(--md) var(--sm);
-      border-bottom: 1px solid rgba(253,252,250,0.15);
+      flex-direction: column;
     }
-    .about-founders-label {
+    .about-story-copy {
+      padding: var(--xl) var(--sm);
+      display: flex; flex-direction: column; gap: var(--md);
+    }
+    .about-story-eyebrow {
       font-family: 'Satoshi', system-ui, sans-serif;
-      font-size: clamp(2rem, 8vw, 3rem);
-      font-weight: 900; letter-spacing: -0.03em;
-      color: var(--snow);
+      font-size: 0.5625rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--pink);
     }
-    .about-founders-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1px;
-      background-color: rgba(253,252,250,0.1);
+    .about-story-headline {
+      font-family: 'Satoshi', system-ui, sans-serif;
+      font-size: clamp(1.875rem, 5vw, 2.75rem);
+      font-weight: 900; letter-spacing: -0.03em; line-height: 1.1;
+      color: var(--ink);
     }
-    @media (min-width: 768px) {
-      .about-founders-header { padding: var(--md) var(--xl); }
-      .about-founders-grid { grid-template-columns: 1fr 1fr; }
+    .about-story-body {
+      display: flex; flex-direction: column; gap: var(--md);
     }
-    .about-founder-card { background-color: var(--ink); }
-    .about-founder-photo {
-      aspect-ratio: 3 / 4;
+    .about-story-body p {
+      font-family: 'Satoshi', system-ui, sans-serif;
+      font-size: 1.0625rem; font-weight: 400;
+      line-height: 1.65; color: var(--ink);
+      max-width: 52ch;
+    }
+    .about-story-link {
+      display: inline-block;
+      font-family: 'Satoshi', system-ui, sans-serif;
+      font-size: 0.6875rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: underline; text-underline-offset: 4px;
+      margin-top: var(--xs);
+      transition: color 0.15s;
+    }
+    .about-story-link:hover { color: var(--muted); }
+    .about-story-img-wrap {
       overflow: hidden;
       background-color: var(--ink-soft);
     }
-    .about-founder-photo img {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center top;
-      transition: transform 0.6s ease-out;
+    .about-story-img {
+      width: 100%; display: block;
+      aspect-ratio: 4 / 3;
+      object-fit: cover; object-position: center;
     }
-    @media (hover: hover) { .about-founder-photo img:hover { transform: scale(1.03); } }
-    .about-founder-body {
-      padding: var(--md) var(--sm) var(--lg);
-      border-top: 1px solid rgba(253,252,250,0.08);
+    @media (min-width: 768px) {
+      .about-story-inner {
+        flex-direction: row;
+        min-height: 600px;
+      }
+      .about-story-copy {
+        flex: 0 0 50%;
+        padding: var(--xxl) var(--xl);
+        justify-content: center;
+        border-right: 1px solid var(--line);
+      }
+      .about-story-img-wrap {
+        flex: 0 0 50%;
+      }
+      .about-story-img {
+        aspect-ratio: unset;
+        height: 100%;
+      }
     }
-    .about-founder-name {
+
+    /* ============================================================
+       A4 — RECOGNITION
+       Press tearsheet layout. No giant heading.
+       Desktop: pub name left column fixed-width, text right.
+    ============================================================ */
+    .about-recognition {
+      background-color: var(--ink);
+    }
+    .about-recognition-top {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: var(--lg) var(--sm) var(--md);
+      border-bottom: 1px solid rgba(253,252,250,0.1);
+    }
+    .about-recognition-eyebrow {
       font-family: 'Satoshi', system-ui, sans-serif;
-      font-size: 1.5rem; font-weight: 900;
-      letter-spacing: -0.02em; color: var(--snow);
-      margin-bottom: 4px;
+      font-size: 0.5625rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--pink);
     }
-    .about-founder-title {
-      display: block;
+    .about-recognition-count {
       font-family: 'Satoshi', system-ui, sans-serif;
       font-size: 0.5625rem; font-weight: 700;
       letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--pink); margin-bottom: var(--sm);
+      color: rgba(253,252,250,0.2);
     }
-    .about-founder-line {
-      font-family: 'Satoshi', system-ui, sans-serif;
-      font-size: 1rem; font-weight: 400;
-      line-height: 1.6;
-      color: rgba(253,252,250,0.6);
-    }
-    @media (min-width: 768px) {
-      .about-founder-photo { aspect-ratio: 4 / 5; }
-      .about-founder-body { padding: var(--lg) var(--lg) var(--xl); }
-      .about-founder-name { font-size: 1.875rem; }
-    }
-
-    /* ============================================================
-       A4 — AWARDS — CONCERT POSTER TYPOGRAPHIC
-    ============================================================ */
-    .about-awards { background-color: var(--ink); }
-    .about-awards-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      padding: var(--md) var(--sm);
-      border-bottom: 1px solid rgba(253,252,250,0.15);
-      border-top: 1px solid rgba(253,252,250,0.1);
-    }
-    .about-awards-label {
-      font-family: 'Satoshi', system-ui, sans-serif;
-      font-size: clamp(2rem, 8vw, 3rem);
-      font-weight: 900; letter-spacing: -0.03em;
-      color: var(--snow);
-    }
-    @media (min-width: 768px) { .about-awards-header { padding: var(--md) var(--xl); } }
-
-    .about-award-row {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: var(--sm);
+    .about-rec-item {
+      display: flex; flex-direction: column; gap: 10px;
       padding: var(--lg) var(--sm);
-      border-bottom: 1px solid rgba(253,252,250,0.08);
+      border-bottom: 1px solid rgba(253,252,250,0.07);
     }
-    .about-award-row:last-child { border-bottom: none; }
-    .about-award-name {
+    .about-rec-item:last-child { border-bottom: none; }
+    .about-rec-pub {
       font-family: 'Satoshi', system-ui, sans-serif;
-      font-size: clamp(1.5rem, 5vw, 3.25rem);
-      font-weight: 900;
-      letter-spacing: -0.03em;
+      font-size: 0.5rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--pink); line-height: 1.6;
+    }
+    .about-rec-text {
+      font-family: 'Satoshi', system-ui, sans-serif;
+      font-size: clamp(1.375rem, 4vw, 2.125rem);
+      font-weight: 700; line-height: 1.2;
+      letter-spacing: -0.025em;
       color: var(--snow);
-      line-height: 1;
-    }
-    .about-award-desc {
-      font-family: 'Satoshi', system-ui, sans-serif;
-      font-size: 0.5625rem; font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: rgba(253,252,250,0.4);
-      text-align: right; line-height: 1.5;
-      flex-shrink: 0;
     }
     @media (min-width: 768px) {
-      .about-award-row { padding: var(--xl) var(--xl); }
-      .about-award-desc { font-size: 0.6875rem; }
+      .about-recognition-top { padding: var(--lg) var(--xl) var(--md); }
+      .about-rec-item {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: var(--xl);
+        padding: var(--xl) var(--xl);
+      }
+      .about-rec-pub {
+        flex: 0 0 140px;
+        padding-top: 5px;
+      }
+      .about-rec-text { flex: 1; }
     }
 
     /* ============================================================
-       A5 — PHILOSOPHY — PHOTO BG PULL QUOTE
+       A5 — PHILOSOPHY
     ============================================================ */
     .about-philosophy {
       position: relative; overflow: hidden;
@@ -363,7 +358,7 @@
     }
     .about-philosophy::before {
       content: ''; position: absolute; inset: 0;
-      background: rgba(22,20,15,0.62); z-index: 1;
+      background: rgba(22,20,15,0.65); z-index: 1;
     }
     .about-philosophy-inner {
       position: relative; z-index: 2;
@@ -371,10 +366,7 @@
       display: flex; flex-direction: column; align-items: center;
       gap: var(--sm);
     }
-    .about-philosophy-mark {
-      color: var(--pink); font-size: 4rem;
-      font-weight: 900; line-height: 1;
-    }
+    .about-philosophy-mark { color: var(--pink); font-size: 4rem; font-weight: 900; line-height: 1; }
     .about-philosophy-text {
       font-family: 'Satoshi', system-ui, sans-serif;
       font-size: clamp(1.75rem, 6vw, 2.75rem);
@@ -393,7 +385,7 @@
     }
 
     /* ============================================================
-       PINK MODE — shared chrome
+       PINK MODE
     ============================================================ */
     [data-theme="pink"] .announce-bar { background-color:var(--ink); }
     [data-theme="pink"] .announce-text,
@@ -409,13 +401,18 @@
     [data-theme="pink"] .footer-nudge-text { color:var(--snow); }
     [data-theme="pink"] .footer-nudge .btn-primary { background-color:var(--pink); color:var(--ink); }
 
-    /* ============================================================
-       PINK MODE — about sections
-    ============================================================ */
     [data-theme="pink"] .about-stat { background-color:var(--pink); }
     [data-theme="pink"] .about-stat-num { color:var(--ink); }
-    [data-theme="pink"] .about-stat-label { color:rgba(22,20,15,0.5); }
+    [data-theme="pink"] .about-stat-label { color:rgba(22,20,15,0.55); }
     [data-theme="pink"] .about-stats { background-color:var(--ink); }
+
+    [data-theme="pink"] .about-story { background-color:var(--pink); border-top-color:var(--ink); }
+    [data-theme="pink"] .about-story-copy { border-right-color:var(--ink); }
+    [data-theme="pink"] .about-story-headline { color:var(--ink); }
+    [data-theme="pink"] .about-story-body p { color:var(--ink); }
+    [data-theme="pink"] .about-story-link { color:var(--ink); }
+    [data-theme="pink"] .about-story-link:hover { color:rgba(22,20,15,0.55); }
+    [data-theme="pink"] .about-story-eyebrow { color:var(--ink); opacity:0.6; }
   </style>
 </head>
 <body>
@@ -438,7 +435,7 @@
       <a href="/about-us/"   class="nav-link is-active">About</a>
       <a href="/contact-us/" class="nav-link">Contact</a>
     </div>
-    <button class="theme-toggle theme-toggle--nav" data-theme-toggle aria-label="Switch color theme">
+    <button class="theme-toggle" data-theme-toggle aria-label="Switch color theme">
       <span class="theme-toggle-dot"></span>
       <span class="theme-toggle-label">Pink</span>
     </button>
@@ -457,7 +454,7 @@
     <a href="/about-us/"   class="mobile-menu-link">About</a>
     <a href="/contact-us/" class="mobile-menu-link">Contact</a>
   </nav>
-  <button class="theme-toggle theme-toggle--menu" data-theme-toggle aria-label="Switch color theme">
+  <button class="theme-toggle" data-theme-toggle aria-label="Switch color theme">
     <span class="theme-toggle-dot"></span>
     <span class="theme-toggle-label">Pink</span>
   </button>
@@ -471,7 +468,7 @@
   <img
     class="about-hero-img"
     src="https://i.ibb.co/356wvD6R/sullo-store.jpg"
-    alt="Sullo Salon &amp; Day Spa storefront, North Federal Highway Fort Lauderdale"
+    alt="Sullo Salon &amp; Day Spa storefront, 3045 North Federal Highway, Fort Lauderdale"
     fetchpriority="high" loading="eager"
     width="1200" height="800"
   >
@@ -481,11 +478,11 @@
   </div>
 </section>
 
-<!-- A2 — THREE NUMBERS -->
-<div class="about-stats" role="list" aria-label="Key credentials">
+<!-- A2 — STATS -->
+<div class="about-stats" role="list" aria-label="Key facts">
   <div class="about-stat" role="listitem">
     <span class="about-stat-num">39</span>
-    <span class="about-stat-label">Years in<br>Fort Lauderdale</span>
+    <span class="about-stat-label">Years on<br>North Federal</span>
   </div>
   <div class="about-stat" role="listitem">
     <span class="about-stat-num">#1</span>
@@ -497,76 +494,61 @@
   </div>
 </div>
 
-<!-- A3 — THE FOUNDERS -->
-<section class="about-founders" aria-labelledby="founders-heading">
-  <div class="about-founders-header">
-    <span class="about-founders-label" id="founders-heading">The founders</span>
-  </div>
-  <div class="about-founders-grid">
-
-    <article class="about-founder-card">
-      <div class="about-founder-photo">
-        <img
-          src="https://i.ibb.co/bR362wNj/sullo-heather.png"
-          alt="Heather Marino — Owner and Master Stylist at Sullo Salon"
-          loading="lazy" width="800" height="1000"
-        >
+<!-- A3 — STORY -->
+<section class="about-story" aria-labelledby="story-heading">
+  <div class="about-story-inner">
+    <div class="about-story-copy">
+      <span class="about-story-eyebrow">Our story</span>
+      <h2 class="about-story-headline" id="story-heading">Founded in 1986.<br>Still here for a reason.</h2>
+      <div class="about-story-body">
+        <p>Phyllis Sullo opened the doors on North Federal Highway with one chair and one standard: do the work right, take care of the person in front of you. Nearly four decades later, that address hasn&#8217;t changed.</p>
+        <p>Today Heather Marino and Matteo Spatafora carry the salon forward. Both Goldwell Master Colorists. Both still behind the chair, still consulting before every appointment &#8212; the way it&#8217;s always been done here.</p>
+        <p>Color, balayage, extensions, and full-service spa. All under one roof in Fort Lauderdale. No trends chased, no shortcuts taken.</p>
       </div>
-      <div class="about-founder-body">
-        <h2 class="about-founder-name">Heather Marino</h2>
-        <span class="about-founder-title">Owner &middot; Master Stylist &middot; Goldwell Master Colorist</span>
-        <p class="about-founder-line">25 years at Sullo. South Florida&#8217;s go-to for blonding, platinum, and Great Lengths extensions.</p>
-      </div>
-    </article>
-
-    <article class="about-founder-card">
-      <div class="about-founder-photo">
-        <img
-          src="https://i.ibb.co/RkwF2tfG/sullo-matteo.png"
-          alt="Matteo Spatafora — Owner and Master Stylist at Sullo Salon"
-          loading="lazy" width="800" height="1000"
-        >
-      </div>
-      <div class="about-founder-body">
-        <h2 class="about-founder-name">Matteo Spatafora</h2>
-        <span class="about-founder-title">Owner &middot; Master Stylist &middot; Goldwell Master Colorist</span>
-        <p class="about-founder-line">40 years. Trained in Italy and New York. Cuts and color that look effortless because of how much thought went in.</p>
-      </div>
-    </article>
-
+      <a href="/our-team/" class="about-story-link">Meet the team &rarr;</a>
+    </div>
+    <div class="about-story-img-wrap">
+      <img
+        class="about-story-img"
+        src="https://i.ibb.co/h5SyLHL/hair-salon-fort-lauderdale.jpg"
+        alt="Inside Sullo Salon &amp; Day Spa — styling area, Fort Lauderdale"
+        loading="lazy" width="900" height="675"
+      >
+    </div>
   </div>
 </section>
 
-<!-- A4 — AWARDS -->
-<section class="about-awards" aria-labelledby="awards-heading">
-  <div class="about-awards-header">
-    <span class="about-awards-label" id="awards-heading">Recognition</span>
+<!-- A4 — RECOGNITION -->
+<section class="about-recognition" aria-label="Press and recognition">
+  <div class="about-recognition-top">
+    <span class="about-recognition-eyebrow">Press &amp; recognition</span>
+    <span class="about-recognition-count">5 honors</span>
   </div>
-  <div class="about-award-row">
-    <span class="about-award-name">Glamour</span>
-    <span class="about-award-desc">One of the ten best<br>salons in the country</span>
+  <div class="about-rec-item">
+    <span class="about-rec-pub">Glamour<br>Magazine</span>
+    <p class="about-rec-text">&#8220;One of the ten best salons in the country.&#8221;</p>
   </div>
-  <div class="about-award-row">
-    <span class="about-award-name">Sun-Sentinel</span>
-    <span class="about-award-desc">#1 Salon &amp; Day Spa<br>Hi-Riser &amp; East Side Forum</span>
+  <div class="about-rec-item">
+    <span class="about-rec-pub">Sun-Sentinel<br>Hi-Riser &amp; East<br>Side Forum</span>
+    <p class="about-rec-text">#1 Salon &amp; Day Spa, South Florida.</p>
   </div>
-  <div class="about-award-row">
-    <span class="about-award-name">Gold Coast</span>
-    <span class="about-award-desc">Best Hair Salon &amp; Spa<br>South Florida</span>
+  <div class="about-rec-item">
+    <span class="about-rec-pub">Gold Coast<br>Magazine</span>
+    <p class="about-rec-text">Best Hair Salon &amp; Spa, South Florida.</p>
   </div>
-  <div class="about-award-row">
-    <span class="about-award-name">CBS Morning Show</span>
-    <span class="about-award-desc">Featured salon</span>
+  <div class="about-rec-item">
+    <span class="about-rec-pub">CBS<br>Morning Show</span>
+    <p class="about-rec-text">Featured Fort Lauderdale salon.</p>
   </div>
-  <div class="about-award-row">
-    <span class="about-award-name">Goldwell Platinum</span>
-    <span class="about-award-desc">Elite color certification</span>
+  <div class="about-rec-item">
+    <span class="about-rec-pub">Goldwell</span>
+    <p class="about-rec-text">Platinum Elite Color Salon Certification.</p>
   </div>
 </section>
 
 <!-- A5 — PHILOSOPHY -->
 <section class="about-philosophy" aria-label="Our philosophy">
-  <img class="about-philosophy-bg" src="https://i.ibb.co/h5SyLHL/hair-salon-fort-lauderdale.jpg" alt="" aria-hidden="true" loading="lazy">
+  <img class="about-philosophy-bg" src="https://i.ibb.co/356wvD6R/sullo-store.jpg" alt="" aria-hidden="true" loading="lazy">
   <div class="about-philosophy-inner">
     <span class="about-philosophy-mark" aria-hidden="true">&#8220;</span>
     <p class="about-philosophy-text">Hair is personal.<br>We treat it that way.</p>
