@@ -41,7 +41,7 @@ Pink/classic toggle in nav, all pages.
 | Work With Us | `/work-with-us/` | Done |
 | Hair | `/hair/` | Done |
 | Color &amp; Balayage | `/color/` | Done |
-| Hair Extensions | `/hair-extensions/` | Not started |
+| Hair Extensions | `/hair-extensions/` | Done |
 | Facials | `/facials/` | Not started |
 | Makeup | `/makeup/` | Not started |
 | Nails | `/nails/` | Not started |
