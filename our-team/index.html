@@ -234,75 +234,66 @@
     /* ============================================================
        T3 — TEAM GRID
     ============================================================ */
-    .team-grid-section {
-      background-color: var(--bone);
-    }
-    .team-grid-header {
+    .team-roster-section { background-color: var(--bone); }
+    .team-roster-header {
       padding: var(--lg) var(--sm) var(--md);
       border-bottom: 1px solid var(--line);
-      display: flex; align-items: baseline; justify-content: space-between;
     }
-    .team-grid-label {
+    .team-roster-label {
       font-family: 'Satoshi', system-ui, sans-serif;
       font-size: 0.5625rem; font-weight: 700;
       letter-spacing: 0.18em; text-transform: uppercase;
       color: var(--muted);
     }
-    .team-grid {
+    .team-roster { list-style: none; }
+    .team-roster-item {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      background-color: var(--line);
-      gap: 1px;
+      grid-template-columns: 80px 1fr;
+      grid-template-rows: auto auto;
+      column-gap: var(--md);
+      row-gap: 10px;
+      align-items: center;
+      padding: var(--md) var(--sm);
+      border-bottom: 1px solid var(--line);
     }
-    .team-card {
-      background-color: var(--bone);
-      display: flex; flex-direction: column;
-    }
-    .team-card-photo {
-      width: 100%; aspect-ratio: 3/4;
+    .roster-thumb {
+      grid-row: 1 / 3;
+      width: 80px; height: 80px;
       object-fit: cover; object-position: top center;
-      display: block;
+      border-radius: 2px;
+      align-self: center;
     }
-    .team-card-placeholder {
-      width: 100%; aspect-ratio: 3/4;
+    .roster-placeholder {
+      grid-row: 1 / 3;
+      width: 80px; height: 80px;
       background-color: var(--bone-warm);
+      border-radius: 2px;
       display: flex; align-items: center; justify-content: center;
+      align-self: center;
     }
-    .team-card-initials {
+    .roster-initials {
       font-family: 'Satoshi', system-ui, sans-serif;
-      font-size: clamp(2rem, 8vw, 3.5rem);
-      font-weight: 900; letter-spacing: -0.04em;
+      font-size: 1.25rem; font-weight: 900; letter-spacing: -0.03em;
       color: var(--line);
     }
-    .team-card-info {
-      padding: var(--md) var(--sm);
-      display: flex; flex-direction: column; gap: 10px;
-      border-top: 2px solid var(--ink);
-      flex: 1;
+    .roster-info {
+      display: flex; flex-direction: column; gap: 3px;
     }
-    .team-card-role {
+    .roster-role {
       font-family: 'Satoshi', system-ui, sans-serif;
       font-size: 0.5rem; font-weight: 700;
       letter-spacing: 0.16em; text-transform: uppercase;
       color: var(--pink);
     }
-    .team-card-name {
+    .roster-name {
       font-family: 'Satoshi', system-ui, sans-serif;
-      font-size: clamp(1.125rem, 3vw, 1.5rem);
-      font-weight: 900; letter-spacing: -0.02em; line-height: 1.1;
+      font-size: 1.0625rem; font-weight: 900; letter-spacing: -0.02em;
       color: var(--ink);
     }
-    .team-card-bio {
-      font-family: 'Satoshi', system-ui, sans-serif;
-      font-size: 0.875rem; font-weight: 400; line-height: 1.65;
-      color: var(--muted);
-    }
-    .team-card-tags {
+    .roster-tags {
       display: flex; flex-wrap: wrap; gap: 6px;
-      margin-top: 4px;
     }
-    .team-card-tag {
-      display: inline-flex;
+    .roster-tag {
       font-family: 'Satoshi', system-ui, sans-serif;
       font-size: 0.4375rem; font-weight: 700;
       letter-spacing: 0.1em; text-transform: uppercase;
@@ -310,12 +301,18 @@
       border: 1px solid var(--line);
       border-radius: 999px; padding: 4px 9px;
     }
-    @media (min-width: 600px) {
-      .team-grid { grid-template-columns: 1fr 1fr 1fr; }
+    @media (min-width: 640px) {
+      .team-roster-item {
+        display: flex; flex-direction: row;
+        align-items: center; gap: var(--md);
+      }
+      .roster-thumb, .roster-placeholder { flex-shrink: 0; }
+      .roster-info { min-width: 180px; flex-shrink: 0; }
+      .roster-tags { flex: 1; }
     }
     @media (min-width: 768px) {
-      .team-grid-header { padding: var(--lg) var(--xl) var(--md); }
-      .team-card-info { padding: var(--lg) var(--md); gap: 12px; }
+      .team-roster-header { padding: var(--lg) var(--xl) var(--md); }
+      .team-roster-item { padding: var(--md) var(--xl); }
     }
 
     /* ============================================================
@@ -336,18 +333,15 @@
     [data-theme="pink"] .team-header-headline { color:var(--ink); }
     [data-theme="pink"] .team-header-sub { color:rgba(22,20,15,0.6); }
 
-    [data-theme="pink"] .team-grid-section { background-color:var(--pink); }
-    [data-theme="pink"] .team-grid-header { border-bottom-color:var(--ink); }
-    [data-theme="pink"] .team-grid-label { color:rgba(22,20,15,0.5); }
-    [data-theme="pink"] .team-grid { background-color:var(--ink); }
-    [data-theme="pink"] .team-card { background-color:var(--pink); }
-    [data-theme="pink"] .team-card-placeholder { background-color:rgba(22,20,15,0.08); }
-    [data-theme="pink"] .team-card-initials { color:rgba(22,20,15,0.2); }
-    [data-theme="pink"] .team-card-info { border-top-color:var(--ink); }
-    [data-theme="pink"] .team-card-role { color:var(--ink); }
-    [data-theme="pink"] .team-card-name { color:var(--ink); }
-    [data-theme="pink"] .team-card-bio { color:rgba(22,20,15,0.65); }
-    [data-theme="pink"] .team-card-tag { color:rgba(22,20,15,0.5); border-color:rgba(22,20,15,0.2); }
+    [data-theme="pink"] .team-roster-section { background-color:var(--pink); }
+    [data-theme="pink"] .team-roster-header { border-bottom-color:var(--ink); }
+    [data-theme="pink"] .team-roster-label { color:rgba(22,20,15,0.5); }
+    [data-theme="pink"] .team-roster-item { border-bottom-color:var(--ink); }
+    [data-theme="pink"] .roster-placeholder { background-color:rgba(22,20,15,0.08); }
+    [data-theme="pink"] .roster-initials { color:rgba(22,20,15,0.2); }
+    [data-theme="pink"] .roster-role { color:var(--ink); }
+    [data-theme="pink"] .roster-name { color:var(--ink); }
+    [data-theme="pink"] .roster-tag { color:rgba(22,20,15,0.5); border-color:rgba(22,20,15,0.2); }
 
     [data-theme="pink"] .footer-cta-eyebrow { color:rgba(253,252,250,0.6); }
     [data-theme="pink"] .footer-cta-book { background:rgba(239,135,170,0.28); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-color:var(--pink); color:var(--snow); }
@@ -456,143 +450,117 @@
   </article>
 </section>
 
-<!-- T3 — TEAM GRID -->
-<section class="team-grid-section" aria-label="Full team">
-  <div class="team-grid-header">
-    <span class="team-grid-label">Stylists &amp; specialists</span>
+<!-- T3 — TEAM ROSTER -->
+<section class="team-roster-section" aria-label="Full team">
+  <div class="team-roster-header">
+    <span class="team-roster-label">Stylists &amp; specialists</span>
   </div>
-  <div class="team-grid">
+  <ul class="team-roster">
 
-    <!-- Taiilor -->
-    <article class="team-card">
-      <img class="team-card-photo"
-        src="https://i.ibb.co/9kGQHLY5/sullo-taiilor.png"
-        alt="Taiilor McGee — Senior Stylist at Sullo Salon"
-        loading="lazy" width="600" height="800">
-      <div class="team-card-info">
-        <span class="team-card-role">Senior Stylist</span>
-        <h3 class="team-card-name">Taiilor McGee</h3>
-        <p class="team-card-bio">A stylist at Sullo for over 9 years, Taiilor attended Paul Mitchell Beauty Academy and has been featured at industry events alongside Paul Mitchell and Robert Cromeans. Certified in Hair Talk Extensions, Cali-Curl, Keratin, and a Goldwell Master Colorist. An in-house educator to junior staff.</p>
-        <div class="team-card-tags">
-          <span class="team-card-tag">Goldwell Master Colorist</span>
-          <span class="team-card-tag">Hair Talk Extensions</span>
-          <span class="team-card-tag">Cali-Curl</span>
-          <span class="team-card-tag">Keratin</span>
-        </div>
+    <li class="team-roster-item">
+      <img class="roster-thumb" src="https://i.ibb.co/9kGQHLY5/sullo-taiilor.png" alt="Taiilor McGee" loading="lazy">
+      <div class="roster-info">
+        <span class="roster-role">Senior Stylist</span>
+        <span class="roster-name">Taiilor McGee</span>
       </div>
-    </article>
+      <div class="roster-tags">
+        <span class="roster-tag">Goldwell Master Colorist</span>
+        <span class="roster-tag">Hair Talk Extensions</span>
+        <span class="roster-tag">Cali-Curl</span>
+        <span class="roster-tag">Keratin</span>
+      </div>
+    </li>
 
-    <!-- Kristen -->
-    <article class="team-card">
-      <img class="team-card-photo"
-        src="https://i.ibb.co/0VGMWV0L/sullo-kristen.png"
-        alt="Kristen Black — Master Stylist at Sullo Salon"
-        loading="lazy" width="600" height="800">
-      <div class="team-card-info">
-        <span class="team-card-role">Master Stylist</span>
-        <h3 class="team-card-name">Kristen Black</h3>
-        <p class="team-card-bio">Originally from the midwest, Kristen has spent over 15 years in South Florida mastering hairstyling under top stylists from around the globe. A Goldwell Master Colorist, Sunlights Balayage, and Vidal Sassoon trained stylist — expert in corrective color, hand painted balayage, and blonding.</p>
-        <div class="team-card-tags">
-          <span class="team-card-tag">Goldwell Master Colorist</span>
-          <span class="team-card-tag">Vidal Sassoon Trained</span>
-          <span class="team-card-tag">Corrective Color</span>
-          <span class="team-card-tag">Balayage</span>
-        </div>
+    <li class="team-roster-item">
+      <img class="roster-thumb" src="https://i.ibb.co/0VGMWV0L/sullo-kristen.png" alt="Kristen Black" loading="lazy">
+      <div class="roster-info">
+        <span class="roster-role">Master Stylist</span>
+        <span class="roster-name">Kristen Black</span>
       </div>
-    </article>
+      <div class="roster-tags">
+        <span class="roster-tag">Goldwell Master Colorist</span>
+        <span class="roster-tag">Vidal Sassoon Trained</span>
+        <span class="roster-tag">Corrective Color</span>
+        <span class="roster-tag">Balayage</span>
+      </div>
+    </li>
 
-    <!-- Pam -->
-    <article class="team-card">
-      <img class="team-card-photo"
-        src="https://i.ibb.co/VWrdShPL/sullo-pam.png"
-        alt="Pam Scardina — Senior Stylist at Sullo Salon"
-        loading="lazy" width="600" height="800">
-      <div class="team-card-info">
-        <span class="team-card-role">Senior Stylist</span>
-        <h3 class="team-card-name">Pam Scardina</h3>
-        <p class="team-card-bio">With over 25 years in the beauty industry, Pam has advanced training in hair care and coloring including Goldwell Continuum Professional Training and Global Keratin Hair Taming Systems. Equally skilled in men&#8217;s cosmetology, bridal styling, and fashion shows. Featured in luxury lifestyle magazine Prime.</p>
-        <div class="team-card-tags">
-          <span class="team-card-tag">Goldwell Color</span>
-          <span class="team-card-tag">Keratin Systems</span>
-          <span class="team-card-tag">Men&#8217;s Grooming</span>
-          <span class="team-card-tag">Bridal</span>
-        </div>
+    <li class="team-roster-item">
+      <img class="roster-thumb" src="https://i.ibb.co/VWrdShPL/sullo-pam.png" alt="Pam Scardina" loading="lazy">
+      <div class="roster-info">
+        <span class="roster-role">Senior Stylist</span>
+        <span class="roster-name">Pam Scardina</span>
       </div>
-    </article>
+      <div class="roster-tags">
+        <span class="roster-tag">Goldwell Color</span>
+        <span class="roster-tag">Keratin Systems</span>
+        <span class="roster-tag">Men&#8217;s Grooming</span>
+        <span class="roster-tag">Bridal</span>
+      </div>
+    </li>
 
-    <!-- Carolyn -->
-    <article class="team-card">
-      <img class="team-card-photo"
-        src="https://i.ibb.co/ycX94g1y/sullo-carolyn.png"
-        alt="Carolyn Parillo — Esthetician at Sullo Salon"
-        loading="lazy" width="600" height="800">
-      <div class="team-card-info">
-        <span class="team-card-role">Esthetician</span>
-        <h3 class="team-card-name">Carolyn Parillo</h3>
-        <p class="team-card-bio">Trained in New York City at Christine Valmy and Sothy&#8217;s of Paris, Carolyn brings over 40 years of experience. Her specialties are deep pore cleansing facials, body waxing, and nutrition. Philosophy: healthy skin begins from the inside out.</p>
-        <div class="team-card-tags">
-          <span class="team-card-tag">Facials</span>
-          <span class="team-card-tag">Body Waxing</span>
-          <span class="team-card-tag">Deep Pore Cleansing</span>
-          <span class="team-card-tag">40+ Years</span>
-        </div>
+    <li class="team-roster-item">
+      <img class="roster-thumb" src="https://i.ibb.co/ycX94g1y/sullo-carolyn.png" alt="Carolyn Parillo" loading="lazy">
+      <div class="roster-info">
+        <span class="roster-role">Esthetician</span>
+        <span class="roster-name">Carolyn Parillo</span>
       </div>
-    </article>
+      <div class="roster-tags">
+        <span class="roster-tag">Facials</span>
+        <span class="roster-tag">Body Waxing</span>
+        <span class="roster-tag">Deep Pore Cleansing</span>
+        <span class="roster-tag">40+ Years</span>
+      </div>
+    </li>
 
-    <!-- Kelly — no photo yet -->
-    <article class="team-card">
-      <div class="team-card-placeholder" aria-hidden="true">
-        <span class="team-card-initials">KM</span>
+    <li class="team-roster-item">
+      <div class="roster-placeholder" aria-hidden="true">
+        <span class="roster-initials">KM</span>
       </div>
-      <div class="team-card-info">
-        <span class="team-card-role">Salon Manager &middot; Stylist</span>
-        <h3 class="team-card-name">Kelly Mitchell</h3>
-        <p class="team-card-bio">Kelly has been a stylist in the Fort Lauderdale area for 10 years, specializing in Dream Catchers Hair Extensions and Keratin Smoothing Treatments. Trained in Goldwell hair color with a passion for crafting new styles.</p>
-        <div class="team-card-tags">
-          <span class="team-card-tag">Dream Catchers Extensions</span>
-          <span class="team-card-tag">Keratin Treatments</span>
-          <span class="team-card-tag">Goldwell Color</span>
-        </div>
+      <div class="roster-info">
+        <span class="roster-role">Salon Manager &middot; Stylist</span>
+        <span class="roster-name">Kelly Mitchell</span>
       </div>
-    </article>
+      <div class="roster-tags">
+        <span class="roster-tag">Dream Catchers Extensions</span>
+        <span class="roster-tag">Keratin Treatments</span>
+        <span class="roster-tag">Goldwell Color</span>
+      </div>
+    </li>
 
-    <!-- Jonathan — no photo yet -->
-    <article class="team-card">
-      <div class="team-card-placeholder" aria-hidden="true">
-        <span class="team-card-initials">JR</span>
+    <li class="team-roster-item">
+      <div class="roster-placeholder" aria-hidden="true">
+        <span class="roster-initials">JR</span>
       </div>
-      <div class="team-card-info">
-        <span class="team-card-role">Junior Stylist</span>
-        <h3 class="team-card-name">Jonathan Rivera</h3>
-        <p class="team-card-bio">Jonathan has a passion for vibrant colors, soft free-form cutting, and elegant modern updos. A well-rounded colorist and stylist who enjoys creating unique looks, constantly training in advanced techniques including modern beach wave perms and balayage highlighting.</p>
-        <div class="team-card-tags">
-          <span class="team-card-tag">Balayage</span>
-          <span class="team-card-tag">Vibrant Color</span>
-          <span class="team-card-tag">Beach Wave Perms</span>
-          <span class="team-card-tag">Modern Updos</span>
-        </div>
+      <div class="roster-info">
+        <span class="roster-role">Junior Stylist</span>
+        <span class="roster-name">Jonathan Rivera</span>
       </div>
-    </article>
+      <div class="roster-tags">
+        <span class="roster-tag">Balayage</span>
+        <span class="roster-tag">Vibrant Color</span>
+        <span class="roster-tag">Beach Wave Perms</span>
+        <span class="roster-tag">Modern Updos</span>
+      </div>
+    </li>
 
-    <!-- Shannon — no photo yet -->
-    <article class="team-card">
-      <div class="team-card-placeholder" aria-hidden="true">
-        <span class="team-card-initials">S</span>
+    <li class="team-roster-item">
+      <div class="roster-placeholder" aria-hidden="true">
+        <span class="roster-initials">S</span>
       </div>
-      <div class="team-card-info">
-        <span class="team-card-role">Nail Technician</span>
-        <h3 class="team-card-name">Shannon</h3>
-        <p class="team-card-bio">Shannon has been in the industry for over 20 years as a nail technician, specializing in natural looking acrylics, and amazing manicures and pedicures. Knowledgeable of nail health and beauty techniques, always considerate of each client&#8217;s individual needs.</p>
-        <div class="team-card-tags">
-          <span class="team-card-tag">Natural Acrylics</span>
-          <span class="team-card-tag">Manicures</span>
-          <span class="team-card-tag">Pedicures</span>
-          <span class="team-card-tag">20+ Years</span>
-        </div>
+      <div class="roster-info">
+        <span class="roster-role">Nail Technician</span>
+        <span class="roster-name">Shannon</span>
       </div>
-    </article>
+      <div class="roster-tags">
+        <span class="roster-tag">Natural Acrylics</span>
+        <span class="roster-tag">Manicures</span>
+        <span class="roster-tag">Pedicures</span>
+        <span class="roster-tag">20+ Years</span>
+      </div>
+    </li>
 
-  </div>
+  </ul>
 </section>
 
 <!-- FOOTER CTA -->
