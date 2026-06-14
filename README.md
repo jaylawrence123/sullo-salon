@@ -37,7 +37,7 @@ Pink/classic toggle in nav, all pages.
 | Our Team | `/our-team/` | Done |
 | Gallery | `/gallery/` | Done |
 | Contact | `/contact-us/` | Done |
-| Work With Us | `/work-with-us/` | Not started |
+| Work With Us | `/work-with-us/` | Done |
 | Hair | `/hair/` | Not started |
 | Hair Extensions | `/hair-extensions/` | Not started |
 | Facials | `/facials/` | Not started |
@@ -163,6 +163,6 @@ muted      #8A8270   secondary/meta text
 - [ ] Confirm social media handles/URLs
 - [ ] Confirm Google Business Profile URL
 - [ ] Add JSON-LD schema (LocalBusiness + AggregateRating)
-- [ ] Add Web3Forms key to `/contact-us/` (replace `REPLACE_WITH_WEB3FORMS_KEY`)
-- [ ] Build remaining pages: work-with-us, 6 service pages
+- [ ] Add Web3Forms key to `/contact-us/` and `/work-with-us/` (replace `REPLACE_WITH_WEB3FORMS_KEY`)
+- [ ] Build remaining pages: 6 service pages
 - [ ] Client approval → merge dev to master
