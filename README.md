@@ -40,6 +40,7 @@ Pink/classic toggle in nav, all pages.
 | Contact | `/contact-us/` | Done |
 | Work With Us | `/work-with-us/` | Done |
 | Hair | `/hair/` | Done |
+| Color &amp; Balayage | `/color/` | Done |
 | Hair Extensions | `/hair-extensions/` | Not started |
 | Facials | `/facials/` | Not started |
 | Makeup | `/makeup/` | Not started |
