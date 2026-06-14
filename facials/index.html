@@ -217,8 +217,9 @@
     .method-step-num { font-family:'Satoshi',system-ui,sans-serif; font-size:0.5rem; font-weight:700; letter-spacing:0.14em; color:var(--pink); flex-shrink:0; padding-top:3px; }
     .method-step-text { font-family:'Satoshi',system-ui,sans-serif; font-size:0.9375rem; font-weight:400; color:rgba(253,252,250,0.65); line-height:1.5; }
     @media (min-width:768px) {
-      .method-band { padding:var(--xl) var(--xl); }
+      .method-band { padding:var(--xl) var(--xl); text-align:center; display:flex; flex-direction:column; align-items:center; }
       .method-band-steps { flex-direction:row; gap:var(--xl); margin-top:var(--lg); max-width:860px; }
+      .method-step { flex-direction:column; align-items:center; text-align:center; flex:1; }
       .method-step-text { font-size:1.0625rem; }
     }
 
