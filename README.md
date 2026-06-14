@@ -36,7 +36,7 @@ Pink/classic toggle in nav, all pages.
 | About | `/about-us/` | Done |
 | Our Team | `/our-team/` | Done |
 | Gallery | `/gallery/` | Done |
-| Contact | `/contact-us/` | Not started |
+| Contact | `/contact-us/` | Done |
 | Work With Us | `/work-with-us/` | Not started |
 | Hair | `/hair/` | Not started |
 | Hair Extensions | `/hair-extensions/` | Not started |
@@ -99,6 +99,20 @@ Pink/classic toggle in nav, all pages.
 
 ---
 
+## Contact Page Pattern (`/contact-us/`)
+
+- Page header: bone bg, eyebrow "Get in touch" + h1
+- Two-column layout: form left (`flex:1`), info panel right (`360px` fixed on desktop), stacks on mobile
+- Form fields: name + phone (side by side ≥480px), email, service dropdown, message, submit
+- Form submission: Web3Forms — swap `REPLACE_WITH_WEB3FORMS_KEY` in the hidden input
+- Success state: form hides, `.form-success` shown (no page redirect)
+- **Form labels:** `var(--pink)` in classic mode, `var(--snow)` in pink mode
+- **Form fields in pink mode:** `var(--snow)` background so they read against the pink form wrap
+- Info panel: Visit (address + map link), Reach us (phone + email), Hours table
+- Pink mode info panel: ink background, bone/snow text
+
+---
+
 ## Gallery Page Pattern (`/gallery/`)
 
 - Page header: eyebrow "The work" + h1 headline
@@ -149,5 +163,6 @@ muted      #8A8270   secondary/meta text
 - [ ] Confirm social media handles/URLs
 - [ ] Confirm Google Business Profile URL
 - [ ] Add JSON-LD schema (LocalBusiness + AggregateRating)
-- [ ] Build remaining pages: contact, work-with-us, 6 service pages
+- [ ] Add Web3Forms key to `/contact-us/` (replace `REPLACE_WITH_WEB3FORMS_KEY`)
+- [ ] Build remaining pages: work-with-us, 6 service pages
 - [ ] Client approval → merge dev to master
