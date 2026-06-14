@@ -134,8 +134,10 @@ Pink/classic toggle in nav, all pages.
 ## Design Rules
 
 - **Hero overlays:** The dark ink gradient on `.hero::after` and `.service-header::before` is the same in both classic and pink theme. Never add a `[data-theme="pink"]` override for the gradient. Only subcopy color may need a pink-mode tweak.
+- **Hero subcopy:** `.service-header-sub` must always be `rgba(253,252,250,0.88)` + `font-weight:500` in base CSS. Pink mode override: `color:var(--snow); font-weight:500`. Never use 0.65 opacity or weight 400 — it reads as illegible against the dark overlay.
 - **Desktop styles:** Every mobile-first CSS block needs real desktop overrides in `@media (min-width: 768px)` — larger type (+30–50%), more padding, bigger column gaps. Mobile values must not carry through unchanged.
 - **Nav toggle:** Always `display:inline-flex` in base CSS — see Theme Toggle above.
+- **Outline CTA buttons:** Never use inline `style=""` for button variants — use a `.btn-outline` class instead so pink-mode overrides can target it via CSS.
 
 ---
 
