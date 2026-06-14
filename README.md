@@ -76,6 +76,17 @@ Pink/classic toggle in nav, all pages.
 - "Salon · Day Spa" below wordmark
 - Pink mode: wordmark turns `var(--pink)`
 - Legal bar: copyright + Privacy + Designmynt
+- **Font sizes are mobile-first; larger desktop sizes live in `@media (min-width: 768px)` only — never touch base sizes**
+
+---
+
+## Visit Section — Desktop Notes
+
+- Left column: photo (420px fixed) + NAP block + pinned `.visit-book` CTA at bottom
+- `.visit-nap` is `flex:1; flex-direction:column` — fills remaining left-column height
+- `.visit-book` is `display:none` on mobile, `display:block` on desktop — full-width ink "Book an appointment →" pinned via `margin-top:auto`
+- Pink mode: `.visit-book-btn` → pink bg, ink text
+- Right column: map (`flex:1`) fills height; directions buttons hidden on desktop (`display:none`)
 
 ---
 
