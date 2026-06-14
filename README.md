@@ -174,7 +174,13 @@ muted      #8A8270   secondary/meta text
 - [ ] Verify award wording with client
 - [ ] Confirm social media handles/URLs
 - [ ] Confirm Google Business Profile URL
-- [ ] Add JSON-LD schema (LocalBusiness + AggregateRating)
+- [x] Add JSON-LD schema (LocalBusiness + AggregateRating) — homepage, HairSalon type, all 7 services in offerCatalog
 - [ ] Add Web3Forms key to `/contact-us/` and `/work-with-us/` (replace `REPLACE_WITH_WEB3FORMS_KEY`)
-- [ ] Build remaining pages: 6 service pages
 - [ ] Client approval → merge dev to master
+
+### Needs client input
+- [ ] **Booking URL** — swap `BOOKING_URL = '#'` on all pages
+- [ ] **Team photos** — Kelly Mitchell, Jonathan Rivera, Shannon (placeholders in `/our-team/`)
+- [ ] **Social handles** — confirm Facebook, Pinterest, Yelp URLs
+- [ ] **Google Business Profile URL** — "Read all 93 reviews" link on homepage
+- [ ] **Award wording** — verify Sun-Sentinel, Gold Coast, CBS claims before publish
