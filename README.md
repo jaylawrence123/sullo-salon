@@ -45,7 +45,7 @@ Pink/classic toggle in nav, all pages.
 | Facials | `/facials/` | Done |
 | Makeup | `/makeup/` | Done |
 | Nails | `/nails/` | Done |
-| Waxing | `/waxing/` | Not started |
+| Waxing | `/waxing/` | Done |
 
 ---
 
