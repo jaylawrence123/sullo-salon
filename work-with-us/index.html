@@ -68,7 +68,29 @@
       .nav-link:hover { color:var(--muted); }
       .nav-link.is-active { color:var(--pink); }
       .nav-book { display:inline-block; } .nav-burger { display:none; }
+      .nav-services-wrap { position:relative; }
+      .nav-services-trigger { display:inline-flex; align-items:center; gap:5px; font-family:'Satoshi',system-ui,sans-serif; font-size:0.6875rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--ink); background:none; border:none; cursor:pointer; padding:0; transition:color 0.15s; }
+      .nav-services-trigger:hover { color:var(--muted); }
+      .nav-services-trigger.is-active { color:var(--pink); }
+      .nav-chevron { transition:transform 0.2s; }
+      .nav-services-wrap:hover .nav-chevron { transform:rotate(180deg); }
+      .nav-dropdown { position:absolute; top:calc(100% + 12px); left:50%; transform:translateX(-50%); background-color:var(--snow); border:1px solid var(--line); box-shadow:0 8px 24px rgba(22,20,15,0.1); display:none; flex-direction:column; min-width:200px; z-index:200; }
+      .nav-services-wrap:hover .nav-dropdown { display:flex; }
+      .nav-dropdown-link { font-family:'Satoshi',system-ui,sans-serif; font-size:0.625rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink); padding:12px var(--sm); border-bottom:1px solid var(--line); transition:background-color 0.15s,color 0.15s; text-decoration:none; display:block; }
+      .nav-dropdown-link:last-child { border-bottom:none; }
+      .nav-dropdown-link:hover { background-color:var(--bone); }
+      .nav-dropdown-link.is-active { color:var(--pink); }
     }
+    .mobile-services { border-bottom:1px solid var(--line); }
+    .mobile-services-toggle { display:flex; align-items:center; justify-content:space-between; width:100%; font-family:'Satoshi',system-ui,sans-serif; font-size:clamp(1.75rem,8vw,2.5rem); font-weight:700; letter-spacing:-0.02em; line-height:1.1; color:var(--ink); background:none; border:none; cursor:pointer; padding:0 0 var(--md); text-align:left; }
+    .mobile-chevron { transition:transform 0.2s; flex-shrink:0; }
+    .mobile-services-toggle[aria-expanded="true"] .mobile-chevron { transform:rotate(180deg); }
+    .mobile-services-sub { display:none; padding-bottom:var(--md); padding-left:var(--sm); flex-direction:column; gap:2px; }
+    .mobile-services-sub.is-open { display:flex; }
+    .mobile-sub-link { font-family:'Satoshi',system-ui,sans-serif; font-size:1.0625rem; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--ink); padding:10px 0; border-bottom:1px solid rgba(216,208,192,0.5); display:block; transition:color 0.15s; }
+    .mobile-sub-link:last-child { border-bottom:none; }
+    .mobile-sub-link:hover { color:var(--pink); }
+    .mobile-sub-link.is-active { color:var(--pink); }
     .mobile-menu { position:fixed; inset:0; background-color:var(--snow); z-index:99; transform:translateX(100%); transition:transform 0.28s ease-out; overflow-y:auto; display:flex; flex-direction:column; padding:100px var(--lg) var(--xl); gap:var(--lg); }
     .mobile-menu.is-open { transform:translateX(0); }
     body.menu-open { overflow:hidden; }
@@ -297,6 +319,10 @@
     [data-theme="pink"] .nav-wordmark-divider { background-color:var(--ink); }
     [data-theme="pink"] .mobile-menu { background-color:var(--pink); }
     [data-theme="pink"] .mobile-menu-link { border-bottom-color:var(--ink); }
+    [data-theme="pink"] .mobile-services { border-bottom-color:var(--ink); }
+    [data-theme="pink"] .mobile-services-toggle { color:var(--ink); }
+    [data-theme="pink"] .mobile-sub-link { color:var(--ink); border-bottom-color:rgba(22,20,15,0.15); }
+    [data-theme="pink"] .nav-dropdown { background-color:var(--snow); border-color:var(--line); }
     [data-theme="pink"] .theme-toggle { border-color:rgba(22,20,15,0.35); }
     [data-theme="pink"] .theme-toggle-dot { background-color:var(--ink); }
     [data-theme="pink"] .sticky-bar { background-color:var(--pink); border-top-color:var(--ink); }
@@ -342,7 +368,21 @@
   </a>
   <nav class="nav-right" aria-label="Site navigation">
     <div class="nav-links">
-      <a href="/"            class="nav-link">Services</a>
+      <div class="nav-services-wrap">
+        <button class="nav-services-trigger" aria-haspopup="true" aria-expanded="false">
+          Services
+          <svg class="nav-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-dropdown" role="menu">
+          <a href="/color/"           class="nav-dropdown-link">Color &amp; Balayage</a>
+          <a href="/hair/"            class="nav-dropdown-link">Hair</a>
+          <a href="/hair-extensions/" class="nav-dropdown-link">Hair Extensions</a>
+          <a href="/facials/"         class="nav-dropdown-link">Facials</a>
+          <a href="/makeup/"          class="nav-dropdown-link">Makeup</a>
+          <a href="/nails/"           class="nav-dropdown-link">Nails</a>
+          <a href="/waxing/"          class="nav-dropdown-link">Waxing</a>
+        </div>
+      </div>
       <a href="/gallery/"    class="nav-link">Gallery</a>
       <a href="/our-team/"   class="nav-link">Team</a>
       <a href="/about-us/"   class="nav-link">About</a>
@@ -362,7 +402,21 @@
 
 <div class="mobile-menu" id="mobile-menu" aria-hidden="true" role="dialog" aria-label="Navigation menu">
   <nav class="mobile-menu-nav">
-    <a href="/"            class="mobile-menu-link">Services</a>
+    <div class="mobile-services">
+      <button class="mobile-services-toggle" aria-expanded="false">
+        Services
+        <svg class="mobile-chevron" width="14" height="8" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="mobile-services-sub">
+        <a href="/color/"           class="mobile-sub-link">Color &amp; Balayage</a>
+        <a href="/hair/"            class="mobile-sub-link">Hair</a>
+        <a href="/hair-extensions/" class="mobile-sub-link">Hair Extensions</a>
+        <a href="/facials/"         class="mobile-sub-link">Facials</a>
+        <a href="/makeup/"          class="mobile-sub-link">Makeup</a>
+        <a href="/nails/"           class="mobile-sub-link">Nails</a>
+        <a href="/waxing/"          class="mobile-sub-link">Waxing</a>
+      </div>
+    </div>
     <a href="/gallery/"    class="mobile-menu-link">Gallery</a>
     <a href="/our-team/"   class="mobile-menu-link">Team</a>
     <a href="/about-us/"   class="mobile-menu-link">About</a>
@@ -587,6 +641,14 @@
     burger.addEventListener('click', () => mobileMenu.classList.contains('is-open') ? closeMenu() : openMenu());
     menuLinks.forEach(link => link.addEventListener('click', closeMenu));
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) closeMenu(); });
+  }
+  const servicesToggle = document.querySelector('.mobile-services-toggle');
+  const servicesSub    = document.querySelector('.mobile-services-sub');
+  if (servicesToggle && servicesSub) {
+    servicesToggle.addEventListener('click', () => {
+      const open = servicesSub.classList.toggle('is-open');
+      servicesToggle.setAttribute('aria-expanded', open);
+    });
   }
 
   const stickyBar = document.querySelector('.sticky-bar');

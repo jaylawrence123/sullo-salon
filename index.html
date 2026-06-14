@@ -355,7 +355,29 @@
       .nav-book   { display: inline-block; }
       .nav-burger { display: none; }
       .nav-phone  { display: none; }
+      .nav-services-wrap { position:relative; }
+      .nav-services-trigger { display:inline-flex; align-items:center; gap:5px; font-family:'Satoshi',system-ui,sans-serif; font-size:0.6875rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--ink); background:none; border:none; cursor:pointer; padding:0; transition:color 0.15s; }
+      .nav-services-trigger:hover { color:var(--muted); }
+      .nav-services-trigger.is-active { color:var(--pink); }
+      .nav-chevron { transition:transform 0.2s; }
+      .nav-services-wrap:hover .nav-chevron { transform:rotate(180deg); }
+      .nav-dropdown { position:absolute; top:calc(100% + 12px); left:50%; transform:translateX(-50%); background-color:var(--snow); border:1px solid var(--line); box-shadow:0 8px 24px rgba(22,20,15,0.1); display:none; flex-direction:column; min-width:200px; z-index:200; }
+      .nav-services-wrap:hover .nav-dropdown { display:flex; }
+      .nav-dropdown-link { font-family:'Satoshi',system-ui,sans-serif; font-size:0.625rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink); padding:12px var(--sm); border-bottom:1px solid var(--line); transition:background-color 0.15s,color 0.15s; text-decoration:none; display:block; }
+      .nav-dropdown-link:last-child { border-bottom:none; }
+      .nav-dropdown-link:hover { background-color:var(--bone); }
+      .nav-dropdown-link.is-active { color:var(--pink); }
     }
+    .mobile-services { border-bottom:1px solid var(--line); }
+    .mobile-services-toggle { display:flex; align-items:center; justify-content:space-between; width:100%; font-family:'Satoshi',system-ui,sans-serif; font-size:clamp(1.75rem,8vw,2.5rem); font-weight:700; letter-spacing:-0.02em; line-height:1.1; color:var(--ink); background:none; border:none; cursor:pointer; padding:0 0 var(--md); text-align:left; }
+    .mobile-chevron { transition:transform 0.2s; flex-shrink:0; }
+    .mobile-services-toggle[aria-expanded="true"] .mobile-chevron { transform:rotate(180deg); }
+    .mobile-services-sub { display:none; padding-bottom:var(--md); padding-left:var(--sm); flex-direction:column; gap:2px; }
+    .mobile-services-sub.is-open { display:flex; }
+    .mobile-sub-link { font-family:'Satoshi',system-ui,sans-serif; font-size:1.0625rem; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--ink); padding:10px 0; border-bottom:1px solid rgba(216,208,192,0.5); display:block; transition:color 0.15s; }
+    .mobile-sub-link:last-child { border-bottom:none; }
+    .mobile-sub-link:hover { color:var(--pink); }
+    .mobile-sub-link.is-active { color:var(--pink); }
 
     /* Mobile menu — full-screen overlay, slides in from right */
     .mobile-menu {
@@ -2105,6 +2127,10 @@
     [data-theme="pink"] .mobile-menu-link {
       border-bottom-color: var(--ink);
     }
+    [data-theme="pink"] .mobile-services { border-bottom-color:var(--ink); }
+    [data-theme="pink"] .mobile-services-toggle { color:var(--ink); }
+    [data-theme="pink"] .mobile-sub-link { color:var(--ink); border-bottom-color:rgba(22,20,15,0.15); }
+    [data-theme="pink"] .nav-dropdown { background-color:var(--snow); border-color:var(--line); }
 
     [data-theme="pink"] .theme-toggle {
       border-color: rgba(22,20,15,0.35);
@@ -2272,7 +2298,21 @@
   <nav class="nav-right" aria-label="Site navigation">
     <!-- Desktop nav links -->
     <div class="nav-links">
-      <a href="#services"  class="nav-link">Services</a>
+      <div class="nav-services-wrap">
+        <button class="nav-services-trigger" aria-haspopup="true" aria-expanded="false">
+          Services
+          <svg class="nav-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-dropdown" role="menu">
+          <a href="/color/"           class="nav-dropdown-link">Color &amp; Balayage</a>
+          <a href="/hair/"            class="nav-dropdown-link">Hair</a>
+          <a href="/hair-extensions/" class="nav-dropdown-link">Hair Extensions</a>
+          <a href="/facials/"         class="nav-dropdown-link">Facials</a>
+          <a href="/makeup/"          class="nav-dropdown-link">Makeup</a>
+          <a href="/nails/"           class="nav-dropdown-link">Nails</a>
+          <a href="/waxing/"          class="nav-dropdown-link">Waxing</a>
+        </div>
+      </div>
       <a href="#work"      class="nav-link">Gallery</a>
       <a href="/our-team/" class="nav-link">Team</a>
       <a href="/about-us/" class="nav-link">About</a>
@@ -2301,7 +2341,21 @@
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobile-menu" aria-hidden="true" role="dialog" aria-label="Navigation menu">
   <nav class="mobile-menu-nav">
-    <a href="#services"  class="mobile-menu-link">Services</a>
+    <div class="mobile-services">
+      <button class="mobile-services-toggle" aria-expanded="false">
+        Services
+        <svg class="mobile-chevron" width="14" height="8" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="mobile-services-sub">
+        <a href="/color/"           class="mobile-sub-link">Color &amp; Balayage</a>
+        <a href="/hair/"            class="mobile-sub-link">Hair</a>
+        <a href="/hair-extensions/" class="mobile-sub-link">Hair Extensions</a>
+        <a href="/facials/"         class="mobile-sub-link">Facials</a>
+        <a href="/makeup/"          class="mobile-sub-link">Makeup</a>
+        <a href="/nails/"           class="mobile-sub-link">Nails</a>
+        <a href="/waxing/"          class="mobile-sub-link">Waxing</a>
+      </div>
+    </div>
     <a href="#work"      class="mobile-menu-link">Gallery</a>
     <a href="/our-team/" class="mobile-menu-link">Team</a>
     <a href="/about-us/" class="mobile-menu-link">About</a>
@@ -2454,7 +2508,7 @@
   <div class="services-grid">
 
     <!-- Tile 1: Color & Balayage -->
-    <a href="/color" class="service-tile" aria-label="Color and Balayage — most booked">
+    <a href="/color/" class="service-tile" aria-label="Color and Balayage — most booked">
       <!-- IMG SPEC: Dramatic balayage or color result. Warm candlelit tones,
            woman's hair as hero. Rich saturation. Square crop. -->
       <img
@@ -2471,7 +2525,7 @@
     </a>
 
     <!-- Tile 2: Extensions -->
-    <a href="/extensions" class="service-tile" aria-label="Extensions — #1 in Fort Lauderdale">
+    <a href="/hair-extensions/" class="service-tile" aria-label="Extensions — #1 in Fort Lauderdale">
       <!-- IMG SPEC: Great Lengths extension result. Visible length and volume,
            warm blonde or brunette. Editorial-lit. Square crop. -->
       <img
@@ -2488,7 +2542,7 @@
     </a>
 
     <!-- Tile 3: Hair -->
-    <a href="/hair" class="service-tile" aria-label="Hair cuts and styling">
+    <a href="/hair/" class="service-tile" aria-label="Hair cuts and styling">
       <!-- IMG SPEC: Precision cut or blowout. Movement in the hair,
            warm editorial light. Square crop. -->
       <img
@@ -2503,7 +2557,7 @@
     </a>
 
     <!-- Tile 4: Facials -->
-    <a href="/facials" class="service-tile" aria-label="Facials and skin care">
+    <a href="/facials/" class="service-tile" aria-label="Facials and skin care">
       <!-- IMG SPEC: Serene facial treatment or glowing skin close-up.
            Spa atmosphere, warm light. Square crop. -->
       <img
@@ -2518,7 +2572,7 @@
     </a>
 
     <!-- Tile 5: Makeup -->
-    <a href="/makeup" class="service-tile" aria-label="Makeup artistry">
+    <a href="/makeup/" class="service-tile" aria-label="Makeup artistry">
       <!-- IMG SPEC: Polished makeup result, natural-to-glam range,
            close portrait. Warm tones. Square crop. -->
       <img
@@ -2533,7 +2587,7 @@
     </a>
 
     <!-- Tile 6: Nails -->
-    <a href="/nails" class="service-tile" aria-label="Nail services">
+    <a href="/nails/" class="service-tile" aria-label="Nail services">
       <!-- IMG SPEC: Clean nail result, close detail shot.
            Neutral or warm tones. Square crop. -->
       <img
@@ -2548,7 +2602,7 @@
     </a>
 
     <!-- Tile 7: Waxing & more — full width -->
-    <a href="/waxing" class="service-tile service-tile--wide" aria-label="Waxing and more — see full menu">
+    <a href="/waxing/" class="service-tile service-tile--wide" aria-label="Waxing and more — see full menu">
       <!-- IMG SPEC: Warm salon interior or spa atmosphere shot, wide crop.
            Shows the space, inviting. Horizontal/panoramic. -->
       <img
@@ -3134,6 +3188,14 @@
     /* Close on Escape */
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) closeMenu();
+    });
+  }
+  const servicesToggle = document.querySelector('.mobile-services-toggle');
+  const servicesSub    = document.querySelector('.mobile-services-sub');
+  if (servicesToggle && servicesSub) {
+    servicesToggle.addEventListener('click', () => {
+      const open = servicesSub.classList.toggle('is-open');
+      servicesToggle.setAttribute('aria-expanded', open);
     });
   }
 
