@@ -260,34 +260,39 @@
       background-color: var(--bone);
       border-bottom: 1px solid var(--line);
       padding: var(--md) var(--sm);
-      display: flex; flex-direction: column; gap: var(--sm);
     }
     .tier-bar-label {
       font-family: 'Satoshi', system-ui, sans-serif;
-      font-size: 0.5625rem; font-weight: 700;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--pink);
+      font-size: 0.5rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--pink); display: block; margin-bottom: 12px;
     }
     .tier-bar-items {
-      display: flex; flex-wrap: wrap; gap: var(--sm);
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0;
     }
     .tier-item {
-      display: flex; flex-direction: column; gap: 2px;
+      display: flex; flex-direction: column; gap: 5px;
+      padding-right: var(--sm);
     }
+    .tier-item + .tier-item {
+      border-left: 1px solid var(--line);
+      padding-left: var(--sm); padding-right: 0;
+    }
+    .tier-item:last-child { padding-right: 0; }
     .tier-item-name {
       font-family: 'Satoshi', system-ui, sans-serif;
-      font-size: 0.75rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
+      font-size: 0.5625rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
       color: var(--ink);
     }
     .tier-item-desc {
       font-family: 'Satoshi', system-ui, sans-serif;
-      font-size: 0.75rem; font-weight: 400;
-      color: var(--muted);
+      font-size: 0.6875rem; font-weight: 400;
+      color: var(--muted); line-height: 1.45;
     }
-    .tier-divider { width: 1px; background-color: var(--line); align-self: stretch; margin: 0 var(--xs); }
     @media (min-width: 768px) {
-      .tier-bar { flex-direction: row; align-items: center; padding: var(--md) var(--xl); gap: var(--lg); }
+      .tier-bar { padding: var(--md) var(--xl); }
+      .tier-bar-items { max-width: 520px; }
     }
 
     /* Pricing sections */
@@ -453,7 +458,7 @@
     [data-theme="pink"] .tier-bar-label { color:var(--pink); }
     [data-theme="pink"] .tier-item-name { color:var(--bone); }
     [data-theme="pink"] .tier-item-desc { color:rgba(253,252,250,0.5); }
-    [data-theme="pink"] .tier-divider { background-color:rgba(216,208,192,0.15); }
+    [data-theme="pink"] .tier-item + .tier-item { border-left-color:rgba(216,208,192,0.15); }
     [data-theme="pink"] .pricing-wrap { background-color:var(--ink); }
     [data-theme="pink"] .price-block { border-bottom-color:rgba(216,208,192,0.1); }
     [data-theme="pink"] .price-block-title { color:var(--bone); }
@@ -577,12 +582,10 @@
       <span class="tier-item-name">Master</span>
       <span class="tier-item-desc">15+ years · advanced certification</span>
     </div>
-    <div class="tier-divider" aria-hidden="true"></div>
     <div class="tier-item">
       <span class="tier-item-name">Senior</span>
       <span class="tier-item-desc">7–15 years · specialized training</span>
     </div>
-    <div class="tier-divider" aria-hidden="true"></div>
     <div class="tier-item">
       <span class="tier-item-name">Junior</span>
       <span class="tier-item-desc">Supervised · building clientele</span>
