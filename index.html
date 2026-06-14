@@ -1630,6 +1630,89 @@
        SECTION 10 — FOOTER
     ============================================================ */
 
+    /* ============================================================
+       FOOTER CTA — locked standard across all pages
+    ============================================================ */
+    .footer-cta {
+      position: relative; overflow: hidden;
+      min-height: 420px;
+      display: flex; align-items: center; justify-content: center;
+      padding: var(--xxl) var(--sm);
+    }
+    .footer-cta-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center; z-index: 0;
+    }
+    .footer-cta::before {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(22,20,15,0.72); z-index: 1;
+    }
+    .footer-cta-inner {
+      position: relative; z-index: 2;
+      text-align: center;
+      display: flex; flex-direction: column; align-items: center;
+      gap: var(--md);
+    }
+    .footer-cta-eyebrow {
+      font-family: 'Satoshi', system-ui, sans-serif;
+      font-size: 0.5625rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--pink);
+    }
+    .footer-cta-headline {
+      font-family: 'Satoshi', system-ui, sans-serif;
+      font-size: clamp(2rem, 7vw, 3.25rem);
+      font-weight: 900; letter-spacing: -0.03em; line-height: 1.1;
+      color: var(--snow);
+    }
+    .footer-cta-actions {
+      display: flex; align-items: center; gap: var(--xs);
+    }
+    .footer-cta-book,
+    .footer-cta-call {
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: 'Satoshi', system-ui, sans-serif;
+      font-size: 0.6875rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      line-height: 1.2; padding: 16px 24px; border-radius: 2px;
+      white-space: nowrap; text-decoration: none;
+      transition: background 0.15s, border-color 0.15s, color 0.15s, background-color 0.15s;
+    }
+    .footer-cta-book {
+      background: rgba(244,240,233,0.12);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1.5px solid rgba(244,240,233,0.5);
+      color: var(--bone);
+    }
+    .footer-cta-book:hover {
+      background: rgba(244,240,233,0.25);
+      border-color: rgba(244,240,233,0.8);
+    }
+    .footer-cta-call {
+      background: transparent;
+      border: 1.5px solid rgba(244,240,233,0.75);
+      color: var(--bone);
+    }
+    .footer-cta-call:hover {
+      background-color: var(--bone);
+      border-color: var(--bone);
+      color: var(--ink);
+    }
+    [data-theme="pink"] .footer-cta-eyebrow { color: rgba(253,252,250,0.6); }
+    [data-theme="pink"] .footer-cta-book {
+      background: rgba(239,135,170,0.28);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-color: var(--pink);
+      color: var(--snow);
+    }
+    [data-theme="pink"] .footer-cta-book:hover { background: rgba(239,135,170,0.45); }
+    [data-theme="pink"] .footer-cta-call { border-color: var(--pink); color: var(--snow); }
+    [data-theme="pink"] .footer-cta-call:hover { background-color: var(--pink); border-color: var(--pink); color: var(--ink); }
+    @media (min-width: 768px) { .footer-cta { min-height: 520px; } }
+
     /* Pink book nudge */
     .footer-nudge {
       background-color: var(--pink);
@@ -2872,45 +2955,24 @@
 </section>
 
 <!-- ============================================================
-     SECTION 9 — FINAL CTA
+     SECTION 9 — FOOTER CTA
 ============================================================ -->
-<section class="final-cta" id="book" aria-labelledby="final-cta-heading">
-
-  <!--
-    IMG SPEC: Warm aspirational result or atmosphere shot — a client leaving the
-    chair looking great, or a close editorial hair detail. Full-bleed. Vertical crop.
-    TODO: Real photo pending from client. Placeholder showing on mobile.
-  -->
-  <img
-    class="final-cta-img"
-    src="https://i.ibb.co/h5SyLHL/hair-salon-fort-lauderdale.jpg"
-    alt="Hair color result at Sullo Salon and Day Spa, Fort Lauderdale"
-    loading="lazy" width="800" height="1000"
-  >
-
-  <div class="final-cta-inner">
-    <span class="final-cta-eyebrow">Your chair is waiting</span>
-
-    <h2 class="final-cta-headline" id="final-cta-heading">
-      Four decades of South Florida&#8217;s best work. Now yours.
-    </h2>
-
-    <p class="final-cta-reason">The colorists your friends keep getting asked about.</p>
-
+<section class="footer-cta" id="book" aria-label="Book an appointment">
+  <img class="footer-cta-bg" src="https://i.ibb.co/h5SyLHL/hair-salon-fort-lauderdale.jpg" alt="" aria-hidden="true" loading="lazy">
+  <div class="footer-cta-inner">
+    <span class="footer-cta-eyebrow">Fort Lauderdale &middot; Est. 1986</span>
+    <h2 class="footer-cta-headline">Ready when you are.</h2>
+    <div class="footer-cta-actions">
+      <a href="#" class="footer-cta-book" data-booking>Book appointment</a>
+      <a href="tel:+19545639217" class="footer-cta-call">Call us</a>
+    </div>
   </div>
-
 </section>
 
 <!-- ============================================================
      SECTION 10 — FOOTER
 ============================================================ -->
 <footer role="contentinfo">
-
-  <!-- Pink book nudge -->
-  <div class="footer-nudge">
-    <p class="footer-nudge-text">Ready when you are.</p>
-    <a href="#" class="btn-primary" data-booking>Book your appointment</a>
-  </div>
 
   <!-- Main footer body -->
   <div class="footer-body">
@@ -3061,7 +3123,7 @@
   ============================================================ */
   const stickyBar  = document.querySelector('.sticky-bar');
   const heroEl     = document.querySelector('.hero');
-  const finalCtaEl = document.querySelector('.final-cta');
+  const finalCtaEl = document.querySelector('.footer-cta');
   const footerEl   = document.querySelector('footer');
 
   if (stickyBar) {

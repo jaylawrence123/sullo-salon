@@ -28,13 +28,12 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 16px; -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    html { font-size: 16px; -webkit-text-size-adjust: 100%; scroll-behavior: smooth; background-color: var(--ink); }
     body {
       font-family: 'Satoshi', system-ui, sans-serif;
       background-color: var(--snow);
       color: var(--ink);
       -webkit-font-smoothing: antialiased;
-      padding-bottom: 80px;
     }
     img { display: block; max-width: 100%; height: auto; }
     a   { color: inherit; text-decoration: none; }
@@ -105,12 +104,84 @@
     .sticky-bar .btn-primary { flex:1; text-align:center; border-radius:2px 0 0 2px; }
     .sticky-call { display:inline-flex; align-items:center; justify-content:center; background:transparent; border:1px solid var(--ink); border-left:none; color:var(--ink); font-family:'Satoshi',system-ui,sans-serif; font-size:0.6875rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; padding:16px 22px; border-radius:0 2px 2px 0; text-decoration:none; white-space:nowrap; transition:background-color 0.15s; }
     .sticky-call:hover { background-color:var(--bone-warm); }
-    @media (min-width:768px) { body { padding-bottom:0; } .sticky-bar { display:none; } }
+    @media (min-width:768px) { .sticky-bar { display:none; } .footer-body { padding-bottom: var(--xl); } }
 
     /* ===== FOOTER ===== */
-    .footer-nudge { background-color:var(--pink); padding:var(--xxl) var(--sm); display:flex; flex-direction:column; align-items:center; text-align:center; gap:var(--md); }
-    .footer-nudge-text { font-family:'Satoshi',system-ui,sans-serif; font-size:clamp(1.75rem,5vw,2.5rem); font-weight:700; letter-spacing:-0.02em; line-height:1.1; color:var(--ink); }
-    .footer-body { background-color:var(--ink); padding:var(--xl) var(--sm) var(--lg); text-align:center; }
+    /* ===== FOOTER CTA ===== */
+    .footer-cta {
+      position: relative; overflow: hidden;
+      min-height: 420px;
+      display: flex; align-items: center; justify-content: center;
+      padding: var(--xxl) var(--sm);
+    }
+    .footer-cta-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center; z-index: 0;
+    }
+    .footer-cta::before {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(22,20,15,0.72); z-index: 1;
+    }
+    .footer-cta-inner {
+      position: relative; z-index: 2;
+      text-align: center;
+      display: flex; flex-direction: column; align-items: center;
+      gap: var(--md);
+    }
+    .footer-cta-eyebrow {
+      font-family: 'Satoshi', system-ui, sans-serif;
+      font-size: 0.5625rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--pink);
+    }
+    .footer-cta-headline {
+      font-family: 'Satoshi', system-ui, sans-serif;
+      font-size: clamp(2rem, 7vw, 3.25rem);
+      font-weight: 900; letter-spacing: -0.03em; line-height: 1.1;
+      color: var(--snow);
+    }
+    .footer-cta-actions {
+      display: flex; align-items: center; gap: var(--xs);
+    }
+    /* shared base */
+    .footer-cta-book,
+    .footer-cta-call {
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: 'Satoshi', system-ui, sans-serif;
+      font-size: 0.6875rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      line-height: 1.2; padding: 16px 24px; border-radius: 2px;
+      white-space: nowrap; text-decoration: none;
+      transition: background 0.15s, border-color 0.15s, color 0.15s, background-color 0.15s;
+    }
+    /* Book — frosted bone glass */
+    .footer-cta-book {
+      background: rgba(244,240,233,0.12);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1.5px solid rgba(244,240,233,0.5);
+      color: var(--bone);
+    }
+    .footer-cta-book:hover {
+      background: rgba(244,240,233,0.25);
+      border-color: rgba(244,240,233,0.8);
+    }
+    /* Call — ghost outline, no blur */
+    .footer-cta-call {
+      background: transparent;
+      border: 1.5px solid rgba(244,240,233,0.75);
+      color: var(--bone);
+    }
+    .footer-cta-call:hover {
+      background-color: var(--bone);
+      border-color: var(--bone);
+      color: var(--ink);
+    }
+    @media (min-width: 768px) {
+      .footer-cta { min-height: 520px; }
+    }
+    .footer-body { background-color:var(--ink); padding:var(--xl) var(--sm) calc(var(--lg) + 80px); text-align:center; }
     .footer-brand { margin-bottom:var(--xl); padding-bottom:var(--lg); border-bottom:1px solid rgba(216,208,192,0.15); }
     .footer-wordmark { display:block; font-family:'Satoshi',system-ui,sans-serif; font-size:2rem; font-weight:900; letter-spacing:-0.05em; line-height:1; color:var(--bone); margin-bottom:8px; }
     .footer-tagline { font-family:'Satoshi',system-ui,sans-serif; font-size:0.6875rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); }
@@ -185,7 +256,7 @@
       gap: 1px;
     }
     .about-stat {
-      background-color: var(--snow);
+      background-color: var(--bone);
       padding: var(--lg) var(--sm);
       display: flex; flex-direction: column;
       align-items: center; text-align: center; gap: 8px;
@@ -213,7 +284,7 @@
        SEO copy left, interior image right (desktop 2-col)
     ============================================================ */
     .about-story {
-      background-color: var(--snow);
+      background-color: var(--paper);
       border-top: 1px solid var(--line);
     }
     .about-story-inner {
@@ -287,8 +358,7 @@
 
     /* ============================================================
        A4 — RECOGNITION
-       Press tearsheet layout. No giant heading.
-       Desktop: pub name left column fixed-width, text right.
+       Featured Glamour quote (hero) + 2x2 grid for remaining 4.
     ============================================================ */
     .about-recognition {
       background-color: var(--ink);
@@ -304,64 +374,69 @@
       letter-spacing: 0.18em; text-transform: uppercase;
       color: var(--pink);
     }
-    .about-recognition-count {
-      font-family: 'Satoshi', system-ui, sans-serif;
-      font-size: 0.5625rem; font-weight: 700;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: rgba(253,252,250,0.2);
+
+    /* Glamour — featured hero quote */
+    .about-rec-hero {
+      padding: var(--xl) var(--sm);
+      border-bottom: 1px solid rgba(253,252,250,0.1);
+      display: flex; flex-direction: column;
+      align-items: center; text-align: center; gap: var(--sm);
     }
-    .about-rec-item {
-      display: flex; flex-direction: column; gap: 10px;
-      padding: var(--lg) var(--sm);
-      border-bottom: 1px solid rgba(253,252,250,0.07);
-    }
-    .about-rec-item:last-child { border-bottom: none; }
-    .about-rec-pub {
+    .about-rec-hero-pub {
       font-family: 'Satoshi', system-ui, sans-serif;
       font-size: 0.5rem; font-weight: 700;
-      letter-spacing: 0.2em; text-transform: uppercase;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--pink);
+    }
+    .about-rec-hero-quote {
+      font-family: 'Satoshi', system-ui, sans-serif;
+      font-size: clamp(1.875rem, 7vw, 3.75rem);
+      font-weight: 900; line-height: 1.1;
+      letter-spacing: -0.03em; color: var(--snow);
+      max-width: 22ch;
+    }
+
+    /* Remaining 4 — 2x2 grid */
+    .about-rec-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background-color: rgba(253,252,250,0.1);
+      gap: 1px;
+    }
+    .about-rec-cell {
+      background-color: var(--ink);
+      padding: var(--lg) var(--sm);
+      display: flex; flex-direction: column; gap: 10px;
+      align-items: center; text-align: center;
+    }
+    .about-rec-cell-pub {
+      font-family: 'Satoshi', system-ui, sans-serif;
+      font-size: 0.5rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
       color: var(--pink); line-height: 1.6;
     }
-    .about-rec-text {
+    .about-rec-cell-text {
       font-family: 'Satoshi', system-ui, sans-serif;
-      font-size: clamp(1.375rem, 4vw, 2.125rem);
-      font-weight: 700; line-height: 1.2;
-      letter-spacing: -0.025em;
-      color: var(--snow);
+      font-size: clamp(1rem, 3vw, 1.375rem);
+      font-weight: 700; line-height: 1.25;
+      letter-spacing: -0.02em; color: var(--snow);
     }
     @media (min-width: 768px) {
       .about-recognition-top { padding: var(--lg) var(--xl) var(--md); }
-      .about-rec-item {
-        flex-direction: row;
-        align-items: flex-start;
-        gap: var(--xl);
-        padding: var(--xl) var(--xl);
-      }
-      .about-rec-pub {
-        flex: 0 0 140px;
-        padding-top: 5px;
-      }
-      .about-rec-text { flex: 1; }
+      .about-rec-hero { padding: var(--xxl) var(--xl); }
+      .about-rec-cell { padding: var(--xl) var(--xl); }
+      .about-rec-cell-text { font-size: 1.375rem; }
     }
 
     /* ============================================================
-       A5 — PHILOSOPHY
+       A5 — PHILOSOPHY  (flat ink — no photo, no back-to-back)
     ============================================================ */
     .about-philosophy {
-      position: relative; overflow: hidden;
+      background-color: var(--ink);
       padding: var(--xl) var(--sm);
-    }
-    .about-philosophy-bg {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover; z-index: 0;
-    }
-    .about-philosophy::before {
-      content: ''; position: absolute; inset: 0;
-      background: rgba(22,20,15,0.65); z-index: 1;
+      display: flex; align-items: center; justify-content: center;
     }
     .about-philosophy-inner {
-      position: relative; z-index: 2;
       text-align: center;
       display: flex; flex-direction: column; align-items: center;
       gap: var(--sm);
@@ -397,9 +472,26 @@
     [data-theme="pink"] .theme-toggle { border-color:rgba(22,20,15,0.35); }
     [data-theme="pink"] .theme-toggle-dot { background-color:var(--ink); }
     [data-theme="pink"] .sticky-bar { background-color:var(--pink); border-top-color:var(--ink); }
-    [data-theme="pink"] .footer-nudge { background-color:var(--ink); }
-    [data-theme="pink"] .footer-nudge-text { color:var(--snow); }
-    [data-theme="pink"] .footer-nudge .btn-primary { background-color:var(--pink); color:var(--ink); }
+    [data-theme="pink"] .footer-cta-eyebrow { color: rgba(253,252,250,0.6); }
+    [data-theme="pink"] .footer-cta-book {
+      background: rgba(239,135,170,0.28);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-color: var(--pink);
+      color: var(--snow);
+    }
+    [data-theme="pink"] .footer-cta-book:hover {
+      background: rgba(239,135,170,0.45);
+    }
+    [data-theme="pink"] .footer-cta-call {
+      border-color: var(--pink);
+      color: var(--snow);
+    }
+    [data-theme="pink"] .footer-cta-call:hover {
+      background-color: var(--pink);
+      border-color: var(--pink);
+      color: var(--ink);
+    }
 
     [data-theme="pink"] .about-stat { background-color:var(--pink); }
     [data-theme="pink"] .about-stat-num { color:var(--ink); }
@@ -522,33 +614,37 @@
 <section class="about-recognition" aria-label="Press and recognition">
   <div class="about-recognition-top">
     <span class="about-recognition-eyebrow">Press &amp; recognition</span>
-    <span class="about-recognition-count">5 honors</span>
   </div>
-  <div class="about-rec-item">
-    <span class="about-rec-pub">Glamour<br>Magazine</span>
-    <p class="about-rec-text">&#8220;One of the ten best salons in the country.&#8221;</p>
+
+  <!-- Glamour — hero quote -->
+  <div class="about-rec-hero">
+    <span class="about-rec-hero-pub">Glamour Magazine</span>
+    <p class="about-rec-hero-quote">&#8220;One of the ten best salons in the country.&#8221;</p>
   </div>
-  <div class="about-rec-item">
-    <span class="about-rec-pub">Sun-Sentinel<br>Hi-Riser &amp; East<br>Side Forum</span>
-    <p class="about-rec-text">#1 Salon &amp; Day Spa, South Florida.</p>
-  </div>
-  <div class="about-rec-item">
-    <span class="about-rec-pub">Gold Coast<br>Magazine</span>
-    <p class="about-rec-text">Best Hair Salon &amp; Spa, South Florida.</p>
-  </div>
-  <div class="about-rec-item">
-    <span class="about-rec-pub">CBS<br>Morning Show</span>
-    <p class="about-rec-text">Featured Fort Lauderdale salon.</p>
-  </div>
-  <div class="about-rec-item">
-    <span class="about-rec-pub">Goldwell</span>
-    <p class="about-rec-text">Platinum Elite Color Salon Certification.</p>
+
+  <!-- Remaining 4 — 2×2 grid -->
+  <div class="about-rec-grid">
+    <div class="about-rec-cell">
+      <span class="about-rec-cell-pub">Sun-Sentinel</span>
+      <p class="about-rec-cell-text">#1 Salon &amp; Day Spa, South Florida.</p>
+    </div>
+    <div class="about-rec-cell">
+      <span class="about-rec-cell-pub">Gold Coast Magazine</span>
+      <p class="about-rec-cell-text">Best Hair Salon &amp; Spa, South Florida.</p>
+    </div>
+    <div class="about-rec-cell">
+      <span class="about-rec-cell-pub">CBS Morning Show</span>
+      <p class="about-rec-cell-text">Featured Fort Lauderdale salon.</p>
+    </div>
+    <div class="about-rec-cell">
+      <span class="about-rec-cell-pub">Goldwell</span>
+      <p class="about-rec-cell-text">Platinum Elite Color Certification.</p>
+    </div>
   </div>
 </section>
 
 <!-- A5 — PHILOSOPHY -->
 <section class="about-philosophy" aria-label="Our philosophy">
-  <img class="about-philosophy-bg" src="https://i.ibb.co/356wvD6R/sullo-store.jpg" alt="" aria-hidden="true" loading="lazy">
   <div class="about-philosophy-inner">
     <span class="about-philosophy-mark" aria-hidden="true">&#8220;</span>
     <p class="about-philosophy-text">Hair is personal.<br>We treat it that way.</p>
@@ -562,12 +658,21 @@
   <a href="tel:+19545639217" class="sticky-call" aria-label="Call (954) 563-9217">Call</a>
 </div>
 
+<!-- FOOTER CTA -->
+<section class="footer-cta" aria-label="Book an appointment">
+  <img class="footer-cta-bg" src="https://i.ibb.co/h5SyLHL/hair-salon-fort-lauderdale.jpg" alt="" aria-hidden="true" loading="lazy">
+  <div class="footer-cta-inner">
+    <span class="footer-cta-eyebrow">Fort Lauderdale &middot; Est. 1986</span>
+    <h2 class="footer-cta-headline">Ready when you are.</h2>
+    <div class="footer-cta-actions">
+      <a href="#" class="footer-cta-book" data-booking>Book appointment</a>
+      <a href="tel:+19545639217" class="footer-cta-call">Call us</a>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer role="contentinfo">
-  <div class="footer-nudge">
-    <p class="footer-nudge-text">Ready when you are.</p>
-    <a href="#" class="btn-primary" data-booking>Book your appointment</a>
-  </div>
   <div class="footer-body">
     <div class="footer-brand">
       <span class="footer-wordmark">sullo</span>
