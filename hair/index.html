@@ -209,10 +209,25 @@
 
     /* Page header */
     .service-header {
-      background-color: var(--ink);
-      padding: var(--xl) var(--sm) var(--lg);
+      position: relative; overflow: hidden;
+      min-height: 380px;
+      display: flex; align-items: flex-end;
+      padding: var(--xl) var(--sm);
       border-bottom: 1px solid rgba(216,208,192,0.12);
     }
+    .service-header-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      z-index: 0;
+    }
+    .service-header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(22,20,15,0.88) 0%, rgba(22,20,15,0.5) 55%, rgba(22,20,15,0.2) 100%);
+      z-index: 1;
+    }
+    .service-header-inner { position: relative; z-index: 2; }
     .service-header-eyebrow {
       font-family: 'Satoshi', system-ui, sans-serif;
       font-size: 0.5625rem; font-weight: 700;
@@ -228,11 +243,11 @@
     .service-header-sub {
       font-family: 'Satoshi', system-ui, sans-serif;
       font-size: 1.0625rem; font-weight: 400;
-      color: rgba(253,252,250,0.6); line-height: 1.6;
+      color: rgba(253,252,250,0.65); line-height: 1.6;
       margin-top: var(--md); max-width: 44ch;
     }
     @media (min-width: 768px) {
-      .service-header { padding: var(--xxl) var(--xl) var(--xl); }
+      .service-header { padding: var(--xxl) var(--xl); min-height: 520px; }
     }
 
     /* Tier explainer */
@@ -428,10 +443,7 @@
     [data-theme="pink"] .footer-cta-call { border-color:var(--pink); color:var(--snow); }
     [data-theme="pink"] .footer-cta-call:hover { background-color:var(--pink); border-color:var(--pink); color:var(--ink); }
 
-    [data-theme="pink"] .service-header { background-color:var(--pink); border-bottom-color:var(--ink); }
-    [data-theme="pink"] .service-header-headline { color:var(--ink); }
-    [data-theme="pink"] .service-header-eyebrow { color:rgba(22,20,15,0.6); }
-    [data-theme="pink"] .service-header-sub { color:rgba(22,20,15,0.65); }
+    [data-theme="pink"] .service-header::before { background: linear-gradient(to top, rgba(239,135,170,0.75) 0%, rgba(239,135,170,0.4) 55%, rgba(239,135,170,0.15) 100%); }
     [data-theme="pink"] .tier-bar { background-color:var(--ink); border-bottom-color:rgba(216,208,192,0.12); }
     [data-theme="pink"] .tier-bar-label { color:var(--pink); }
     [data-theme="pink"] .tier-item-name { color:var(--bone); }
@@ -541,9 +553,12 @@
 
 <!-- PAGE HEADER -->
 <section class="service-header">
-  <p class="service-header-eyebrow">Hair Services</p>
-  <h1 class="service-header-headline">Cuts, styling<br>&amp; treatments.</h1>
-  <p class="service-header-sub">Expert cuts and blowouts from stylists who consult before every appointment. No guessing, no surprises.</p>
+  <img class="service-header-bg" src="https://i.ibb.co/kgLvnL8h/sullo-service-hair.png" alt="" aria-hidden="true" loading="eager">
+  <div class="service-header-inner">
+    <p class="service-header-eyebrow">Hair Services</p>
+    <h1 class="service-header-headline">Cuts, styling<br>&amp; treatments.</h1>
+    <p class="service-header-sub">Expert cuts and blowouts from stylists who consult before every appointment. No guessing, no surprises.</p>
+  </div>
 </section>
 
 <!-- TIER EXPLAINER -->
