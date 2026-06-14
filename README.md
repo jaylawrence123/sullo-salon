@@ -42,7 +42,7 @@ Pink/classic toggle in nav, all pages.
 | Hair | `/hair/` | Done |
 | Color &amp; Balayage | `/color/` | Done |
 | Hair Extensions | `/hair-extensions/` | Done |
-| Facials | `/facials/` | Not started |
+| Facials | `/facials/` | Done |
 | Makeup | `/makeup/` | Not started |
 | Nails | `/nails/` | Not started |
 | Waxing | `/waxing/` | Not started |
