@@ -80,6 +80,7 @@
       .nav-dropdown-link:last-child { border-bottom:none; }
       .nav-dropdown-link:hover { background-color:var(--bone); }
       .nav-dropdown-link.is-active { color:var(--pink); }
+      .nav-right .theme-toggle { display:inline-flex; }
     }
     .mobile-services { border-bottom:1px solid var(--line); }
     .mobile-services-toggle { display:flex; align-items:center; justify-content:space-between; width:100%; font-family:'Satoshi',system-ui,sans-serif; font-size:clamp(1.75rem,8vw,2.5rem); font-weight:700; letter-spacing:-0.02em; line-height:1.1; color:var(--ink); background:none; border:none; cursor:pointer; padding:0 0 var(--md); text-align:left; }
@@ -98,6 +99,9 @@
     .mobile-menu-wordmark { font-family:'Satoshi',system-ui,sans-serif; font-weight:900; letter-spacing:-0.05em; color:var(--ink); display:inline-flex; align-items:baseline; text-decoration:none; }
     .mobile-menu-wm-sm { font-size:1.1rem; } .mobile-menu-wm-lg { font-size:1.75rem; }
     .mobile-menu-close { display:flex; align-items:center; justify-content:center; min-width:44px; min-height:44px; background:none; border:none; cursor:pointer; color:var(--ink); padding:0; }
+    .mobile-menu-header-right { display:flex; align-items:center; gap:8px; }
+    .mobile-menu-header .wm-sm { font-size:1.35rem; }
+    .mobile-menu-header .wm-lg { font-size:2.1rem; }
     .mobile-menu-nav { display:flex; flex-direction:column; gap:var(--md); }
     .mobile-menu-link { font-family:'Satoshi',system-ui,sans-serif; font-size:clamp(1.75rem,8vw,2.5rem); font-weight:700; letter-spacing:-0.02em; line-height:1.1; color:var(--ink); border-bottom:1px solid var(--line); padding-bottom:var(--md); display:block; transition:color 0.15s; }
     .mobile-menu-link:last-child { border-bottom:none; }
@@ -107,6 +111,7 @@
     .theme-toggle { display:inline-flex; align-items:center; gap:6px; font-family:'Satoshi',system-ui,sans-serif; font-size:0.5625rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink); background:transparent; border:1.5px solid rgba(22,20,15,0.3); border-radius:999px; padding:5px 12px; cursor:pointer; white-space:nowrap; transition:border-color 0.15s; }
     .theme-toggle:hover { border-color:var(--ink); }
     .theme-toggle-dot { width:7px; height:7px; border-radius:50%; background-color:var(--pink); flex-shrink:0; transition:background-color 0.2s; }
+    .nav-right .theme-toggle { display:none; }
 
     /* ===== STICKY BAR ===== */
     .sticky-bar { position:fixed; bottom:0; left:0; right:0; z-index:200; display:flex; background-color:var(--snow); border-top:1px solid var(--line); padding:var(--xs) var(--sm); padding-bottom:max(var(--xs),env(safe-area-inset-bottom)); opacity:0; pointer-events:none; transform:translateY(4px); transition:opacity 0.2s ease-out,transform 0.2s ease-out; }
@@ -409,8 +414,15 @@
 
 <div class="mobile-menu" id="mobile-menu" aria-hidden="true" role="dialog" aria-label="Navigation menu">
   <div class="mobile-menu-header">
-    <a href="/" class="mobile-menu-wordmark" aria-label="Sullo home"><span class="mobile-menu-wm-sm">su</span><span class="mobile-menu-wm-lg">ll</span><span class="mobile-menu-wm-sm">o</span></a>
-    <button class="mobile-menu-close" aria-label="Close menu"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M1.5 1.5L16.5 16.5M16.5 1.5L1.5 16.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg></button>
+    <a href="/" class="nav-wordmark" aria-label="Sullo Salon &amp; Day Spa — home">
+      <span class="wm-letters"><span class="wm-sm">su</span><span class="wm-lg">ll</span><span class="wm-sm">o</span></span>
+      <span class="nav-wordmark-divider" aria-hidden="true"></span>
+      <span class="nav-wordmark-sub">Salon<br>Day Spa</span>
+    </a>
+    <div class="mobile-menu-header-right">
+      <button class="theme-toggle" data-theme-toggle aria-label="Switch color theme"><span class="theme-toggle-dot"></span><span class="theme-toggle-label">Pink</span></button>
+      <button class="mobile-menu-close" aria-label="Close menu"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M1.5 1.5L16.5 16.5M16.5 1.5L1.5 16.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg></button>
+    </div>
   </div>
   <nav class="mobile-menu-nav">
     <div class="mobile-services">
@@ -434,10 +446,6 @@
     <a href="/contact-us/" class="mobile-menu-link">Contact</a>
     <a href="/work-with-us/" class="mobile-menu-link">Work With Us</a>
   </nav>
-  <button class="theme-toggle" data-theme-toggle aria-label="Switch color theme">
-    <span class="theme-toggle-dot"></span>
-    <span class="theme-toggle-label">Pink</span>
-  </button>
   <div class="mobile-menu-cta">
     <a href="#" class="btn-primary" data-booking style="width:100%;text-align:center;display:block;">Book appointment</a>
   </div>
