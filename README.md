@@ -25,6 +25,7 @@ Pink/classic toggle in nav, all pages.
 - Attribute: `data-theme="pink"` on `<html>`
 - Persistence: `localStorage` key `sullo-theme`
 - All pink overrides scoped to `[data-theme="pink"]`
+- **Rule:** `.nav-right .theme-toggle` must be `display:inline-flex` in base CSS on every page — never `display:none`. Toggle is visible in the nav on mobile AND desktop.
 
 ---
 
@@ -38,7 +39,7 @@ Pink/classic toggle in nav, all pages.
 | Gallery | `/gallery/` | Done |
 | Contact | `/contact-us/` | Done |
 | Work With Us | `/work-with-us/` | Done |
-| Hair | `/hair/` | Not started |
+| Hair | `/hair/` | Done |
 | Hair Extensions | `/hair-extensions/` | Not started |
 | Facials | `/facials/` | Not started |
 | Makeup | `/makeup/` | Not started |
@@ -126,6 +127,14 @@ Pink/classic toggle in nav, all pages.
 - Lightbox: pure JS, `position:fixed; inset:0`, closes on X / overlay / Escape
 - Pink mode sections: all → `var(--ink)` bg (no alternating)
 - IntersectionObserver updates active filter tab on scroll (`rootMargin: '-20% 0px -70% 0px'`)
+
+---
+
+## Design Rules
+
+- **Hero overlays:** The dark ink gradient on `.hero::after` and `.service-header::before` is the same in both classic and pink theme. Never add a `[data-theme="pink"]` override for the gradient. Only subcopy color may need a pink-mode tweak.
+- **Desktop styles:** Every mobile-first CSS block needs real desktop overrides in `@media (min-width: 768px)` — larger type (+30–50%), more padding, bigger column gaps. Mobile values must not carry through unchanged.
+- **Nav toggle:** Always `display:inline-flex` in base CSS — see Theme Toggle above.
 
 ---
 

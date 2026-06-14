@@ -144,7 +144,7 @@
     .theme-toggle { display:inline-flex; align-items:center; gap:6px; font-family:'Satoshi',system-ui,sans-serif; font-size:0.5625rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink); background:transparent; border:1.5px solid rgba(22,20,15,0.3); border-radius:999px; padding:5px 12px; cursor:pointer; white-space:nowrap; transition:border-color 0.15s; }
     .theme-toggle:hover { border-color:var(--ink); }
     .theme-toggle-dot { width:7px; height:7px; border-radius:50%; background-color:var(--pink); flex-shrink:0; transition:background-color 0.2s; }
-    .nav-right .theme-toggle { display:none; }
+    .nav-right .theme-toggle { display:inline-flex; }
 
     /* ===== STICKY BAR ===== */
     .sticky-bar { position:fixed; bottom:0; left:0; right:0; z-index:200; display:flex; background-color:var(--snow); border-top:1px solid var(--line); padding:var(--xs) var(--sm); padding-bottom:max(var(--xs),env(safe-area-inset-bottom)); opacity:0; pointer-events:none; transform:translateY(4px); transition:opacity 0.2s ease-out,transform 0.2s ease-out; }
@@ -271,12 +271,12 @@
       display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0;
     }
     .tier-item {
-      display: flex; flex-direction: column; gap: 5px;
-      padding-right: var(--sm);
+      display: flex; flex-direction: column; gap: 3px;
+      padding-right: 10px;
     }
     .tier-item + .tier-item {
       border-left: 1px solid var(--line);
-      padding-left: var(--sm); padding-right: 0;
+      padding-left: 10px; padding-right: 0;
     }
     .tier-item:last-child { padding-right: 0; }
     .tier-item-name {
@@ -285,14 +285,25 @@
       letter-spacing: 0.14em; text-transform: uppercase;
       color: var(--ink);
     }
+    .tier-item-years {
+      font-family: 'Satoshi', system-ui, sans-serif;
+      font-size: 0.625rem; font-weight: 400;
+      color: var(--ink); white-space: nowrap;
+    }
     .tier-item-desc {
       font-family: 'Satoshi', system-ui, sans-serif;
-      font-size: 0.6875rem; font-weight: 400;
-      color: var(--muted); line-height: 1.45;
+      font-size: 0.5625rem; font-weight: 400;
+      color: var(--muted); line-height: 1.4;
     }
     @media (min-width: 768px) {
-      .tier-bar { padding: var(--md) var(--xl); }
-      .tier-bar-items { max-width: 520px; }
+      .tier-bar { padding: var(--lg) var(--xl); }
+      .tier-bar-label { font-size: 0.625rem; margin-bottom: 20px; }
+      .tier-bar-items { max-width: 660px; }
+      .tier-item { gap: 6px; padding-right: 32px; }
+      .tier-item + .tier-item { padding-left: 32px; }
+      .tier-item-name { font-size: 0.75rem; letter-spacing: 0.16em; }
+      .tier-item-years { font-size: 1rem; font-weight: 500; }
+      .tier-item-desc { font-size: 0.75rem; }
     }
 
     /* Pricing sections */
@@ -367,7 +378,7 @@
     @media (min-width: 480px) { .treatments-grid { grid-template-columns: 1fr 1fr; } }
     @media (min-width: 768px) {
       .treatments-section { padding: var(--xl) var(--xl); }
-      .treatments-grid { max-width: 900px; }
+      .treatments-grid { max-width: 900px; column-gap: var(--xl); }
     }
     .treatment-row {
       display: flex; justify-content: space-between; align-items: baseline;
@@ -453,11 +464,12 @@
     [data-theme="pink"] .footer-cta-call { border-color:var(--pink); color:var(--snow); }
     [data-theme="pink"] .footer-cta-call:hover { background-color:var(--pink); border-color:var(--pink); color:var(--ink); }
 
-    [data-theme="pink"] .service-header::before { background: linear-gradient(to top, rgba(239,135,170,0.75) 0%, rgba(239,135,170,0.4) 55%, rgba(239,135,170,0.15) 100%); }
+    [data-theme="pink"] .service-header-sub { color: var(--snow); font-weight: 500; }
     [data-theme="pink"] .tier-bar { background-color:var(--ink); border-bottom-color:rgba(216,208,192,0.12); }
     [data-theme="pink"] .tier-bar-label { color:var(--pink); }
     [data-theme="pink"] .tier-item-name { color:var(--bone); }
-    [data-theme="pink"] .tier-item-desc { color:rgba(253,252,250,0.5); }
+    [data-theme="pink"] .tier-item-years { color:rgba(253,252,250,0.85); }
+    [data-theme="pink"] .tier-item-desc { color:rgba(253,252,250,0.45); }
     [data-theme="pink"] .tier-item + .tier-item { border-left-color:rgba(216,208,192,0.15); }
     [data-theme="pink"] .pricing-wrap { background-color:var(--ink); }
     [data-theme="pink"] .price-block { border-bottom-color:rgba(216,208,192,0.1); }
@@ -580,15 +592,18 @@
   <div class="tier-bar-items">
     <div class="tier-item">
       <span class="tier-item-name">Master</span>
-      <span class="tier-item-desc">15+ years · advanced certification</span>
+      <span class="tier-item-years">15+ years</span>
+      <span class="tier-item-desc">Adv. certified</span>
     </div>
     <div class="tier-item">
       <span class="tier-item-name">Senior</span>
-      <span class="tier-item-desc">7–15 years · specialized training</span>
+      <span class="tier-item-years">7–15 years</span>
+      <span class="tier-item-desc">Specialized</span>
     </div>
     <div class="tier-item">
       <span class="tier-item-name">Junior</span>
-      <span class="tier-item-desc">Supervised · building clientele</span>
+      <span class="tier-item-years">New talent</span>
+      <span class="tier-item-desc">Building clientele</span>
     </div>
   </div>
 </div>
