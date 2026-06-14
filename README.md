@@ -35,7 +35,7 @@ Pink/classic toggle in nav, all pages.
 | Home | `/` | Done |
 | About | `/about-us/` | Done |
 | Our Team | `/our-team/` | Done |
-| Gallery | `/gallery/` | Not started |
+| Gallery | `/gallery/` | Done |
 | Contact | `/contact-us/` | Not started |
 | Work With Us | `/work-with-us/` | Not started |
 | Hair | `/hair/` | Not started |
@@ -99,6 +99,22 @@ Pink/classic toggle in nav, all pages.
 
 ---
 
+## Gallery Page Pattern (`/gallery/`)
+
+- Page header: eyebrow "The work" + h1 headline
+- Sticky filter bar: `position:sticky; top:56px` mobile / `top:64px` desktop, `z-index:90`
+- 6 tabs (Hair & Color, Extensions, Facials & Spa, Makeup, Nails, Waxing) — **no "All" tab**
+- Active tab: `is-active` class, pink `border-bottom`, ink text
+- Pink mode: filter bar → pink bg, inactive tabs `rgba(22,20,15,0.8)`, active → ink border-bottom
+- Per-section carousels: `scroll-snap-type:x mandatory`, cards `72vw` mobile / `300px` desktop, `aspect-ratio:3/4`
+- No `padding-bottom` on `.gallery-track` — last section only gets `padding-bottom: var(--xl)` via `.gallery-section:last-child .gallery-track`
+- `scroll-margin-top` on sections: `106px` mobile / `118px` desktop (nav + filter bar)
+- Lightbox: pure JS, `position:fixed; inset:0`, closes on X / overlay / Escape
+- Pink mode sections: all → `var(--ink)` bg (no alternating)
+- IntersectionObserver updates active filter tab on scroll (`rootMargin: '-20% 0px -70% 0px'`)
+
+---
+
 ## Design Tokens
 
 ```
@@ -133,6 +149,5 @@ muted      #8A8270   secondary/meta text
 - [ ] Confirm social media handles/URLs
 - [ ] Confirm Google Business Profile URL
 - [ ] Add JSON-LD schema (LocalBusiness + AggregateRating)
-- [ ] Propagate footer to /about-us/ and /our-team/
-- [ ] Build remaining pages: gallery, contact, work-with-us, 6 service pages
+- [ ] Build remaining pages: contact, work-with-us, 6 service pages
 - [ ] Client approval → merge dev to master
