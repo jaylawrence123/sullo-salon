@@ -4,8 +4,7 @@ Static HTML/CSS/JS website. Deploy to Netlify via master branch.
 
 **Local:** `C:\Users\Jay\Documents\sullo-salon`
 **GitHub:** https://github.com/jaylawrence123/sullo-salon
-**Live:** https://sullo-salon.netlify.app (master branch, auto-deploys)
-**Work branch:** `dev` — never push directly to master without client approval
+**Live:** https://jaylawrence123.github.io/sullo-salon/ (main branch, auto-deploys via GitHub Pages)
 
 ---
 
