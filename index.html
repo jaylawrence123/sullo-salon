@@ -998,7 +998,7 @@
     .marquee-strip {
       background-color: var(--ink);
       overflow: hidden;
-      padding: 18px 0;
+      padding: 26px 0;
       display: flex;
     }
 
@@ -1020,17 +1020,17 @@
 
     .marquee-term {
       font-family: 'Satoshi', system-ui, sans-serif;
-      font-size: 1.125rem;
+      font-size: 1.5rem;
       font-weight: 700;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--bone);
-      padding: 0 36px;
+      padding: 0 48px;
     }
 
     .marquee-sep {
       color: var(--pink);
-      font-size: 1rem;
+      font-size: 1.375rem;
       flex-shrink: 0;
       line-height: 1;
     }
@@ -1513,9 +1513,9 @@
       transition: color 0.15s ease-out;
     }
     .team-link:hover { color: var(--muted); }
-    .work-link { color: var(--snow); }
-    .work-link:hover { color: rgba(253,252,250,0.6); }
-    .work-footer { border-top-color: rgba(216,208,192,0.15); }
+    .work-link { color: var(--ink); }
+    .work-link:hover { color: var(--muted); }
+    .work-footer { background-color: var(--bone); border-top-color: var(--line); }
 
     /* ============================================================
        SECTION — ABOUT
@@ -2211,9 +2211,9 @@
       border-top-color: var(--ink);
     }
     [data-theme="pink"] .team-link { color: var(--ink); }
-    [data-theme="pink"] .work-footer { border-top-color: rgba(216,208,192,0.15); }
-    [data-theme="pink"] .work-link { color: var(--pink); }
-    [data-theme="pink"] .work-link:hover { color: rgba(239,135,170,0.7); }
+    [data-theme="pink"] .work-footer { background-color: var(--pink); border-top-color: rgba(22,20,15,0.15); }
+    [data-theme="pink"] .work-link { color: var(--ink); }
+    [data-theme="pink"] .work-link:hover { color: rgba(22,20,15,0.55); }
 
     [data-theme="pink"] .visit {
       background-color: var(--ink);
