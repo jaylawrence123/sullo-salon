@@ -234,6 +234,7 @@
       color: var(--ink);
       line-height: 1.2;
     }
+    @media (min-width: 768px) { .announce-text { font-size: 1.25rem; letter-spacing: 0.18em; } }
 
     .announce-link {
       color: var(--ink);
@@ -519,7 +520,7 @@
       font-weight: 700;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: rgba(244,240,233,0.42);
+      color: rgba(244,240,233,0.85);
       margin-top: var(--sm);
     }
 
@@ -731,6 +732,7 @@
     @media (min-width: 768px) {
       .press-quote { padding: var(--xxl) var(--xl); }
       .press-quote-text { max-width: 20ch; }
+      .mobile-br { display: none; }
     }
 
     /* ============================================================
@@ -2350,7 +2352,7 @@
 
 <!-- ANNOUNCEMENT BAR — remove if not using -->
 <div class="announce-bar">
-  <p class="announce-text">Now booking for summer &mdash; <a href="#" class="announce-link" data-booking>Book now</a></p>
+  <p class="announce-text">Goldwell Platinum Elite Color Salon</p>
 </div>
 
 <!-- 1a. NAV -->
@@ -2534,7 +2536,7 @@
   <img class="press-quote-bg" src="https://i.ibb.co/h5SyLHL/hair-salon-fort-lauderdale.jpg" alt="" aria-hidden="true" loading="lazy">
   <div class="press-quote-inner">
     <span class="press-quote-mark" aria-hidden="true">&#8220;</span>
-    <p class="press-quote-text">One of the ten best salons in the country.</p>
+    <p class="press-quote-text">One of the ten best salons<br class="mobile-br"> in the country.</p>
     <p class="press-quote-attr">— Glamour Magazine</p>
   </div>
 </section>

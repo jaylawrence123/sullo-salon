@@ -53,7 +53,7 @@ Pink/classic toggle in nav, all pages.
 
 | # | Section | Status | Pink Mode |
 |---|---------|--------|-----------|
-| 1 | Hero (announce bar + nav + video + wordmark + sticky bar) | Done | Done |
+| 1 | Hero (announce bar + nav + video + wordmark + sticky bar) | Done — announce bar: "Goldwell Platinum Elite Color Salon" | Done |
 | 2 | Services (6 square + 1 full-width tiles) | Done | Done |
 | 3 | Marquee | Done | Done |
 | 4 | Why Sullo (video bg + frosted glass stats) | Done | Done |
