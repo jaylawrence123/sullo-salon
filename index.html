@@ -1496,12 +1496,12 @@
     .team-card--sm .team-card-body  { padding: var(--sm); }
 
     /* Footer link */
-    .team-footer {
+    .team-footer, .work-footer {
       padding: var(--lg) var(--sm);
       border-top: 1px solid var(--line);
     }
 
-    .team-link {
+    .team-link, .work-link {
       font-family: 'Satoshi', system-ui, sans-serif;
       font-size: 0.6875rem;
       font-weight: 700;
@@ -1513,6 +1513,9 @@
       transition: color 0.15s ease-out;
     }
     .team-link:hover { color: var(--muted); }
+    .work-link { color: var(--snow); }
+    .work-link:hover { color: rgba(253,252,250,0.6); }
+    .work-footer { border-top-color: rgba(216,208,192,0.15); }
 
     /* ============================================================
        SECTION — ABOUT
@@ -2207,10 +2210,10 @@
       background-color: var(--pink);
       border-top-color: var(--ink);
     }
-
-    [data-theme="pink"] .team-link {
-      color: var(--ink);
-    }
+    [data-theme="pink"] .team-link { color: var(--ink); }
+    [data-theme="pink"] .work-footer { border-top-color: rgba(216,208,192,0.15); }
+    [data-theme="pink"] .work-link { color: var(--pink); }
+    [data-theme="pink"] .work-link:hover { color: rgba(239,135,170,0.7); }
 
     [data-theme="pink"] .visit {
       background-color: var(--ink);
@@ -2841,6 +2844,9 @@
 
   </div>
 
+  <div class="work-footer">
+    <a href="/sullo-salon/gallery/" class="work-link">See all the work &rarr;</a>
+  </div>
 
 </section>
 
