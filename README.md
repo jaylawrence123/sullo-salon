@@ -46,6 +46,7 @@ Pink/classic toggle in nav, all pages.
 | Makeup | `/makeup/` | Done |
 | Nails | `/nails/` | Done |
 | Waxing | `/waxing/` | Done |
+| Full Menu | `/services/` | Done — video hero, alternating sections (snow/bone classic, pink/ink pink mode) |
 
 ---
 
